@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -31,16 +32,12 @@ public class User {
 
     @Column(name = "phone_number", nullable = false, unique = true)
     private String phoneNumber;
-    
-    @Column(name = "address", nullable = false)
-    private String address;
 
-    @Column(nullable = false)
-    private String city;
-
-    @Column(nullable = false)
-    private State state;
-
-    @Column(name = "zip_code", nullable = false)
-    private ZipCode zipCode;
+    @ManyToMany
+    @JoinTable(
+      name = "users_addresses_join",
+      joinColumns = @JoinColumn(name = "user_id"),
+      inverseJoinColumns = @JoinColumn(name = "address_id")
+    )
+    private Set<Address> userAddresses;
 }
