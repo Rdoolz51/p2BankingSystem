@@ -31,7 +31,16 @@ public class User {
 
     @Column(name = "phone_number", nullable = false, unique = true)
     private String phoneNumber;
-
+    
     @Column(name = "address", nullable = false)
     private String address;
+
+    @Column(nullable = false)
+    private String city;
+
+    @Column(nullable = false)
+    private State state;
+
+    @Column(name = "zip_code", nullable = false)
+    private ZipCode zipCode;
 }
