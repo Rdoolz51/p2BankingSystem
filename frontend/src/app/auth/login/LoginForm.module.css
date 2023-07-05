@@ -3,6 +3,18 @@
   justify-content: center;
 }
 
+.cardHeader {
+  width: 100%;
+  font-weight: bolder;
+  font-size: larger;
+}
+
+.card {
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
 .error {
 
 }
@@ -12,16 +24,59 @@
   flex-direction: column;
   gap: 10px;
   padding: 9rem;
-}
-
-.inputDiv {
-
+  width: 150%;
 }
 
 .input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
 
+.inputDiv {
+  margin-bottom: 10px;
 }
 
 .button {
-
+  box-shadow: 
+  inset -6px -6px 10px 0 rgba(4, 10, 67, 0.2),
+  inset 6px 6px 10px 0 rgba(255, 255, 255, 0.5);
 }
+
+.button:hover {
+  box-shadow: 
+    inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2), 
+    inset -6px -6px 10px 0 rgba(255, 255, 255, 0.5);
+}
+
+
+.form:before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to right top, #000000 0%, #2c084c 50%, #6a0080 100% );
+  transform: translate3d(0px, 0px, 0) scale(1.13);
+  filter: blur(20px);
+  opacity: var(0.62);
+  transition: opacity 0.3s;
+  border-radius: inherit;
+}
+
+.form::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: inherit;
+  border-radius: inherit;
+}
+      
