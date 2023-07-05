@@ -1,0 +1,58 @@
+.nav {
+  display: flex;
+  padding-left: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+  /* background-color: #f5f5f5; */
+  color: whitesmoke;
+}
+.profile {
+  position: fixed;
+  right: 1rem;
+  /* margin-top: .5rem; */
+  font-size: x-large;
+}
+
+.companyName {
+  margin-right: 2rem;
+  color: whitesmoke;
+  font-size: larger;
+}
+
+.nav ul {
+  display: flex;
+  list-style: none;
+  margin-bottom: 0;
+}
+
+.nav ul li {
+  margin: auto 1rem;
+  color: whitesmoke;
+  font-weight: bold;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.nav ul li a:hover {
+  color: rgb(139, 135, 135);
+  font-weight: bold;
+  text-shadow: 1px 1px indigo;
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 600px) {
+  .profile {
+    right: 0;
+  }
+  .nav ul {
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+  .companyName {
+    font-size: medium;
+  }
+} 

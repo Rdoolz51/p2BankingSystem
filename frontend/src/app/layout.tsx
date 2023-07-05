@@ -1,5 +1,8 @@
 import './globals.css'
+import "bootstrap/dist/css/bootstrap.min.css";
 import { NextAuthProvider } from "./providers";
+
+import Navbar from '@/components/navbar/Navbar';
 
 export const metadata = {
   title: "P2 Banking",
@@ -15,6 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <NextAuthProvider>
+          <Navbar />
           {children}
         </NextAuthProvider>
       </body>
