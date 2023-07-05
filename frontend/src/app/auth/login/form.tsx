@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 
+import Link from 'next/link';
 import { signIn } from "next-auth/react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
@@ -93,6 +94,9 @@ export const LoginForm = () => {
           {loading ? "loading..." : "Sign In"}
         </button>
       </form>
+      <Link href={'/auth/register'} className={styles.link}>
+        No Account? Register!
+      </Link>
     </Card>
   );
 };
