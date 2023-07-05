@@ -10,20 +10,15 @@ const Navbar = () => {
       </div>
       <ul>
         <li>
-          <Link href="/">
-            <p>Home</p>
+          <Link legacyBehavior href="/myBank">
+            <a>My Bank</a>
           </Link>
         </li>
-        <li>
-          <Link href="/myBank">
-            <p>My Bank</p>
-          </Link>
-        </li>
-      </ul>
-      <ul className={styles.profile}>
+        <div className={styles.profile}>
         <li>
             <Link href="/profile"><FaUser></FaUser></Link>
         </li>
+        </div>
       </ul>
     </nav>
   );
