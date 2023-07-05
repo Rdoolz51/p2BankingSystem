@@ -56,8 +56,8 @@ export const LoginForm = () => {
   };
 
   return (
-    <Card className="text-center">
-      <Card.Header>Login</Card.Header>
+    <Card className={styles.card}>
+      <Card.Header className={styles.cardHeader}>Login</Card.Header>
       <form onSubmit={onSubmit} className={styles.form}>
         {error && (
           <p className={styles.error}>{error}</p>
@@ -86,7 +86,7 @@ export const LoginForm = () => {
         </div>
         <button
           type="submit"
-          style={{ backgroundColor: `${loading ? "#ccc" : "#3446eb"}` }}
+          // style={{ backgroundColor: `${loading ? "#ccc" : "#3446eb"}` }}
           className={styles.button}
           disabled={loading}
         >
