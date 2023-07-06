@@ -4,55 +4,45 @@ import com.revature.daos.AccountDAO;
 import com.revature.daos.TransactionDAO;
 import com.revature.daos.UserDAO;
 import com.revature.models.Account;
-import com.revature.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserServices {
-
+public class AccountServices {
     private final UserDAO userDAO;
     private final AccountDAO accountDAO;
     private final TransactionDAO transactionDAO;
+
     @Autowired
-    public UserServices(UserDAO userDAO, AccountDAO accountDAO, TransactionDAO transactionDAO) {
+    public AccountServices(UserDAO userDAO, AccountDAO accountDAO, TransactionDAO transactionDAO) {
         this.userDAO = userDAO;
         this.accountDAO = accountDAO;
         this.transactionDAO = transactionDAO;
     }
-    public User getUserByID(int userID) {
-        return userDAO.getUserByID(userID);
+    public Account getAccountByID(int accountID) {
+        return accountDAO.getAccountByID(accountID);
     }
 
-    public User getUserByEmail(String email) {
-        return userDAO.getUserByEmail(email);
+    public List<Account> getAccountsByUserID(int userID) {
+        return accountDAO.getAccountsByUserID(userID);
     }
 
-    public void addUser(User user) {
-        userDAO.addUser(user);
-    }
-
-    public void updateUser(User user) {
-        userDAO.updateUser(user);
-    }
-
-    public void deleteUser(User user) {
-        userDAO.deleteUser(user);
-    }
-
-    public List<User> getAllUsers() {
-        return userDAO.getAllUsers();
-    }
-
-    public void createAccount(User user, Account accountType) {
-        Account account = new Account(user, accountType);
+    public void addAccount(Account account) {
         accountDAO.addAccount(account);
     }
 
-    public List<Account> getAllAccounts(User user) {
-        return accountDAO.getAccountsByUserID(user.getUserID());
+    public void updateAccount(Account account) {
+        accountDAO.updateAccount(account);
+    }
+
+    public void deleteAccount(Account account) {
+        accountDAO.deleteAccount(account);
+    }
+
+    public List<Account> getAllAccounts() {
+        return accountDAO.getAllAccounts();
     }
 
     public void addMoneyToAccount(Account account, double amount) {
@@ -66,6 +56,7 @@ public class UserServices {
         account.setBalance(currentBalance - amount);
         accountDAO.updateAccount(account);
     }
+
     public void transferMoney(Account senderAccount, Account receiverAccount, double amount) {
         double senderBalance = senderAccount.getBalance();
         double receiverBalance = receiverAccount.getBalance();
@@ -76,6 +67,4 @@ public class UserServices {
         accountDAO.updateAccount(senderAccount);
         accountDAO.updateAccount(receiverAccount);
     }
-
 }
-
