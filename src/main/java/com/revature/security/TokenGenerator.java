@@ -37,8 +37,10 @@ public class TokenGenerator {
 
     return Jwts.builder()
       .setSubject(email)
-      .claim("Id", user.getId())
-      .claim("Role", user.getRole().getTitle())
+      .claim("id", user.getId())
+      .claim("role", user.getRole().getTitle())
+      .claim("first_name", user.getFirstName())
+      .claim("last_name", user.getLastName())
       .setIssuedAt(now)
       .setExpiration(expire)
       .signWith(secretKey, SignatureAlgorithm.HS512)
