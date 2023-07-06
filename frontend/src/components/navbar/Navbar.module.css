@@ -10,8 +10,8 @@
 
 .profile li{
   font-size: xx-large !important;
-  position: absolute;
-  top: 1rem;
+  position: relative;
+  top: -0.5rem;
   right: 0;
 }
 
@@ -32,10 +32,12 @@
   display: flex;
   list-style: none;
   margin-bottom: 0;
+  position: relative;
+  left: 5rem;
 }
 
 .nav ul li {
-  margin: auto 1rem;
+  margin: auto 2rem;
   color: whitesmoke;
   font-weight: bold;
   font-size: large;

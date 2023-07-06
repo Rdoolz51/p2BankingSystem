@@ -2,52 +2,46 @@
 "use client";
 
 import Link from 'next/link';
-import { signIn } from "next-auth/react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
-
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
+import styles from "./RegisterForm.module.css";
+import handler from '@/app/api/auth/register';
 
-import styles from "./LoginForm.module.css"
-
-export const LoginForm = () => {
+export const RegisterForm = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [formValues, setFormValues] = useState({
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
   });
   const [error, setError] = useState("");
 
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || "/profile";
-
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       setLoading(true);
-      setFormValues({ email: "", password: "" });
+      setFormValues({ firstName: "", lastName: "", email: "", password: "" });
 
-      const res = await signIn("credentials", {
-        redirect: false,
-        email: formValues.email,
-        password: formValues.password,
-        callbackUrl,
-      });
+      const response = await handler(formValues)
 
       setLoading(false);
 
-      console.log(res);
-      if (!res?.error) {
-        router.push(callbackUrl);
+      if (response.ok) {
+        // Registration successful, redirect to login page
+        router.push("/auth/login");
       } else {
-        setError("invalid email or password");
+        // Handle registration error
+        const data = await response.json();
+        setError(data.error);
       }
     } catch (error: any) {
       setLoading(false);
-      setError(error);
+      setError(error.message || "Something went wrong");
     }
   };
 
@@ -58,11 +52,31 @@ export const LoginForm = () => {
 
   return (
     <Card className={styles.card}>
-      <Card.Header className={styles.cardHeader}>Login</Card.Header>
+      <Card.Header className={styles.cardHeader}>Register</Card.Header>
       <form onSubmit={onSubmit} className={styles.form}>
-        {error && (
-          <p className={styles.error}>{error}</p>
-        )}
+        {error && <p className={styles.error}>{error}</p>}
+        <div className={styles.inputDiv}>
+          <input
+            required
+            type="text"
+            name="firstName"
+            value={formValues.firstName}
+            onChange={handleChange}
+            placeholder="First name"
+            className={styles.input}
+          />
+        </div>
+        <div className={styles.inputDiv}>
+          <input
+            required
+            type="text"
+            name="lastName"
+            value={formValues.lastName}
+            onChange={handleChange}
+            placeholder="Last name"
+            className={styles.input}
+          />
+        </div>
         <div className={styles.inputDiv}>
           <input
             required
@@ -87,15 +101,14 @@ export const LoginForm = () => {
         </div>
         <button
           type="submit"
-          // style={{ backgroundColor: `${loading ? "#ccc" : "#3446eb"}` }}
           className={styles.button}
           disabled={loading}
         >
-          {loading ? "loading..." : "Sign In"}
+          {loading ? "Loading..." : "Register"}
         </button>
       </form>
-      <Link href={'/auth/register'} className={styles.link}>
-        No Account? Register!
+      <Link href={'/auth/login'} className={styles.link}>
+        Already have an account? Login!
       </Link>
     </Card>
   );
