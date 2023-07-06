@@ -17,7 +17,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private int userID;
+    private int id;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -32,6 +32,9 @@ public class User {
 
     @Column(name = "phone_number", nullable = false, unique = true)
     private String phoneNumber;
+
+    @ManyToOne
+    private Role role;
 
     @ManyToMany
     @JoinTable(
