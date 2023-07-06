@@ -1,0 +1,62 @@
+
+.pageTitle h1{
+    margin-left: 1.25rem;
+}
+
+.accountContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    margin: 1rem;
+    width: 80vw;
+    border: 2px solid #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+  }
+    
+  .buttonContainer {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  
+  .button {
+    padding:.75rem;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: inset 200px 0 0 0 rgba(93, 66, 116, 0.399);
+    outline: 1px solid rgb(93, 66, 116);
+    margin: .2rem;
+    border-radius: 5%;
+  }
+
+  .button:hover{
+    box-shadow: 3px 3px 7px rgba(255, 252, 252, 0.617);
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    color: #ffffff;
+    box-shadow: inset 200px 0 0 0 rgba(166, 100, 224, 0.399);
+    outline: 1px solid rgb(40, 11, 109);
+  }
+  
+  .accountNumber, .balance {
+    margin-bottom: 20px;
+  }
+  .leftContainer {
+    flex: 1;
+  }
+
+  /* .transactionContainer{
+    border-left: 2px solid white;
+    height: 100px;
+    width: 100px;
+    justify-content: flex-end;
+    outline: 2px solid white;
+    display: flex;
+    flex-direction: row;
+  }
+  .transactionContainer h2{
+    text-align: center;
+    text-decoration: underline;
+  } */

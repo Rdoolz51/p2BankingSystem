@@ -5,9 +5,9 @@ import { FaUser } from "react-icons/fa6";
 const Navbar = () => {
   return (
     <nav className={styles.nav}>
-      <div className={styles.companyName}>
-        <h1>Company Name</h1>
-      </div>
+      <Link legacyBehavior href={"/"}>
+        <a><h1 className={styles.companyName}>Nameless Bank</h1></a>
+      </Link>
       <ul>
         <li>
           <Link legacyBehavior href="/myBank">

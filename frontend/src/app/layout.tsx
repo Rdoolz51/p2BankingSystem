@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { NextAuthProvider } from "./providers";
 
 import Navbar from '@/components/navbar/Navbar';
+import YourAccounts from '@/components/yourAccounts/YourAccounts';
 
 export const metadata = {
   title: "P2 Banking",
@@ -19,6 +20,9 @@ export default function RootLayout({
       <body>
         <NextAuthProvider>
           <Navbar />
+          <h1 className='yourAccountsTitle'>Your Accounts:</h1>
+          <YourAccounts accountNumber={'1293912921394'} initialBalance={50} accountType={'Checking'} />
+          <YourAccounts accountNumber={'9876239346821'} initialBalance={5000} accountType={'Savings'} />
           {children}
         </NextAuthProvider>
       </body>

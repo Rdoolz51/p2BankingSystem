@@ -19,8 +19,13 @@
   margin-top: 0;
   color: whitesmoke;
   display: flex;
-  font-size: larger;
-  text-shadow: 1px 1px rgb(255, 255, 255);
+  text-transform: uppercase;
+  font-family: verdana;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-shadow: 3px 3px 20px #4f3499,
+    -2px 1px 30px #4f3499;
+  
 }
 
 .nav ul {
