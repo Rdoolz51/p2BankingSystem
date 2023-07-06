@@ -4,6 +4,10 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 application.properties
+*DTO.java
+*DAO.java
+*Controller.java
+/frontend
 
 ### STS ###
 .apt_generated
