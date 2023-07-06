@@ -24,11 +24,11 @@ public class Address {
   @Column(nullable = false)
   private String city;
 
-  @Column(nullable = false)
+  @ManyToOne
   private State state;
 
-  @Column(name = "zip_code", nullable = false)
-  private ZipCode zipCode;
+  @ManyToOne
+  private ZipCode zip;
 
   @ManyToMany(mappedBy = "userAddresses")
   private Set<User> usersResiding;
