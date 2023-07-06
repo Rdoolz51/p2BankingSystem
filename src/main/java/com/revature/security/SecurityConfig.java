@@ -39,6 +39,11 @@ public class SecurityConfig {
       .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
       .and()
       .authorizeRequests()
+      // We can change these. I just wanted something here.
+      .antMatchers("/admin/**").hasAuthority("Admin")
+      .antMatchers("/accounts/**").hasAnyAuthority("Admin", "Customer")
+      .antMatchers("/users/**").hasAnyAuthority("Admin", "Customer")
+      .antMatchers("/transactions/**").hasAnyAuthority("Admin", "Customer")
       .antMatchers("**").denyAll()
       .and()
       .httpBasic();
