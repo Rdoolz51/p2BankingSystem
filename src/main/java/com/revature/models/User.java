@@ -17,7 +17,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private int userID;
+    private int id;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -33,11 +33,26 @@ public class User {
     @Column(name = "phone_number", nullable = false, unique = true)
     private String phoneNumber;
 
-    @ManyToMany
+    @ManyToOne
+    private Role role;
+
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
       name = "users_addresses_join",
       joinColumns = @JoinColumn(name = "user_id"),
       inverseJoinColumns = @JoinColumn(name = "address_id")
     )
     private Set<Address> userAddresses;
+
+    public User(String firstName, String lastName, String email,
+                String password,
+                String phoneNumber, Role role, Set<Address> userAddresses) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.role = role;
+        this.userAddresses = userAddresses;
+    }
 }
