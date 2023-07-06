@@ -4,9 +4,15 @@ import styles from './MyBankHome.module.css'
 
 import YourAccounts from '../yourAccounts/YourAccounts';
 
+const names = {
+  accounts: 'accounts',
+  cards: 'cards',
+  loans: 'loans',
+}
+
 
 const MyBankHome: React.FC<any> = (props:any) => {
-  const [selector, setSelector] = useState('')
+  // const [selector, setSelector] = useState('')
   const [activeButton, setActiveButton] = useState('')
 
   const handlerSelector = (e:any) => {
@@ -19,29 +25,47 @@ const MyBankHome: React.FC<any> = (props:any) => {
     <main>
 
       <div className={styles.buttonContainer}>
-        <button name='accounts' onClick={handlerSelector} className={activeButton === 'accounts' ? styles.activeButton : ''} >
+        <button name={names.accounts} 
+          onClick={handlerSelector} 
+          className={activeButton === names.accounts ? styles.activeButton : ''} 
+          disabled={activeButton === names.accounts}
+        >
           Your Accounts
         </button>
 
-        <button name='cards' onClick={handlerSelector} className={activeButton === 'cards' ? styles.activeButton : ''} >
+        <button name={names.cards}
+          onClick={handlerSelector} 
+          className={activeButton === names.cards ? styles.activeButton : ''} 
+          disabled={activeButton === names.cards}  
+        >
           Your Cards
         </button>
 
-        <button name='loans' onClick={handlerSelector} className={activeButton === 'loans' ? styles.activeButton : ''} >
+        <button name={names.loans}
+          onClick={handlerSelector} 
+          className={activeButton === names.loans ? styles.activeButton : ''} 
+          disabled={activeButton === names.loans}  
+        >
           Your Loans
         </button>
       </div>
 
       <div>
-        <YourAccounts {...props} />
+        {activeButton === names.accounts && 
+          <YourAccounts {...props} />
+        }
       </div>
 
       <div>
-        <YourAccounts {...props} />
+        {activeButton === names.cards &&
+          <YourAccounts {...props} />
+        }
       </div>
 
       <div>
-        <YourAccounts {...props} />
+        {activeButton === names.loans && 
+          <YourAccounts {...props} />
+        }
       </div>
     
     </main>
