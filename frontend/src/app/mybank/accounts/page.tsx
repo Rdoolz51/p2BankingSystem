@@ -1,4 +1,4 @@
-import MyBankHome from '@/components/mybank/MyBankHome';
+import YourAccounts from '@/components/yourAccounts/YourAccounts';
 
 
 //This is the new version of getServerSideProps
@@ -21,9 +21,7 @@ export default async function Page() {
 
   return (
     <main>
-      <div>
-        <MyBankHome {...data} />
-      </div>
+      <YourAccounts {...data} />
     </main>
   )
 }

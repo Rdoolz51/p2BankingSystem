@@ -30,6 +30,7 @@
     outline: 1px solid rgb(93, 66, 116);
     margin: .2rem;
     border-radius: 5%;
+    user-select: none;
   }
 
   .button:hover{
