@@ -12,14 +12,17 @@ interface AccountProps {
 
 const YourAccounts: React.FC<AccountProps> = ({ accountType, accountNumber, initialBalance }) => {
   const [balance, setBalance] = useState(initialBalance);
+  const [availableBalance, setAvailableBalance] = useState(initialBalance);
 
   const depositMoney = (amount: number) => {
     setBalance(prevBalance => prevBalance + amount);
+    setTimeout(() => setAvailableBalance(prevBalance => prevBalance + amount), 2500)
   }
 
   const withdrawMoney = (amount: number) => {
     if(balance - amount >= 0) {
       setBalance(prevBalance => prevBalance - amount);
+      setTimeout(() => setAvailableBalance(prevBalance => prevBalance - amount), 2500)
     } else {
       alert("Insufficient funds");
     }
@@ -28,6 +31,7 @@ const YourAccounts: React.FC<AccountProps> = ({ accountType, accountNumber, init
   const transferMoney = (amount: number) => {
     if(balance - amount >= 0) {
         setBalance(prevBalance => prevBalance - amount);
+        setTimeout(() => setAvailableBalance(prevBalance => prevBalance - amount), 2500)
         alert("ADD FUNCTIONALITY...but im still takin that money...")
     } else {
         alert("Insufficient funds");
@@ -37,9 +41,10 @@ const YourAccounts: React.FC<AccountProps> = ({ accountType, accountNumber, init
   return (
     <div className={styles.accountContainer}>
       <div className={styles.leftContainer}>
-        <h2 className={styles.accountType}>Account Type: {accountType}</h2>
-        <h2 className={styles.accountNumber}>Account Number: {accountNumber}</h2>
-        <h2 className={styles.balance}>Balance: ${balance.toFixed(2)}</h2>
+        <h2 className={styles.accountType}>Ryan's {accountType} : {accountNumber}</h2>  
+        {/* <h2 className={styles.accountNumber}>Account Number: {accountNumber}</h2> */}
+        <h2 className={styles.balance}>Available Balance: <span>${availableBalance.toFixed(2)}</span></h2>
+        <h2 className={styles.balance}>Current Balance: <span>${balance.toFixed(2)}</span></h2>
         <div className={styles.buttonContainer}>
           <div className={styles.button} onClick={() => depositMoney(10)}>Deposit $10</div>
           <div className={styles.button} onClick={() => withdrawMoney(10)}>Withdraw $10</div>
