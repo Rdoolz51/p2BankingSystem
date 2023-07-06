@@ -10,7 +10,7 @@ const Navbar = () => {
       </Link>
       <ul>
         <li>
-          <Link legacyBehavior href="/myBank">
+          <Link legacyBehavior href="/mybank">
             <a>My Bank</a>
           </Link>
         </li>

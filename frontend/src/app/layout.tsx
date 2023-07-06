@@ -1,5 +1,5 @@
-import './globals.css'
 import "bootstrap/dist/css/bootstrap.min.css";
+import './globals.css'
 import { NextAuthProvider } from "./providers";
 
 import Navbar from '@/components/navbar/Navbar';
@@ -20,9 +20,9 @@ export default function RootLayout({
       <body>
         <NextAuthProvider>
           <Navbar />
-          <h1 className='yourAccountsTitle'>Your Accounts:</h1>
+          {/* <h1 className='yourAccountsTitle'>Your Accounts:</h1>
           <YourAccounts accountNumber={'1293912921394'} initialBalance={50} accountType={'Checking'} />
-          <YourAccounts accountNumber={'9876239346821'} initialBalance={5000} accountType={'Savings'} />
+          <YourAccounts accountNumber={'9876239346821'} initialBalance={5000} accountType={'Savings'} /> */}
           {children}
         </NextAuthProvider>
       </body>
