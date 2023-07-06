@@ -30,6 +30,6 @@ public class Address {
   @ManyToOne
   private ZipCode zip;
 
-  @ManyToMany(mappedBy = "userAddresses")
+  @ManyToMany(cascade = CascadeType.ALL, mappedBy = "userAddresses")
   private Set<User> usersResiding;
 }

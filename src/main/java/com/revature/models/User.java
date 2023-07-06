@@ -36,11 +36,23 @@ public class User {
     @ManyToOne
     private Role role;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
       name = "users_addresses_join",
       joinColumns = @JoinColumn(name = "user_id"),
       inverseJoinColumns = @JoinColumn(name = "address_id")
     )
     private Set<Address> userAddresses;
+
+    public User(String firstName, String lastName, String email,
+                String password,
+                String phoneNumber, Role role, Set<Address> userAddresses) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.role = role;
+        this.userAddresses = userAddresses;
+    }
 }

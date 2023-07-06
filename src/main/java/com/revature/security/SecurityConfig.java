@@ -41,6 +41,7 @@ public class SecurityConfig {
       .authorizeRequests()
       // We can change these. I just wanted something here.
       .antMatchers("/admin/**").hasAuthority("Admin")
+      .antMatchers("/auth/**").permitAll()
       .antMatchers("/accounts/**").hasAnyAuthority("Admin", "Customer")
       .antMatchers("/users/**").hasAnyAuthority("Admin", "Customer")
       .antMatchers("/transactions/**").hasAnyAuthority("Admin", "Customer")
