@@ -3,6 +3,7 @@ import { useState } from 'react';
 import styles from './MyBankHome.module.css'
 
 import YourAccounts from '../yourAccounts/YourAccounts';
+import YourCards from '../yourCards/YourCards';
 
 const names = {
   accounts: 'accounts',
@@ -58,7 +59,7 @@ const MyBankHome: React.FC<any> = (props:any) => {
 
       <div>
         {activeButton === names.cards &&
-          <YourAccounts {...props} />
+          <YourCards {...props} />
         }
       </div>
 

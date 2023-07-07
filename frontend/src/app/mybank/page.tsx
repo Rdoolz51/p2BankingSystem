@@ -11,6 +11,11 @@ async function getData() {
     accountNumber:'1293912921394', 
     initialBalance:50, 
     accountType:'Checking',
+    cardType: "Credit",
+    cardNumber: "1234",
+    initialCardBalance: 1106.67,
+    creditLimit: 5000.00,
+    expirationDate: "04/28"
   }
 
   return data;
