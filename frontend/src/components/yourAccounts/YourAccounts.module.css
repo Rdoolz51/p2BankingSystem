@@ -14,7 +14,7 @@
     border-radius: 10px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.914);
     background-color: #98a2a566;
-    font-family: Pluto Sans;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
   }
     
   .buttonContainer {
@@ -35,6 +35,7 @@
     margin: .2rem;
     border-radius: 15%;
     user-select: none;
+    color: #ffffff;
     background-color: none;
     font-weight: 600;
   }
