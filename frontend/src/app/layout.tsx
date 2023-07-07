@@ -1,9 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import './globals.css'
 import { NextAuthProvider } from "./providers";
-
 import Navbar from '@/components/navbar/Navbar';
-import YourAccounts from '@/components/yourAccounts/YourAccounts';
 
 async function getData(){
   const data = {
