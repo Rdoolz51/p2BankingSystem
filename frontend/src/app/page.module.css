@@ -1,0 +1,36 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  margin: 5rem;
+}
+
+.imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.image {
+  object-fit: cover;
+  width: 300px;
+  height: 348px;
+  user-select: none;
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 35rem;
+}
+
+.headerContainer > h1,
+.headerContainer > h3 {
+  padding: 25px;
+}

@@ -1,0 +1,77 @@
+.nav {
+  display: flex;
+  padding-left: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  color: whitesmoke;
+  margin:1.25rem;
+  padding-right: 3.5rem;
+}
+
+.profile li{
+  font-size: xx-large !important;
+  position: relative;
+  top: -0.5rem;
+  right: 0;
+}
+
+.companyName {
+  margin-top: 0;
+  color: whitesmoke;
+  display: flex;
+  text-transform: uppercase;
+  font-family: verdana;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-shadow: 3px 3px 20px #4f3499,
+    -2px 1px 30px #4f3499;
+  
+}
+
+.nav ul {
+  display: flex;
+  list-style: none;
+  margin-bottom: 0;
+  position: relative;
+  left: 5rem;
+}
+
+.nav ul li {
+  margin: auto 2rem;
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: large;
+}
+
+.nav ul li a {
+  box-shadow: inset 0 0 0 0 #cfcdcd30;
+  color: #ffffff;
+  border-radius: 20%;
+  padding:.75rem;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+
+.nav ul li a:hover {
+  color: #ffffff;
+  box-shadow: inset 200px 0 0 0 rgba(93, 66, 116, 0.399);
+  padding:.75rem; 
+  border-radius: 20%;
+  outline: 1px solid rgb(93, 66, 116);
+}
+.nav ul li a:active{
+  background-color: rgb(93, 66, 116);
+}
+
+@media only screen and (max-width: 600px) {
+  .profile {
+    right: 0;
+  }
+  .nav ul {
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+  .companyName {
+    font-size: medium;
+  }
+} 

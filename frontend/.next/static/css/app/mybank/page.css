@@ -1,0 +1,195 @@
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[3].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[3].oneOf[7].use[3]!./src/components/yourAccounts/YourAccounts.module.css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************/
+
+.YourAccounts_pageTitle__ZnfNt h1{
+    margin-left: 1.25rem;
+}
+
+.YourAccounts_accountContainer__haYEh {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    margin: 1rem;
+    width: 80vw;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.914);
+    background-color: #98a2a566;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+  }
+    
+  .YourAccounts_buttonContainer__0WznN {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    filter: drop-shadow(2px 1px 2px rgb(29, 39, 80));
+  }
+  
+  .YourAccounts_button__lIP3r {
+    padding:.75rem;
+    margin-top: 20px !important;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    box-shadow: inset 200px 0 0 0 rgba(27, 39, 91, 0.711);
+    outline: 1px solid rgba(17, 26, 66, 0.856);
+    margin: .2rem;
+    border-radius: 15%;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+            user-select: none;
+    color: #ffffff;
+    background-color: none;
+    font-weight: 600;
+  }
+
+  .YourAccounts_button__lIP3r:hover{
+    box-shadow: inset 200px 0 0 0 rgba(79, 46, 151, 0.708);
+    color: #ffffff;
+    outline: 1px solid rgb(106, 80, 154);
+    border-radius: 15%;
+  }
+
+  .YourAccounts_button__lIP3r:active{
+    background-color: #fff;
+  }
+  
+  .YourAccounts_balance__zuAK2 {
+    color:rgb(214, 210, 251);
+    font-weight: 600;
+    text-shadow: 2px 2px 6px rgba(84, 101, 186, 0.831);
+  }
+
+  .YourAccounts_balance__zuAK2 span {
+    color:rgb(255, 255, 255);
+    text-shadow:3px 3px 3px rgba(29, 12, 58, 0.697);
+  }
+
+  .YourAccounts_accountType__pBLdF {
+    margin-bottom: 20px !important;
+    font-weight: 600;
+    color:rgba(186, 183, 245, 0.849);
+    text-shadow: 2px 2px 6px rgba(84, 101, 186, 0.393);
+    filter: drop-shadow(2px 2px 2px rgb(0, 0, 0));
+  }
+  .YourAccounts_leftContainer__GndG6 {
+    flex: 1 1;
+  }
+
+  /* .transactionContainer{
+    border-left: 2px solid white;
+    height: 100px;
+    width: 100px;
+    justify-content: flex-end;
+    outline: 2px solid white;
+    display: flex;
+    flex-direction: row;
+  }
+  .transactionContainer h2{
+    text-align: center;
+    text-decoration: underline;
+  } */
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[3].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[3].oneOf[7].use[3]!./src/components/yourCards/YourCards.module.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
+/* fix header and button and adjust card */
+
+.YourCards_card__I_9pJ {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #3c3c3c;
+    color: #ffffff;
+    width: 15vw;
+    height: 18vh;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.25);
+    margin: 20px;
+  }
+
+  .YourCards_bankName__I__Hk{
+    align-self: start !important;
+    margin-left: 1rem;
+  }
+
+  .YourCards_cardBalance__qdrek {
+    display: flex;
+  }
+  .YourCards_cardLimit__RKL3w {
+    display: flex;
+    width: 100%;
+  }
+  
+  .YourCards_spendButton__6IiPq {
+    padding: 10px;
+    color: #3c3c3c;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .YourCards_spendButton__6IiPq:hover {
+    background-color: #f1f1f1;
+  }
+
+  .YourCards_expirationDate__TnyWJ{ 
+    font-size: large;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+
+  .YourCards_cardNumber__DxH9s {
+    display: flex;
+    margin-top: 2rem;
+  }
+  
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[3].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[3].oneOf[7].use[3]!./src/components/mybank/MyBankHome.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
+.MyBankHome_buttonContainer__yuTXn {
+  display: flex;
+  margin-bottom: 0;
+  justify-content: center;
+}
+
+.MyBankHome_buttonContainer__yuTXn button {
+  margin: auto 2rem;
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: large;
+  background: none;
+  border-top: 2px solid rgb(93, 66, 116);
+  border-left: 2px solid rgb(93, 66, 116);
+}
+
+.MyBankHome_buttonContainer__yuTXn button {
+  box-shadow: inset 0 0 0 0 #cfcdcd30;
+  color: #ffffff;
+  border-radius: 5%;
+  padding:.75rem;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out !important;
+  
+}
+
+.MyBankHome_buttonContainer__yuTXn button:hover {
+  color: #ffffff;
+  box-shadow: inset 200px 0 0 0 rgba(93, 66, 116, 0.399);
+  padding:.75rem; 
+  border-radius: 5%;
+  outline: 1px solid rgb(93, 66, 116);
+}
+
+/* .buttonContainer button:active {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+} */
+
+.MyBankHome_activeButton__aALFD {
+  box-shadow: inset 200px 0 0 0 rgba(93, 66, 116, 0.399) !important;
+  outline: 1px solid rgb(93, 66, 116);
+}

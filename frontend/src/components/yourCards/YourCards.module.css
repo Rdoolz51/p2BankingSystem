@@ -1,0 +1,55 @@
+/* fix header and button and adjust card */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #3c3c3c;
+    color: #ffffff;
+    width: 15vw;
+    height: 18vh;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.25);
+    margin: 20px;
+  }
+
+  .bankName{
+    align-self: start !important;
+    margin-left: 1rem;
+  }
+
+  .cardBalance {
+    display: flex;
+  }
+  .cardLimit {
+    display: flex;
+    width: 100%;
+  }
+  
+  .spendButton {
+    padding: 10px;
+    color: #3c3c3c;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .spendButton:hover {
+    background-color: #f1f1f1;
+  }
+
+  .expirationDate{ 
+    font-size: large;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+
+  .cardNumber {
+    display: flex;
+    margin-top: 2rem;
+  }
+  
