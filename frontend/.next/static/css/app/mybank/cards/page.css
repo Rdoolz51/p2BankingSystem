@@ -1,0 +1,58 @@
+/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[3].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[3].oneOf[7].use[3]!./src/components/yourCards/YourCards.module.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************/
+/* fix header and button and adjust card */
+
+.YourCards_card__I_9pJ {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #3c3c3c;
+    color: #ffffff;
+    width: 15vw;
+    height: 18vh;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.25);
+    margin: 20px;
+  }
+
+  .YourCards_bankName__I__Hk{
+    align-self: start !important;
+    margin-left: 1rem;
+  }
+
+  .YourCards_cardBalance__qdrek {
+    display: flex;
+  }
+  .YourCards_cardLimit__RKL3w {
+    display: flex;
+    width: 100%;
+  }
+  
+  .YourCards_spendButton__6IiPq {
+    padding: 10px;
+    color: #3c3c3c;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .YourCards_spendButton__6IiPq:hover {
+    background-color: #f1f1f1;
+  }
+
+  .YourCards_expirationDate__TnyWJ{ 
+    font-size: large;
+    padding: 0;
+    margin: 0;
+    display: flex;
+  }
+
+  .YourCards_cardNumber__DxH9s {
+    display: flex;
+    margin-top: 2rem;
+  }
+  

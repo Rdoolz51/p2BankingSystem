@@ -34,4 +34,7 @@ public class User {
 
     @Column(name = "address", nullable = false)
     private String address;
+
+    @Column(name = "income")
+    private double yearlyIncome;
 }

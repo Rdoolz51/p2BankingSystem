@@ -1,0 +1,294 @@
+{
+  "ssrModuleMapping": {
+    "(app-client)/./node_modules/next/dist/client/components/error-boundary.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/components/error-boundary.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/client/components/app-router.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/components/app-router.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/client/components/layout-router.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/components/layout-router.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/client/components/render-from-template-context.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/components/render-from-template-context.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/client/components/static-generation-searchparams-bailout-provider.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/components/static-generation-searchparams-bailout-provider.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./node_modules/next/dist/client/link.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/app/providers.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/app/providers.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/components/buttons.component.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/components/buttons.component.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/components/user.component.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/components/user.component.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/components/mybank/MyBankHome.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/components/mybank/MyBankHome.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/components/yourCards/YourCards.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/components/yourCards/YourCards.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    },
+    "(app-client)/./src/app/auth/register/form.tsx": {
+      "*": {
+        "id": "(sc_client)/./src/app/auth/register/form.tsx",
+        "name": "*",
+        "chunks": [],
+        "async": false
+      }
+    }
+  },
+  "edgeSSRModuleMapping": {},
+  "clientModules": {
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\node_modules\\next\\dist\\client\\components\\error-boundary.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/error-boundary.js",
+      "name": "*",
+      "chunks": [
+        "app-client-internals:static/chunks/app-client-internals.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\node_modules\\next\\dist\\esm\\client\\components\\error-boundary.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/error-boundary.js",
+      "name": "*",
+      "chunks": [
+        "app-client-internals:static/chunks/app-client-internals.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\node_modules\\next\\dist\\client\\components\\app-router.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/app-router.js",
+      "name": "*",
+      "chunks": [
+        "app-client-internals:static/chunks/app-client-internals.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\node_modules\\next\\dist\\esm\\client\\components\\app-router.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/app-router.js",
+      "name": "*",
+      "chunks": [
+        "app-client-internals:static/chunks/app-client-internals.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\node_modules\\next\\dist\\client\\components\\layout-router.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/layout-router.js",
+      "name": "*",
+      "chunks": [
+        "app-client-internals:static/chunks/app-client-internals.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\node_modules\\next\\dist\\esm\\client\\components\\layout-router.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/layout-router.js",
+      "name": "*",
+      "chunks": [
+        "app-client-internals:static/chunks/app-client-internals.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\node_modules\\next\\dist\\client\\components\\render-from-template-context.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/render-from-template-context.js",
+      "name": "*",
+      "chunks": [
+        "app-client-internals:static/chunks/app-client-internals.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\node_modules\\next\\dist\\esm\\client\\components\\render-from-template-context.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/render-from-template-context.js",
+      "name": "*",
+      "chunks": [
+        "app-client-internals:static/chunks/app-client-internals.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\node_modules\\next\\dist\\client\\components\\static-generation-searchparams-bailout-provider.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/static-generation-searchparams-bailout-provider.js",
+      "name": "*",
+      "chunks": [
+        "app-client-internals:static/chunks/app-client-internals.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\node_modules\\next\\dist\\esm\\client\\components\\static-generation-searchparams-bailout-provider.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/components/static-generation-searchparams-bailout-provider.js",
+      "name": "*",
+      "chunks": [
+        "app-client-internals:static/chunks/app-client-internals.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\node_modules\\next\\dist\\client\\link.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "*",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\node_modules\\next\\dist\\esm\\client\\link.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "*",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\node_modules\\bootstrap\\dist\\css\\bootstrap.min.css": {
+      "id": "(app-client)/./node_modules/bootstrap/dist/css/bootstrap.min.css",
+      "name": "*",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\src\\app\\providers.tsx": {
+      "id": "(app-client)/./src/app/providers.tsx",
+      "name": "*",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\src\\app\\globals.css": {
+      "id": "(app-client)/./src/app/globals.css",
+      "name": "*",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\src\\components\\navbar\\Navbar.module.css": {
+      "id": "(app-client)/./src/components/navbar/Navbar.module.css",
+      "name": "*",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\src\\components\\buttons.component.tsx": {
+      "id": "(app-client)/./src/components/buttons.component.tsx",
+      "name": "*",
+      "chunks": [
+        "app/page:static/chunks/app/page.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\src\\components\\user.component.tsx": {
+      "id": "(app-client)/./src/components/user.component.tsx",
+      "name": "*",
+      "chunks": [
+        "app/page:static/chunks/app/page.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\src\\components\\mybank\\MyBankHome.tsx": {
+      "id": "(app-client)/./src/components/mybank/MyBankHome.tsx",
+      "name": "*",
+      "chunks": [
+        "app/mybank/page:static/chunks/app/mybank/page.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\src\\components\\yourCards\\YourCards.tsx": {
+      "id": "(app-client)/./src/components/yourCards/YourCards.tsx",
+      "name": "*",
+      "chunks": [
+        "app/mybank/cards/page:static/chunks/app/mybank/cards/page.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\src\\app\\auth\\register\\form.tsx": {
+      "id": "(app-client)/./src/app/auth/register/form.tsx",
+      "name": "*",
+      "chunks": [
+        "app/auth/register/page:static/chunks/app/auth/register/page.js"
+      ],
+      "async": false
+    },
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\src\\app\\auth\\register\\Register.module.css": {
+      "id": "(app-client)/./src/app/auth/register/Register.module.css",
+      "name": "*",
+      "chunks": [
+        "app/auth/register/page:static/chunks/app/auth/register/page.js"
+      ],
+      "async": false
+    }
+  },
+  "entryCSSFiles": {
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\src\\app\\layout": [
+      "static/css/app/layout.css"
+    ],
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\src\\app\\page": [],
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\src\\app\\mybank\\page": [
+      "static/css/app/mybank/page.css"
+    ],
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\src\\app\\mybank\\cards\\page": [
+      "static/css/app/mybank/cards/page.css"
+    ],
+    "C:\\Users\\Jill\\Desktop\\230522\\Projects\\p2BankingSystem\\frontend\\src\\app\\auth\\register\\page": [
+      "static/css/app/auth/register/page.css"
+    ]
+  }
+}
