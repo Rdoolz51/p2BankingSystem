@@ -10,12 +10,12 @@ async function getData() {
   const data = {
     accountNumber:'1293912921394', 
     initialBalance:50, 
-    accountType:'Checking',
+    accountType:'Checking', //Here up is accounts
     cardType: "Credit",
     cardNumber: "1234",
     initialCardBalance: 1106.67,
     creditLimit: 5000.00,
-    expirationDate: "04/28"
+    expirationDate: "04/28" //Here up until the next comment is credit
   }
 
   return data;
