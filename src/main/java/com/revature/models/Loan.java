@@ -24,6 +24,9 @@ public class Loan {
     @Column(name = "loan_type")
     private String loanType;     //Personal, Business, House, Car, etc...
 
+    @Column(name = "loan_balance")
+    private double loanBalance;
+
     @Column(name = "interest_rate")
     private double interestRate;
 
