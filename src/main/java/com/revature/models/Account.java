@@ -28,4 +28,8 @@ public class Account {
 
     @ManyToOne(targetEntity = User.class)
     private User user;
+
+
+    public Account(User user, Account accountType) {
+    }
 }
