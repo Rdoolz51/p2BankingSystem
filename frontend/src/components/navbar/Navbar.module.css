@@ -13,6 +13,7 @@
   position: relative;
   top: -0.5rem;
   right: 0;
+  cursor: pointer;
 }
 
 .companyName {
@@ -43,7 +44,7 @@
   font-size: large;
 }
 
-.nav ul li a {
+.nav ul li a, .signOut {
   box-shadow: inset 0 0 0 0 #cfcdcd30;
   color: #ffffff;
   border-radius: 20%;
@@ -51,7 +52,7 @@
   transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
 }
 
-.nav ul li a:hover {
+.nav ul li a:hover, .signOut:hover {
   color: #ffffff;
   box-shadow: inset 200px 0 0 0 rgba(93, 66, 116, 0.399);
   padding:.75rem; 
@@ -60,6 +61,37 @@
 }
 .nav ul li a:active{
   background-color: rgb(93, 66, 116);
+}
+
+.modalOverlay {
+  background-color: transparent;
+}
+
+.modalContent {
+  position: fixed;
+  top: 6%;
+  right: 1%;
+  bottom: auto;
+  left: auto;
+  width: 300px;
+  height: 30vh;
+  padding: 20px;
+  background: linear-gradient(to right top, #273969, #21305b, #1c274e, #161f41, #101735, #141737, #181638, #1c1639, #2f1b47, #442053, #5b235e, #732466);
+  overflow: auto;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  outline: 2px solid rgb(0, 0, 0);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  filter: drop-shadow(5px 5px 5px black);
+}
+
+.signOut {
+  outline: 1px solid rgb(91, 35, 94);
+  background-color: rgba(123, 41, 126, 0.386);
+  position: relative;
+  right: -30%;
+  bottom: -1.3rem;
 }
 
 @media only screen and (max-width: 600px) {
