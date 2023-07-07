@@ -21,6 +21,12 @@ public class CreditCard {
     @Column(name = "credit_limit")
     private double creditLimit;
 
+    @Column(name = "card_number") //we can figure out a way to random gen it (should just need the last 4 and just do xxxx-xxxx-xxxx-1234 format)
+    private String cardNumber;
+
+    @Column(name = "card_expiration")
+    private String cardExpiration; //MM/YY format -- We can just set it to like, 5 years from issue date.
+
     @Column(name = "balance")
     private double balance;
 
