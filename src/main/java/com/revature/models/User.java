@@ -39,14 +39,11 @@ public class User {
   
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-      name = "users_addresses_join",
-      joinColumns = @JoinColumn(name = "user_id"),
-      inverseJoinColumns = @JoinColumn(name = "address_id")
+      name = "users_addresses",
+      joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "user_id"),
+      inverseJoinColumns = @JoinColumn(name = "address_id", referencedColumnName = "address_id")
     )
     private Set<Address> userAddresses;
-  
-    @Column(name = "address", nullable = false)
-    private String address;
 
     @Column(name = "income")
     private double yearlyIncome;
