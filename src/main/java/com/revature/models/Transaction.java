@@ -26,12 +26,12 @@ public class Transaction {
     private String transactionType;
 
     @Column(name = "transaction_date", nullable = false)
-    private Date transactionDate;  //TODO: This is just how I visualized it, we can do whatever though!
+    private Date transactionDate;
 
-    @OneToOne(targetEntity = Account.class)
+    @ManyToOne(targetEntity = Account.class)
     private Account senderAccount;
-    //TODO: This is just how I visualized it, we can do whatever though!
-    @OneToOne(targetEntity = Account.class)
+
+    @ManyToOne(targetEntity = Account.class)
     private Account receiverAccount;
 
 
