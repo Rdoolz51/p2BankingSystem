@@ -1,78 +1,54 @@
 package com.revature.services;
 
+import com.revature.Exceptions.InsufficientFundsException;
 import com.revature.daos.AccountDAO;
 import com.revature.daos.TransactionDAO;
 import com.revature.daos.UserDAO;
 import com.revature.models.Account;
-import com.revature.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserServices {
-
+public class AccountServices {
     private final UserDAO userDAO;
     private final AccountDAO accountDAO;
     private final TransactionDAO transactionDAO;
+
     @Autowired
-    public UserServices(UserDAO userDAO, AccountDAO accountDAO, TransactionDAO transactionDAO) {
+    public AccountServices(UserDAO userDAO, AccountDAO accountDAO, TransactionDAO transactionDAO) {
         this.userDAO = userDAO;
         this.accountDAO = accountDAO;
         this.transactionDAO = transactionDAO;
     }
-    public User getUserByID(int userID) {
-        return userDAO.findByUserId(userID);
-    }
-
-    public User getUserByEmail(String email)
+    public Account getAccountByID(int accountID)
     {
-        return userDAO.findByEmail(email);
+        return accountDAO.findById(accountID).orElse(null);
     }
 
-    public void addUser(User user) {
-        userDAO.save(user);
-    }
-
-    public boolean updateUser(User user)
+    public List<Account> getAccountsByUserID(int userID)
     {
-        userDAO.save(user);
-        return false;
+        return accountDAO.findByUserId(userID);
     }
 
-    public void deleteUser(User user)
+    public void addAccount(Account account)
     {
-        userDAO.save(user);
-    }
-
-    public List<User> getAllUsers()
-    {
-        return userDAO.findAll();
-    }
-
-    public void createAccount(User user, Account accountType) {
-        Account account = new Account(user, accountType);
         accountDAO.save(account);
     }
 
-    public User login(String username, String password) {
-        User user = userDAO.findByUsername(username);
-
-        if (user != null && user.getPassword().equals(password)) {
-            return user;
-        }
-
-        return null;
+    public void updateAccount(Account account) {
+        accountDAO.save(account);
     }
 
-    public void logout() {
-        // Perform any necessary logout logic
-    }
-
-    public List<Account> getAllAccounts(User user)
+    public void deleteAccount(Account account)
     {
-        return accountDAO.findByUserId(user.getId());
+        accountDAO.save(account);
+    }
+
+    public List<Account> getAllAccounts()
+    {
+        return accountDAO.findAll();
     }
 
     public void addMoneyToAccount(Account account, double amount) {
@@ -86,16 +62,22 @@ public class UserServices {
         account.setBalance(currentBalance - amount);
         accountDAO.save(account);
     }
+
     public void transferMoney(Account senderAccount, Account receiverAccount, double amount) {
         double senderBalance = senderAccount.getBalance();
         double receiverBalance = receiverAccount.getBalance();
 
+        // Check if sender has sufficient funds
+        if (senderBalance < amount) {
+            throw new InsufficientFundsException("Insufficient funds in sender account.");
+        }
+
+        // Update sender and receiver balances
         senderAccount.setBalance(senderBalance - amount);
         receiverAccount.setBalance(receiverBalance + amount);
 
+        // Save modified sender and receiver accounts
         accountDAO.save(senderAccount);
         accountDAO.save(receiverAccount);
     }
-
 }
-

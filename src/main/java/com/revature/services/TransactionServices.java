@@ -2,10 +2,13 @@ package com.revature.services;
 
 import com.revature.daos.AccountDAO;
 import com.revature.daos.TransactionDAO;
+import com.revature.models.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
-@Repository
+import java.util.List;
+
+@Service
 public class TransactionServices {
 
     private final TransactionDAO transactionDAO;
@@ -17,4 +20,28 @@ public class TransactionServices {
         this.transactionDAO = transactionDAO;
         this.accountDAO = accountDAO;
     }
+    public Transaction getTransactionByID(int transactionID) {
+        return transactionDAO.getTransactionByTransactionId(transactionID);
+    }
+
+    public List<Transaction> getTransactionsByAccount(String account) {
+        return transactionDAO.getTransactionByAccount(account);
+    }
+
+    public void addTransaction(Transaction transaction)
+    {
+        transactionDAO.save(transaction);
+    }
+
+    public void updateTransaction(Transaction transaction)
+    {
+        transactionDAO.save(transaction);
+    }
+
+    public void deleteTransaction(Transaction transaction)
+    {
+        transactionDAO.save(transaction);
+    }
+
+
 }
