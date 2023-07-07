@@ -3,6 +3,20 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+application.properties
+AuthDTO.java
+LoginDTO.java
+RegisterDTO.java
+AccountDAO.java
+RoleDAO.java
+TransactionDAO.java
+UserDAO.java
+AuthController.java
+TransactionController.java
+UserController.java
+TransactionServices.java
+UserServices.java
+/frontend
 
 ### STS ###
 .apt_generated
