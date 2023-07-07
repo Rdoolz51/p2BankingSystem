@@ -55,7 +55,8 @@ export default async function Home() {
         <CardElement />
       </div>
 
-      <div>
+      <div className={styles.newsElement}>
+        <h1>Recent News</h1>
         <News />
       </div>
 
