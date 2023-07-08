@@ -38,9 +38,11 @@
 }
 
 .logo{
-  scale: .55;
+  scale: .44;
   height: 11vh;
   width: 7.5vw;
+  margin-left: -2rem;
+  margin-top: -.35rem;
 }
 
 .nav ul {
