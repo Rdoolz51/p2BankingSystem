@@ -22,7 +22,8 @@ public class UserServices {
   private final TokenGenerator tokenGenerator;
 
   @Autowired
-  public UserServices(UserDAO userDAO, AccountDAO accountDAO, TokenGenerator tokenGenerator) {
+  public UserServices(UserDAO userDAO, AccountDAO accountDAO,
+                      TokenGenerator tokenGenerator) {
     this.userDAO = userDAO;
     this.accountDAO = accountDAO;
     this.tokenGenerator = tokenGenerator;
@@ -55,19 +56,26 @@ public class UserServices {
     return null;
   }
 
-  public User updateUser(User user) {
-    if (user == null) {
+  public User updateUser(User user, User updated) {
+    if (user == null || updated == null) {
       log.warn("User object received was null");
       throw new NullPointerException("User object was null");
     }
 
+    if (user.getId() != updated.getId()) {
+      log.warn(
+        "User IDs do not match userID: " + user.getId() + " udpatedID: " +
+        updated.getId());
+      return null;
+    }
+
     if (userDAO.existsById(user.getId())) {
 
-      User updated = userDAO.save(user);
+      User complete = userDAO.save(user);
 
-      if (updated != null) {
-        log.info("Updated user with email: " + updated.getEmail());
-        return updated;
+      if (complete != null) {
+        log.info("Updated user with email: " + complete.getEmail());
+        return complete;
       }
     } else {
       log.info("No user found with ID: " + user.getId());

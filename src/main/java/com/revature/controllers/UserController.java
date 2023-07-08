@@ -29,7 +29,7 @@ public class UserController {
     this.accountServices = accountServices;
   }
 
-  @GetMapping("/{cid}")
+  /*@GetMapping("/{cid}")
   public ResponseEntity<?> getUserByIdHandler(
     @RequestHeader("Authorization") String token,
     @PathVariable("cid") int cid) {
@@ -41,7 +41,7 @@ public class UserController {
 
     return new ResponseEntity<>(INVALID,
                                 HttpStatus.FORBIDDEN);
-  }
+  }*/
 
   @GetMapping
   public ResponseEntity<?> getUserByJwtHandler(
@@ -97,8 +97,9 @@ public class UserController {
     }
 
     if (user != null) {
-      return new ResponseEntity<>(accountServices.getUserAccountsByType(type),
-                                  HttpStatus.OK);
+      return new ResponseEntity<>(
+        accountServices.getUserAccountsByType(user, retrieved),
+        HttpStatus.OK);
     }
 
     return new ResponseEntity<>(INVALID, HttpStatus.FORBIDDEN);
@@ -129,5 +130,23 @@ public class UserController {
     return new ResponseEntity<>(INVALID, HttpStatus.FORBIDDEN);
   }
 
+  @PutMapping
+  public ResponseEntity<?> updateUserHandler(
+    @RequestHeader("Authorization") String token,
+    @RequestBody User updated) {
+    User user = userServices.checkUserToken(token);
 
+    if (user != null) {
+      User complete = userServices.updateUser(user, updated);
+
+      if (complete != null) {
+        return new ResponseEntity<>(complete, HttpStatus.OK);
+      } else {
+        return new ResponseEntity<>("Failed to update: check user ID",
+                                    HttpStatus.BAD_REQUEST);
+      }
+    }
+
+    return new ResponseEntity<>(INVALID, HttpStatus.FORBIDDEN);
+  }
 }
