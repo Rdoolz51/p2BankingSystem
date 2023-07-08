@@ -46,7 +46,7 @@ public class AuthController {
   @PostMapping("register")
   public ResponseEntity<?> register(@RequestBody RegisterDTO registerDTO) {
     if (userDAO.existsByEmail(registerDTO.getEmail())) {
-      throw new RuntimeException("Email is already in use");
+      return new ResponseEntity<>("Email is already in use", HttpStatus.BAD_REQUEST);
     }
 
     Set<Address> addresses = new HashSet<>();

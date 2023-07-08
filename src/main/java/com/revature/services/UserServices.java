@@ -1,9 +1,11 @@
 package com.revature.services;
 
+import com.revature.daos.AccountDAO;
 import com.revature.daos.UserDAO;
-import com.revature.exceptions.UserRegistrationException;
 import com.revature.exceptions.UserUpdateException;
+import com.revature.models.Account;
 import com.revature.models.User;
+import com.revature.security.TokenGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,10 +18,14 @@ import java.util.Optional;
 public class UserServices {
 
   private final UserDAO userDAO;
+  private final AccountDAO accountDAO;
+  private final TokenGenerator tokenGenerator;
 
   @Autowired
-  public UserServices(UserDAO userDAO) {
+  public UserServices(UserDAO userDAO, AccountDAO accountDAO, TokenGenerator tokenGenerator) {
     this.userDAO = userDAO;
+    this.accountDAO = accountDAO;
+    this.tokenGenerator = tokenGenerator;
   }
 
   public List<User> getAllUsers() {
@@ -47,24 +53,6 @@ public class UserServices {
     }
     log.info("No user found with email: " + email);
     return null;
-  }
-
-  public User registerUser(User user) {
-    if (user == null) {
-      log.warn("Null user object was received");
-      throw new NullPointerException("User object was null");
-    }
-
-    User registered = userDAO.save(user);
-
-    if (registered != null && registered.getId() > 0) {
-      log.info("Registered new user with email: " + registered.getEmail());
-      return registered;
-    }
-
-    log.warn("User registration failed");
-    throw new UserRegistrationException(
-      "Registration could not be completed using " + user);
   }
 
   public User updateUser(User user) {
@@ -107,5 +95,16 @@ public class UserServices {
       log.info("Deletion failed: user ID: " + user.getId() + " does not exist");
       return false;
     }
+  }
+
+  public User checkUserToken(String token) {
+    String email = tokenGenerator.getEmailFromToken(token);
+    User user = getUserByEmail(email);
+
+    if (token.isEmpty() || user == null) {
+      return null;
+    }
+
+    return user;
   }
 }

@@ -28,4 +28,11 @@ public class Account {
 
     @ManyToOne(targetEntity = User.class)
     private User user;
+
+    public Account(double balance, AccountType type, String pin, User user) {
+        this.balance = balance;
+        this.type = type;
+        this.pin = pin;
+        this.user = user;
+    }
 }
