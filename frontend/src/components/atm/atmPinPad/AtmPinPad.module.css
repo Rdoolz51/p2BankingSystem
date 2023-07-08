@@ -1,0 +1,343 @@
+.atmButtons {
+
+}
+
+.atmButtons button{
+    background: #72707082;
+    color: #ffffff;
+    padding: 20px;
+    outline: 2px solid rgba(255, 255, 255, 0.436);
+    font-size: 18px;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.929);
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 5px;
+    width: 5rem;
+    height: 4.4rem;
+}
+
+.atmButtonDot {
+    font-size: 32px !important;
+}
+
+.atmButtonDot span {
+    position: relative;
+    top: -9px;
+}
+
+.atmButtons button:hover, .atmButtons button:hover {
+    background-color: #4f4b53e0;
+}
+
+.atmButtons button:focus, .atmButtons button:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.436);
+}
+
+.atmButton1{
+    position: absolute;
+    bottom: 38vh;
+    left:30vw;
+}
+.atmButton2{
+    position: absolute;
+    bottom: 38vh;
+    left:33.5vw;
+}
+.atmButton3{
+    position: absolute;
+    bottom: 38vh;
+    left:37vw;
+}
+.atmButton4{
+    position: absolute;
+    bottom: 32vh;
+    left:30vw;
+}
+.atmButton5{
+    position: absolute;
+    bottom: 32vh;
+    left:33.5vw;
+}
+.atmButton6{
+    position: absolute;
+    bottom: 32vh;
+    left:37vw;
+}
+.atmButton7{
+    position: absolute;
+    bottom: 26vh;
+    left:30vw;
+}
+.atmButton8{
+    position: absolute;
+    bottom: 26vh;
+    left:33.5vw;
+}
+.atmButton9{
+    position: absolute;
+    bottom: 26vh;
+    left:37vw;
+}
+.atmButton0{
+    position: absolute;
+    bottom: 20vh;
+    left:33.5vw;
+}
+.atmButton00{
+    position: absolute;
+    bottom: 20vh;
+    left:37vw;
+
+}
+.atmButtonDot{
+    position: absolute;
+    bottom: 20vh;
+    left:30vw;
+}
+
+.atmButtonEnter {
+    position: absolute;
+    left: 40.5vw;
+    bottom: 38vh;
+    width: 8rem !important;
+}
+
+.atmButtonEnter span{
+    border-top: 5px solid green;
+}
+
+.atmButtonClear {
+    position: absolute;
+    left: 40.5vw;
+    bottom: 32vh;
+    width: 8rem !important;
+}
+
+.atmButtonClear span {
+    border-top: 5px solid yellow;
+}
+
+.atmButtonCancel {
+    position: absolute;
+    left: 40.5vw;
+    bottom: 26vh;
+    width: 8rem !important;
+}
+
+.atmButtonCancel span {
+    border-top: 5px solid red;
+}
+
+.atmButtonExtra {
+    position: absolute;
+    left: 40.5vw;
+    bottom: 20vh;
+    width: 8rem !important;
+}
+
+
+@media screen and (min-width: 1100px){
+
+    .atmButton1{
+        position: absolute;
+        bottom: 38.1vh !important;
+        left:30vw;
+    }
+    .atmButton2{
+        position: absolute;
+        bottom: 38.1vh !important;
+        left:34.5vw !important;
+    }
+    .atmButton3{
+        position: absolute;
+        bottom: 38.1vh !important;
+        left:37vw;
+    }
+    .atmButton4{
+        position: absolute;
+        bottom: 32vh;
+        left:30vw;
+    }
+    .atmButton5{
+        position: absolute;
+        bottom: 32vh;
+        left:34.5vw !important;
+    }
+    .atmButton6{
+        position: absolute;
+        bottom: 32vh;
+        left:39vw !important;
+    }
+    .atmButton7{
+        position: absolute;
+        bottom: 26vh;
+        left:30vw;
+    }
+    .atmButton8{
+        position: absolute;
+        bottom: 26vh;
+        left:34.5vw !important;
+    }
+    .atmButton9{
+        position: absolute;
+        bottom: 26vh;
+        left:39vw !important;
+    }
+    .atmButton0{
+        position: absolute;
+        bottom: 20vh;
+        left:34.5vw !important;
+    }
+    .atmButton00{
+        position: absolute;
+        bottom: 20vh;
+        left:39vw !important;
+    
+    }
+    .atmButtonDot{
+        position: absolute;
+        bottom: 20vh;
+        left:30vw;
+    }
+    
+    .atmButtonEnter {
+        position: absolute;
+        left: 40.5vw;
+        bottom: 38.1vh !important;
+        width: 8rem !important;
+    }
+    
+    .atmButtonEnter span{
+        border-top: 5px solid green;
+    }
+    
+    .atmButtonClear {
+        position: absolute;
+        left: 40.5vw;
+        bottom: 32vh;
+        width: 8rem !important;
+    }
+    
+    .atmButtonClear span {
+        border-top: 5px solid yellow;
+    }
+    
+    .atmButtonCancel {
+        position: absolute;
+        left: 40.5vw;
+        bottom: 26vh;
+        width: 8rem !important;
+    }
+    
+    .atmButtonCancel span {
+        border-top: 5px solid red;
+    }
+    
+    .atmButtonExtra {
+        position: absolute;
+        left: 40.5vw;
+        bottom: 20vh;
+        width: 8rem !important;
+    }.atmButton1{
+        position: absolute;
+        bottom: 38vh;
+        left:30vw;
+    }
+    .atmButton2{
+        position: absolute;
+        bottom: 38vh;
+        left:34.5vw !important;
+    }
+    .atmButton3{
+        position: absolute;
+        bottom: 38vh;
+        left:39vw !important;
+    }
+    .atmButton4{
+        position: absolute;
+        bottom: 31vh;
+        left:30vw;
+    }
+    .atmButton5{
+        position: absolute;
+        bottom: 31vh;
+        left:33.5vw;
+    }
+    .atmButton6{
+        position: absolute;
+        bottom: 31vh;
+        left:39vw !important;
+    }
+    .atmButton7{
+        position: absolute;
+        bottom: 24vh;
+        left:30vw;
+    }
+    .atmButton8{
+        position: absolute;
+        bottom: 24vh;
+        left:33.5vw;
+    }
+    .atmButton9{
+        position: absolute;
+        bottom: 24vh;
+        left:37vw;
+    }
+    .atmButton0{
+        position: absolute;
+        bottom: 17vh;
+        left:33.5vw;
+    }
+    .atmButton00{
+        position: absolute;
+        bottom: 17vh;
+        left:37vw;
+    
+    }
+    .atmButtonDot{
+        position: absolute;
+        bottom: 17vh;
+        left:30vw;
+    }
+    
+    .atmButtonEnter {
+        position: absolute;
+        left: 43.5vw;
+        bottom: 38vh;
+        width: 8rem !important;
+    }
+    
+    .atmButtonEnter span{
+        border-top: 5px solid green;
+    }
+    
+    .atmButtonClear {
+        position: absolute;
+        left: 43.5vw;
+        bottom: 31vh;
+        width: 8rem !important;
+    }
+    
+    .atmButtonClear span {
+        border-top: 5px solid yellow;
+    }
+    
+    .atmButtonCancel {
+        position: absolute;
+        left: 43.5vw;
+        bottom: 24vh;
+        width: 8rem !important;
+    }
+    
+    .atmButtonCancel span {
+        border-top: 5px solid red;
+    }
+    
+    .atmButtonExtra {
+        position: absolute;
+        left: 43.5vw;
+        bottom: 17vh;
+        width: 8rem !important;
+    }
+}
