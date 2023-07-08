@@ -4,8 +4,9 @@ import com.revature.daos.AccountDAO;
 import com.revature.daos.TransactionDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
-@Repository
+@Service
 public class TransactionServices {
 
     private final TransactionDAO transactionDAO;
