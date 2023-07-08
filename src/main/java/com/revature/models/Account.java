@@ -21,8 +21,8 @@ public class Account {
     @Column(name = "balance", nullable = false)
     private double balance;
 
-    @Column(name = "account_type", nullable = false)  //Savings, Checking, Travel, etc...
-    private String accountType;
+    @ManyToOne
+    private AccountType type;
 
     private String pin;
 

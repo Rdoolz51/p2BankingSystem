@@ -22,8 +22,8 @@ public class Transaction {
     @Column(name = "amount", nullable = false)
     private double amount;
 
-    @Column(name = "transaction_type", nullable = false, unique = true)
-    private String transactionType;
+    @ManyToOne
+    private TransactionType type;
 
     @Column(name = "transaction_date", nullable = false)
     private Date transactionDate;

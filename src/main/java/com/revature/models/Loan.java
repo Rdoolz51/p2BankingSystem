@@ -21,8 +21,8 @@ public class Loan {
     @Column(name = "loan_amount")
     private double loanAmount;
 
-    @Column(name = "loan_type")
-    private String loanType;     //Personal, Business, House, Car, etc...
+    @ManyToOne
+    private LoanType type;     //Personal, Business, House, Car, etc...
 
     @Column(name = "loan_balance")
     private double loanBalance;
