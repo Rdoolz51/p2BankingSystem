@@ -11,9 +11,10 @@ import styles from './page.module.css'
 
 import Image from "next/image";
 import piggy from '../../public/piggy.jpg'
+import handCardPic from '../../public/handCardPic.jpg'
+
 import CardElement from "@/components/homepage/CardElement";
 import News from "@/components/homepage/news/News";
-import HomeCarousel from "@/components/homepage/carousel/HomeCarousel";
 
 async function getData() {
   const pageSize = 5
@@ -39,7 +40,7 @@ export default async function Home() {
 
       <div className={styles.content}>
         <div className={styles.imageContainer}>
-          <Image alt="home-image" src={piggy} className={styles.image} />
+          <Image alt="home-image" src={handCardPic} className={styles.image} />
         </div>
 
         <div className={styles.headerContainer}>
@@ -62,7 +63,6 @@ export default async function Home() {
       </div>
 
       <div>
-        <HomeCarousel />
       </div>
 
     </main>
