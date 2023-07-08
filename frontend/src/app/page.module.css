@@ -44,3 +44,13 @@
   display: flex;
   justify-content: center;
 }
+
+.cardStackElement {
+  display: flex;
+  justify-content: center;
+}
+
+.cardStackElement div img {
+  /* border-radius: 15px;
+  transform: rotate(335deg); */
+}

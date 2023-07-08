@@ -7,6 +7,7 @@ import Modal from 'react-modal';
 import Image from 'next/image';
 import pursueLogo from '../../../public/pursueLogo.png';
 
+
 interface UserProps {
   firstName: string;
   lastName: string;

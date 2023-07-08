@@ -10,11 +10,11 @@ import { User } from "@/components/user.component";
 import styles from './page.module.css'
 
 import Image from "next/image";
-import piggy from '../../public/piggy.jpg'
 import handCardPic from '../../public/handCardPic.jpg'
 
 import CardElement from "@/components/homepage/CardElement";
 import News from "@/components/homepage/news/News";
+import CardStack from "@/components/homepage/creditCards/CardStack";
 
 async function getData() {
   const pageSize = 5
@@ -62,7 +62,8 @@ export default async function Home() {
         <News />
       </div>
 
-      <div>
+      <div className={styles.cardStackElement}>
+        <CardStack />
       </div>
 
     </main>
