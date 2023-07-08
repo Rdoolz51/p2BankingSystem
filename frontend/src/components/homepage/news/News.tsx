@@ -36,9 +36,15 @@ const News = async () => {
       {news.map((c) => {
         return (
           <div className={styles.card} key={c.publishedAt}>
-            <img alt="news-image" src={c.urlToImage} className={styles.img}/>
-            <Link href={c.url}><h2>{c?.title}</h2></Link>
-            <h3>{c.content?.substring(0, 200)}</h3>
+
+            <div>
+              <Link href={c.url}><img alt="news-image" src={c.urlToImage} className={styles.img}/></Link>
+            </div>
+
+            <div className={styles.cardContent}>
+              <Link href={c.url}><h2 className={styles.title}>{c?.title}</h2></Link>
+              <Link href={c.url}><h3>{c.content?.substring(0, 200)}</h3></Link>
+            </div>
           </div>
         )
       })}

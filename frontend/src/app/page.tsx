@@ -13,6 +13,7 @@ import Image from "next/image";
 import piggy from '../../public/piggy.jpg'
 import CardElement from "@/components/homepage/CardElement";
 import News from "@/components/homepage/news/News";
+import HomeCarousel from "@/components/homepage/carousel/HomeCarousel";
 
 async function getData() {
   const pageSize = 5
@@ -58,6 +59,10 @@ export default async function Home() {
       <div className={styles.newsElement}>
         <h1>Recent News</h1>
         <News />
+      </div>
+
+      <div>
+        <HomeCarousel />
       </div>
 
     </main>
