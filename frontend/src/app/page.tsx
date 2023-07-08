@@ -39,9 +39,14 @@ export default async function Home() {
       </div>
 
       <div className={styles.content}>
-        <div className={styles.imageContainer}>
-          <Image alt="home-image" src={handCardPic} className={styles.image} />
+
+        <div className={styles.cardStackElement}>
+          <CardStack />
         </div>
+
+        {/* <div className={styles.imageContainer}>
+          <Image alt="home-image" src={handCardPic} className={styles.image} />
+        </div> */}
 
         <div className={styles.headerContainer}>
           <h1>
@@ -62,9 +67,9 @@ export default async function Home() {
         <News />
       </div>
 
-      <div className={styles.cardStackElement}>
+      {/* <div className={styles.cardStackElement}>
         <CardStack />
-      </div>
+      </div> */}
 
     </main>
   );

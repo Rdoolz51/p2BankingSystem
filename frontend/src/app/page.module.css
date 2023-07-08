@@ -48,9 +48,12 @@
 .cardStackElement {
   display: flex;
   justify-content: center;
+  max-height: 30rem;
+  max-width: 30rem;
 }
 
-.cardStackElement div img {
-  /* border-radius: 15px;
-  transform: rotate(335deg); */
+@media only screen and (max-width: 950px) {
+  .cardStackElement {
+    display: none;
+  }
 }
