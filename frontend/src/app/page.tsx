@@ -14,7 +14,7 @@ import handCardPic from '../../public/handCardPic.jpg'
 
 import CardElement from "@/components/homepage/CardElement";
 import News from "@/components/homepage/news/News";
-import CardStack from "@/components/homepage/creditCards/CardStack";
+import CardStack from "@/components/homepage/creditcards/CardStack";
 
 async function getData() {
   const pageSize = 5
