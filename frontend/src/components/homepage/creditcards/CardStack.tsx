@@ -9,21 +9,11 @@ const CardStack = () => {
 
       {/* Might come back to transition the images (z-index) better */}
 
-      {/* <div className={styles.imgContainerContainer}> */}
       <div className={styles.imgContainer}>
         <Image alt='card' src={BryanCard} />
         <Image alt='card' src={BryanCard} />
         <Image alt='card' src={BryanCard} />
       </div>
-
-      {/* <div className={styles.imgContainer}>
-        <Image alt='card' src={BryanCard} />
-        <Image alt='card' src={BryanCard} />
-      </div>
-      <div className={styles.imgContainer}>
-        <Image alt='card' src={BryanCard} />
-        <Image alt='card' src={BryanCard} />
-      </div> */}
 
     </div>
   )

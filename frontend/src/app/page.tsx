@@ -5,29 +5,19 @@ import {
   RegisterButton,
 } from "@/components/buttons.component";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
-import { User } from "@/components/user.component";
-import styles from './page.module.css'
+import Link from "next/link";
 
-import Image from "next/image";
-import handCardPic from '../../public/handCardPic.jpg'
+import { authOptions } from "@/lib/auth";
+import styles from './page.module.css'
 
 import CardElement from "@/components/homepage/CardElement";
 import News from "@/components/homepage/news/News";
 import CardStack from "@/components/homepage/creditcards/CardStack";
 
-async function getData() {
-  const pageSize = 5
-  const res = await fetch(`https://newsapi.org/v2/everything?domains=wsj.com&apiKey=${process.env.NEWS_API}&pageSize=${pageSize}`);
-  const data = await res.json();
-  return data;
-}
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
   console.log("SESSION HOMEPAGE", session);
-  const newsData = await getData();
-  // console.log(newsData?.articles);
 
   return (
     <main >
@@ -36,6 +26,7 @@ export default async function Home() {
         <RegisterButton />
         <LogoutButton />
         <ProfileButton />
+        <Link href={'/admin'} style={{ marginLeft: '2rem', color: 'red' }}>ADMIN STUFF</Link>
       </div>
 
       <div className={styles.content}>
@@ -43,10 +34,6 @@ export default async function Home() {
         <div className={styles.cardStackElement}>
           <CardStack />
         </div>
-
-        {/* <div className={styles.imageContainer}>
-          <Image alt="home-image" src={handCardPic} className={styles.image} />
-        </div> */}
 
         <div className={styles.headerContainer}>
           <h1>
@@ -66,10 +53,6 @@ export default async function Home() {
         <h1>Recent News</h1>
         <News />
       </div>
-
-      {/* <div className={styles.cardStackElement}>
-        <CardStack />
-      </div> */}
 
     </main>
   );
