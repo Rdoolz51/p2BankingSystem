@@ -5,10 +5,8 @@ import com.revature.models.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.math.BigDecimal;
-
-@AllArgsConstructor
 @Data
+@AllArgsConstructor
 public class RegisterDTO {
   private String firstName;
   private String lastName;
@@ -17,5 +15,5 @@ public class RegisterDTO {
   private String phoneNumber;
   private Role role;
   private Address address;
-  private BigDecimal income;
+  private String income;
 }

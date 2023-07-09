@@ -20,16 +20,16 @@ public class Loan {
     private int loanID;
 
     @Column(name = "loan_amount")
-    private BigDecimal loanAmount;
+    private String loanAmount;
 
     @ManyToOne
     private LoanType type;     //Personal, Business, House, Car, etc...
 
     @Column(name = "loan_balance")
-    private BigDecimal loanBalance;
+    private String loanBalance;
 
     @Column(name = "interest_rate")
-    private double interestRate;
+    private String interestRate;
 
     @ManyToOne(targetEntity = User.class)  //User Requesting Loan
     private User user;

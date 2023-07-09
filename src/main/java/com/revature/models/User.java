@@ -3,11 +3,8 @@ package com.revature.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -42,12 +39,11 @@ public class User {
   @ManyToOne
   private Address address;
 
-  @Column(name = "income")
-  private BigDecimal yearlyIncome;
+  private String income;
 
   public User(String firstName, String lastName, String email, String password,
               String phoneNumber, Role role, Address address,
-              BigDecimal yearlyIncome) {
+              String income) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
@@ -55,6 +51,6 @@ public class User {
     this.phoneNumber = phoneNumber;
     this.role = role;
     this.address = address;
-    this.yearlyIncome = yearlyIncome;
+    this.income = income;
   }
 }
