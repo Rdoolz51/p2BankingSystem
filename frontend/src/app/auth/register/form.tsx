@@ -11,6 +11,8 @@ import styles from "./RegisterForm.module.css";
 // import handler from '@/app/api/auth/register';
 import RegisterHandler from '@/lib/register';
 
+import { states, zipCodes } from './content';
+
 export const RegisterForm = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
@@ -75,7 +77,7 @@ export const RegisterForm = () => {
     }
   };
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: any) => {
     const { name, value } = event.target;
   
     // Create a copy of the address object
@@ -158,17 +160,24 @@ export const RegisterForm = () => {
           />
         </div>
         <div className={styles.inputDiv}>
-          <input
+          <select
             required
-            type="text"
             name="address.state.id"
             value={formValues.address.state.id}
             onChange={handleChange}
-            placeholder="State"
             className={styles.input}
-          />
+          >
+            <option value="">Select State</option>
+            {/* Render options dynamically based on the states array */}
+            {states.map((state) => (
+              <option key={state.id} value={state.id}>
+                {state.name}
+              </option>
+            ))}
+          </select>
+
         </div>
-        <div className={styles.inputDiv}> {/* we need to make this an object */}
+        <div className={styles.inputDiv}>
           <input
             required
             type="text"
@@ -179,16 +188,25 @@ export const RegisterForm = () => {
             className={styles.input}
           />
         </div>
-        <div className={styles.inputDiv}> {/* we need to make this an object */}
-          <input
-            required
-            type="text"
-            name="address.zip.id"
-            value={formValues.address.zip.id}
-            onChange={handleChange}
-            placeholder="Zipcode"
-            className={styles.input}
-          />
+
+        <div className={styles.inputDiv}>
+        <select
+          required
+          name="address.zip.id"
+          value={formValues.address.zip.id}
+          onChange={handleChange}
+          className={styles.input}
+        >
+          <option value="">Select Zip Code</option>
+          {/* Render options dynamically based on the zipCodes array */}
+          {zipCodes.map((zipCode) => (
+            <option key={zipCode.id} value={zipCode.id}>
+              {zipCode.zipCode}
+            </option>
+          ))}
+        </select>
+
+
         </div>
 
 
