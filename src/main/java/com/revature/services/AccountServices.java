@@ -2,7 +2,6 @@ package com.revature.services;
 
 import com.revature.daos.AccountDAO;
 import com.revature.daos.AccountTypeDAO;
-import com.revature.dtos.AccountTransactionDTO;
 import com.revature.models.Account;
 import com.revature.models.AccountType;
 import com.revature.models.User;
