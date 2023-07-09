@@ -15,7 +15,7 @@ async function getData(){
 }
 
 export const metadata = {
-  title: "P2 Banking",
+  title: "Pursue Banking",
   description: "The Better Chase",
 };
 

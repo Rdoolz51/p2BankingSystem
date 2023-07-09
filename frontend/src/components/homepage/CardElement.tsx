@@ -1,8 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
-import Link from "next/link";
-import Image from "next/image";
-import Card from 'react-bootstrap/Card';
 
 import styles from './Card.module.css'
 import { content } from "./content";

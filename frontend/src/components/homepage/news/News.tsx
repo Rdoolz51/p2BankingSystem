@@ -8,18 +8,18 @@ import { content } from "./content";
 
 async function getData() {
   const pageSize = 5
-  try {
-    const res = await fetch(`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${process.env.NEWS_API}&pageSize=${pageSize}`);
-    if(res.ok) {
-      const data = await res.json();
-      return data;
-    } else {
-      return null;
-    }
-  } catch (e) {
-    console.error('Something went wrong fetching news...', e)
-    return null;
-  }
+  // try {
+  //   const res = await fetch(`https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${process.env.NEWS_API}&pageSize=${pageSize}`);
+  //   if(res.ok) {
+  //     const data = await res.json();
+  //     return data;
+  //   } else {
+  //     return null;
+  //   }
+  // } catch (e) {
+  //   console.error('Something went wrong fetching news...', e)
+  //   return null;
+  // }
 }
 
 
