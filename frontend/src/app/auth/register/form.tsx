@@ -21,10 +21,16 @@ export const RegisterForm = () => {
     password: "",
     phoneNumber: "",
     income: "",
-    street: "",
-    state: "",
-    city: "",
-    zip: "",
+    address: {
+      street: "",
+      state: {
+        id: ''
+      },
+      city: "",
+      zip: {
+        id: ''
+      },
+    }
 
   });
   const [error, setError] = useState("");
@@ -33,34 +39,24 @@ export const RegisterForm = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      setFormValues({ firstName: "", 
-                      lastName: "", 
-                      email: "", 
-                      password: "", 
-                      phoneNumber: "", 
-                      income: "",
-                      street: "", 
-                      state: "",
-                      city: "",
-                      zip: "",
-                    });
-
-      const fakeFormData = {
-          firstName: "james",
-          lastName: "jimmybob",
-          email: "1112@gmail.com",
-          password: "password",
-          phoneNumber: "1231232",
-          income: 11115.00,
-          address: {
-            street: "12343 nutmeg ",
-            state_state_id: 1,
-            city: 'Tucson',
-            zip_zip_id: 1
-          }
-      }
-
-      const response = await RegisterHandler(fakeFormData)
+      setFormValues(prevState => ({ 
+        ...prevState,
+        firstName: "", 
+        lastName: "", 
+        email: "", 
+        password: "", 
+        phoneNumber: "", 
+        income: "",
+        address: {
+          ...prevState.address,
+          street: "", 
+          state: {id: ''},
+          city: "",
+          zip: {id: ''},
+        }
+      }));
+      
+      const response = await RegisterHandler(formValues)
 
       setLoading(false);
 
@@ -81,8 +77,34 @@ export const RegisterForm = () => {
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setFormValues({ ...formValues, [name]: value });
+  
+    // Create a copy of the address object
+    const updatedAddress = { ...formValues.address };
+  
+    // Update the specific properties within the address object
+    if (name.startsWith("address.street")) {
+      updatedAddress.street = value;
+    } else if (name.startsWith("address.state.id")) {
+      updatedAddress.state.id = value;
+    } else if (name.startsWith("address.city")) {
+      updatedAddress.city = value;
+    } else if (name.startsWith("address.zip.id")) {
+      updatedAddress.zip.id = value;
+    }
+  
+    // Update the form values with the updated address object
+    setFormValues((prevState) => ({
+      ...prevState,
+      address: updatedAddress,
+      [name]: value,
+    }));
   };
+  
+
+  // const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  //   const { name, value } = event.target;
+  //   setFormValues({ ...formValues, [name]: value });
+  // };
 
   return (
     <Card className={styles.card}>
@@ -128,8 +150,8 @@ export const RegisterForm = () => {
           <input
             required
             type="text"
-            name="street"
-            value={formValues.street}
+            name="address.street"
+            value={formValues.address.street}
             onChange={handleChange}
             placeholder="Street Address"
             className={styles.input}
@@ -139,8 +161,8 @@ export const RegisterForm = () => {
           <input
             required
             type="text"
-            name="state"
-            value={formValues.state}
+            name="address.state.id"
+            value={formValues.address.state.id}
             onChange={handleChange}
             placeholder="State"
             className={styles.input}
@@ -150,8 +172,8 @@ export const RegisterForm = () => {
           <input
             required
             type="text"
-            name="city"
-            value={formValues.city}
+            name="address.city"
+            value={formValues.address.city}
             onChange={handleChange}
             placeholder="City"
             className={styles.input}
@@ -161,8 +183,8 @@ export const RegisterForm = () => {
           <input
             required
             type="text"
-            name="zip"
-            value={formValues.zip}
+            name="address.zip.id"
+            value={formValues.address.zip.id}
             onChange={handleChange}
             placeholder="Zipcode"
             className={styles.input}
