@@ -1,15 +1,18 @@
 package com.revature.services;
 
 import com.revature.daos.AccountDAO;
+import com.revature.daos.AddressDAO;
 import com.revature.daos.UserDAO;
 import com.revature.exceptions.UserUpdateException;
-import com.revature.models.Account;
+import com.revature.models.Address;
 import com.revature.models.User;
 import com.revature.security.TokenGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,13 +21,15 @@ import java.util.Optional;
 public class UserServices {
 
   private final UserDAO userDAO;
+  private final AddressDAO adddressDAO;
   private final AccountDAO accountDAO;
   private final TokenGenerator tokenGenerator;
 
   @Autowired
-  public UserServices(UserDAO userDAO, AccountDAO accountDAO,
+  public UserServices(UserDAO userDAO, AddressDAO adddressDAO, AccountDAO accountDAO,
                       TokenGenerator tokenGenerator) {
     this.userDAO = userDAO;
+    this.adddressDAO = adddressDAO;
     this.accountDAO = accountDAO;
     this.tokenGenerator = tokenGenerator;
   }
@@ -35,12 +40,14 @@ public class UserServices {
   }
 
   public User getUserById(int id) {
-    if (id > 0) {
+    if (id > 0 && userDAO.existsById(id)) {
       Optional<User> user = userDAO.findById(id);
 
       if (user.isPresent()) {
+        User retrieved = user.get();
+
         log.info("Retrieved user with ID: " + id);
-        return user.get();
+        return retrieved;
       }
     }
     log.info("No user found with ID: " + id);
@@ -50,7 +57,9 @@ public class UserServices {
   public User getUserByEmail(String email) {
     if (email != null && !email.isEmpty()) {
       log.info("Retrieved user with email: " + email);
-      return userDAO.findByEmail(email);
+      User user = userDAO.findByEmail(email);
+
+      return user;
     }
     log.info("No user found with email: " + email);
     return null;
@@ -107,7 +116,7 @@ public class UserServices {
 
   public User checkUserToken(String token) {
     String email = tokenGenerator.getEmailFromToken(token);
-    User user = getUserByEmail(email);
+    User user = userDAO.findByEmail(email);
 
     if (token.isEmpty() || user == null) {
       return null;

@@ -9,7 +9,6 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "transactions")
@@ -21,7 +20,7 @@ public class Transaction {
     private int transactionID;
 
     @Column(name = "amount", nullable = false)
-    private BigDecimal amount;
+    private String amount;
 
     @ManyToOne
     private TransactionType type;
@@ -34,9 +33,4 @@ public class Transaction {
 
     @ManyToOne(targetEntity = Account.class)
     private Account receiverAccount;
-
-
-
-
-
 }

@@ -50,7 +50,8 @@ public class UserController {
     User user = userServices.checkUserToken(token);
 
     if (user != null) {
-      return new ResponseEntity<>(user, HttpStatus.OK);
+      return new ResponseEntity<>(userServices.getUserByEmail(user.getEmail()),
+                                  HttpStatus.OK);
     }
 
     return new ResponseEntity<>(INVALID, HttpStatus.FORBIDDEN);
@@ -166,8 +167,9 @@ public class UserController {
       Account account =
         accountServices.getUserAccountById(user, acctTrans.getAccountId());
 
-      return new ResponseEntity<>(accountServices.deposit(account, acctTrans.getAmount()),
-                                  HttpStatus.OK);
+      return new ResponseEntity<>(
+        accountServices.deposit(account, acctTrans.getAmount()),
+        HttpStatus.OK);
     }
 
     return new ResponseEntity<>(INVALID, HttpStatus.FORBIDDEN);
@@ -188,8 +190,9 @@ public class UserController {
       Account account =
         accountServices.getUserAccountById(user, acctTrans.getAccountId());
 
-      return new ResponseEntity<>(accountServices.withdrawal(account, acctTrans.getAmount()),
-                                  HttpStatus.OK);
+      return new ResponseEntity<>(
+        accountServices.withdrawal(account, acctTrans.getAmount()),
+        HttpStatus.OK);
     }
 
     return new ResponseEntity<>(INVALID, HttpStatus.FORBIDDEN);
