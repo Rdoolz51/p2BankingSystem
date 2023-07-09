@@ -43,7 +43,7 @@ public class AuthController {
     this.tokenGenerator = tokenGenerator;
   }
 
-  @PostMapping("register")
+  @PostMapping("/register")
   public ResponseEntity<?> register(@RequestBody RegisterDTO registerDTO) {
     if (userDAO.existsByEmail(registerDTO.getEmail())) {
       return new ResponseEntity<>("Email is already in use", HttpStatus.BAD_REQUEST);
@@ -66,7 +66,7 @@ public class AuthController {
     return new ResponseEntity<>(userDAO.save(user), HttpStatus.CREATED);
   }
 
-  @PostMapping("login")
+  @PostMapping("/login")
   public ResponseEntity<AuthDTO> login(@RequestBody LoginDTO loginDTO) {
     Authentication authentication = authManager.authenticate(
       new UsernamePasswordAuthenticationToken(

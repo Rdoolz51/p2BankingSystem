@@ -1,5 +1,6 @@
 package com.revature.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,5 +32,6 @@ public class Address {
   private ZipCode zip;
 
   @ManyToMany(mappedBy = "userAddresses")
+  @JsonIgnore
   private Set<User> usersResiding;
 }

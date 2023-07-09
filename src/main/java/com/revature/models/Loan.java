@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
@@ -19,13 +20,13 @@ public class Loan {
     private int loanID;
 
     @Column(name = "loan_amount")
-    private double loanAmount;
+    private BigDecimal loanAmount;
 
     @ManyToOne
     private LoanType type;     //Personal, Business, House, Car, etc...
 
     @Column(name = "loan_balance")
-    private double loanBalance;
+    private BigDecimal loanBalance;
 
     @Column(name = "interest_rate")
     private double interestRate;

@@ -1,6 +1,7 @@
 package com.revature.controllers;
 
 import com.revature.dtos.AccountDTO;
+import com.revature.dtos.AccountTransactionDTO;
 import com.revature.models.Account;
 import com.revature.models.AccountType;
 import com.revature.models.User;
@@ -11,7 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.temporal.Temporal;
+import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("mybank")
@@ -115,7 +116,7 @@ public class UserController {
     if (user != null) {
       Account newAccount = accountServices.registerAccount(
         new Account(
-          0,
+          BigDecimal.ZERO,
           account.getType(),
           account.getPin(),
           user
@@ -145,6 +146,50 @@ public class UserController {
         return new ResponseEntity<>("Failed to update: check user ID",
                                     HttpStatus.BAD_REQUEST);
       }
+    }
+
+    return new ResponseEntity<>(INVALID, HttpStatus.FORBIDDEN);
+  }
+
+  @PutMapping("/deposit")
+  public ResponseEntity<?> depositHandler(
+    @RequestHeader("Authorization") String token,
+    @RequestBody AccountTransactionDTO acctTrans) {
+    User user = userServices.checkUserToken(token);
+
+    if (acctTrans == null) {
+      return new ResponseEntity<>("Account information was null",
+                                  HttpStatus.BAD_REQUEST);
+    }
+
+    if (user != null) {
+      Account account =
+        accountServices.getUserAccountById(user, acctTrans.getAccountId());
+
+      return new ResponseEntity<>(accountServices.deposit(account, acctTrans.getAmount()),
+                                  HttpStatus.OK);
+    }
+
+    return new ResponseEntity<>(INVALID, HttpStatus.FORBIDDEN);
+  }
+
+  @PutMapping("/withdrawal")
+  public ResponseEntity<?> withdrawalHandler(
+    @RequestHeader("Authorization") String token,
+    @RequestBody AccountTransactionDTO acctTrans) {
+    User user = userServices.checkUserToken(token);
+
+    if (acctTrans == null) {
+      return new ResponseEntity<>("Account information was null",
+                                  HttpStatus.BAD_REQUEST);
+    }
+
+    if (user != null) {
+      Account account =
+        accountServices.getUserAccountById(user, acctTrans.getAccountId());
+
+      return new ResponseEntity<>(accountServices.withdrawal(account, acctTrans.getAmount()),
+                                  HttpStatus.OK);
     }
 
     return new ResponseEntity<>(INVALID, HttpStatus.FORBIDDEN);

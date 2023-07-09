@@ -2,6 +2,7 @@ package com.revature.services;
 
 import com.revature.daos.AccountDAO;
 import com.revature.daos.AccountTypeDAO;
+import com.revature.dtos.AccountTransactionDTO;
 import com.revature.models.Account;
 import com.revature.models.AccountType;
 import com.revature.models.User;
@@ -9,6 +10,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.math.BigDecimal;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,7 +47,7 @@ public class AccountServices {
 
   public List<Account> getUserAccounts(User user) {
     log.info("Retrieved all accounts associated with user ID: " + user.getId());
-    return accountDAO.findByEmail(user.getEmail());
+    return accountDAO.findByUser(user);
   }
 
   public Account getUserAccountById(User user, int aid) {
@@ -76,6 +80,38 @@ public class AccountServices {
     }
 
     log.warn("Could not retrieve account type: " + type);
+    return null;
+  }
+
+  @Transactional(rollbackOn = SQLException.class)
+  public Account deposit(Account account, BigDecimal amount) {
+   if (account != null && amount != null &&
+        !(amount.compareTo(BigDecimal.ZERO) < 0)) {
+      BigDecimal complete = account.getBalance().add(amount);
+
+      account.setBalance(complete);
+
+      log.info("Deposit completed for account: " + account.getAccountID());
+      return account;
+    }
+
+    log.warn("Deposit failed for account: " + account.getAccountID());
+    return null;
+  }
+
+  @Transactional(rollbackOn = SQLException.class)
+  public Account withdrawal(Account account, BigDecimal amount) {
+    if (account != null && amount != null &&
+        !(amount.compareTo(BigDecimal.ZERO) < 0)) {
+      BigDecimal complete = account.getBalance().subtract(amount);
+
+      account.setBalance(complete);
+
+      log.info("Withdrawal completed for account: " + account.getAccountID());
+      return account;
+    }
+
+    log.warn("Withdrawal failed for account: " + account.getAccountID());
     return null;
   }
 }

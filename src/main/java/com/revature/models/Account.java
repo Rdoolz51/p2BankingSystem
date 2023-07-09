@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
@@ -19,7 +20,7 @@ public class Account {
     private int accountID;
 
     @Column(name = "balance", nullable = false)
-    private double balance;
+    private BigDecimal balance;
 
     @ManyToOne
     private AccountType type;
@@ -29,7 +30,7 @@ public class Account {
     @ManyToOne(targetEntity = User.class)
     private User user;
 
-    public Account(double balance, AccountType type, String pin, User user) {
+    public Account(BigDecimal balance, AccountType type, String pin, User user) {
         this.balance = balance;
         this.type = type;
         this.pin = pin;
