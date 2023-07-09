@@ -2,7 +2,8 @@
   max-width: 80vw;
   margin-left: auto;
   margin-right: auto;
-  background-image: linear-gradient(to left bottom, #273969, #21305b, #1c274e, #161f41, #101735, #141737, #181638, #1c1639, #2f1b47, #442053, #5b235e, #732466);
+  background-image: linear-gradient(to left bottom, #2739696f, #21315b76, #1c274e7c, #161f417b, #10173571, #14173777, #18163871, #1c163976, #2f1b4771, #4420537b, #5b235e45, #73246642);
+  outline: 4px solid rgba(182, 178, 195, 0.167);
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
