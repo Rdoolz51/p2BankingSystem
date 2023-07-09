@@ -1,29 +1,5 @@
 INSERT INTO roles (title) VALUES ('Admin'), ('Customer');
 
-insert into users (email, first_name, last_name, password, phone_number, income, role_role_id) values ('qhortop0@indiatimes.com', 'Quinlan', 'Hortop', 'nxznohip,$$', '843-481-6389', 3370.2, 2);
-insert into users (email, first_name, last_name, password, phone_number, income, role_role_id) values ('fevetts1@parallels.com', 'Finlay', 'Evetts', 'eabuszwgg<P_P~', '301-137-3299', 6532.32, 2);
-insert into users (email, first_name, last_name, password, phone_number, income, role_role_id) values ('sdicarlo2@myspace.com', 'Selestina', 'Di Carlo', 'qroksnsiHz', '467-500-1098', 1794.16, 2);
-insert into users (email, first_name, last_name, password, phone_number, income, role_role_id) values ('gnavarro3@nydailynews.com', 'Gale', 'Navarro', 'taldvinra{<J>X9', '588-467-8983', 4099.85, 2);
-insert into users (email, first_name, last_name, password, phone_number, income, role_role_id) values ('bphillot4@youtube.com', 'Brander', 'Phillot', 'hpjyoqrk', '623-551-3439', 1959.22, 2);
-insert into users (email, first_name, last_name, password, phone_number, income, role_role_id) values ('trockhall5@imageshack.us', 'Thorstein', 'Rockhall', 'xfazkwic%l%|1', '167-458-6990', 6317.94, 2);
-insert into users (email, first_name, last_name, password, phone_number, income, role_role_id) values ('rbaggaley6@aol.com', 'Ruddie', 'Baggaley', 'rcwyqsovK}|#V', '725-428-0687', 802.52, 2);
-insert into users (email, first_name, last_name, password, phone_number, income, role_role_id) values ('sgullen7@wired.com', 'Shanta', 'Gullen', 'byqvgawnh=U|wiT*', '558-278-3799', 1941.27, 2);
-insert into users (email, first_name, last_name, password, phone_number, income, role_role_id) values ('aarman8@mozilla.com', 'Aldrich', 'Arman', 'mqxfwsoe21Wj&Be', '733-849-0248', 5556.44, 2);
-insert into users (email, first_name, last_name, password, phone_number, income, role_role_id) values ('jpedrielli9@stanford.edu', 'Josie', 'Pedrielli', 'ukdgaihy', '328-865-4946', 2938.84, 2);
-insert into users (email, first_name, last_name, password, phone_number, income, role_role_id) values ('hkantora@cocolog-nifty.com', 'Herman', 'Kantor', 'vbfvnauljY"@/e', '248-461-8841', 5283.39, 2);
-insert into users (email, first_name, last_name, password, phone_number, income, role_role_id) values ('kburdikinb@java.com', 'Kippar', 'Burdikin', 'creavbjz(b6{C?', '985-615-5141', 5536.53, 2);
-insert into users (email, first_name, last_name, password, phone_number, income, role_role_id) values ('twalfordc@seesaa.net', 'Travers', 'Walford', 'ucjijaxj', '883-681-9011', 7853.3, 2);
-insert into users (email, first_name, last_name, password, phone_number, income, role_role_id) values ('kkatzd@last.fm', 'Karia', 'Katz', 'ybfxkndeMFBsgE+', '953-104-4194', 4550.31, 2);
-insert into users (email, first_name, last_name, password, phone_number, income, role_role_id) values ('tleabeatere@delicious.com', 'Theo', 'Leabeater', 'dkuiweqka', '580-279-3907', 8819.88, 2);
-insert into users (email, first_name, last_name, password, phone_number, income, role_role_id) values ('mcarrivickf@quantcast.com', 'Minta', 'Carrivick', 'zohtufplyE', '358-877-4528', 1801.97, 2);
-insert into users (email, first_name, last_name, password, phone_number, income, role_role_id) values ('cblaesg@yelp.com', 'Carlina', 'Blaes', 'fucckvvwv)Z', '340-654-5280', 2872.3, 2);
-insert into users (email, first_name, last_name, password, phone_number, income, role_role_id) values ('bsalth@weebly.com', 'Bette-ann', 'Salt', 'nclsqfhxG"@4"bZ', '900-978-5150', 420.1, 2);
-insert into users (email, first_name, last_name, password, phone_number, income, role_role_id) values ('chavesidesi@a8.net', 'Cassy', 'Havesides', 'rqsvjzatEz', '888-123-7048', 6558.2, 2);
-insert into users (email, first_name, last_name, password, phone_number, income, role_role_id) values ('bvlasyukj@auda.org.au', 'Bil', 'Vlasyuk', 'depqxyxo', '943-803-4230', 6869.99, 2);
-INSERT INTO users (email, first_name, last_name, "password", phone_number, income, role_role_id)
-VALUES ('admin@admin.com', 'Mr.', 'Admin', 'password', '123-456-7687', NULL, 1);
-UPDATE users SET "password" = '$2a$12$xOMv4nukmMExAh3aAr1pLOJdhGY1z/7MNLnlyMHdU0DLr9ErbEbK.';
-
 INSERT INTO states (name) VALUES
     ('Alabama'),
     ('Alaska'),
@@ -155,32 +131,31 @@ INSERT INTO addresses (city, street, state_state_id, zip_zip_id) VALUES
 INSERT INTO addresses (city, street, state_state_id, zip_zip_id)
 VALUES ('Sporg', '123 Sprog Lane', 2, 2);
 
+INSERT INTO users (email, first_name, last_name, password, phone_number, income, role_role_id, address_address_id)
+VALUES
+    ('qhortop0@indiatimes.com', 'Quinlan', 'Hortop', 'nxznohip,$$', '843-481-6389', 3370.2, 2, 1),
+    ('fevetts1@parallels.com', 'Finlay', 'Evetts', 'eabuszwgg<P_P~', '301-137-3299', 6532.32, 2, 2),
+    ('sdicarlo2@myspace.com', 'Selestina', 'Di Carlo', 'qroksnsiHz', '467-500-1098', 1794.16, 2, 3),
+    ('gnavarro3@nydailynews.com', 'Gale', 'Navarro', 'taldvinra{<J>X9', '588-467-8983', 4099.85, 2, 4),
+    ('bphillot4@youtube.com', 'Brander', 'Phillot', 'hpjyoqrk', '623-551-3439', 1959.22, 2, 5),
+    ('trockhall5@imageshack.us', 'Thorstein', 'Rockhall', 'xfazkwic%l%|1', '167-458-6990', 6317.94, 2, 6),
+    ('rbaggaley6@aol.com', 'Ruddie', 'Baggaley', 'rcwyqsovK}|#V', '725-428-0687', 802.52, 2, 7),
+    ('sgullen7@wired.com', 'Shanta', 'Gullen', 'byqvgawnh=U|wiT*', '558-278-3799', 1941.27, 2, 8),
+    ('aarman8@mozilla.com', 'Aldrich', 'Arman', 'mqxfwsoe21Wj&Be', '733-849-0248', 5556.44, 2, 9),
+    ('jpedrielli9@stanford.edu', 'Josie', 'Pedrielli', 'ukdgaihy', '328-865-4946', 2938.84, 2, 10),
+    ('hkantora@cocolog-nifty.com', 'Herman', 'Kantor', 'vbfvnauljY"@/e', '248-461-8841', 5283.39, 2, 11),
+    ('kburdikinb@java.com', 'Kippar', 'Burdikin', 'creavbjz(b6{C?', '985-615-5141', 5536.53, 2, 12),
+    ('twalfordc@seesaa.net', 'Travers', 'Walford', 'ucjijaxj', '883-681-9011', 7853.3, 2, 13),
+    ('kkatzd@last.fm', 'Karia', 'Katz', 'ybfxkndeMFBsgE+', '953-104-4194', 4550.31, 2, 14),
+    ('tleabeatere@delicious.com', 'Theo', 'Leabeater', 'dkuiweqka', '580-279-3907', 8819.88, 2, 15),
+    ('mcarrivickf@quantcast.com', 'Minta', 'Carrivick', 'zohtufplyE', '358-877-4528', 1801.97, 2, 16),
+    ('cblaesg@yelp.com', 'Carlina', 'Blaes', 'fucckvvwv)Z', '340-654-5280', 2872.3, 2, 17),
+    ('bsalth@weebly.com', 'Bette-ann', 'Salt', 'nclsqfhxG"@4"bZ', '900-978-5150', 420.1, 2, 18),
+    ('chavesidesi@a8.net', 'Cassy', 'Havesides', 'rqsvjzatEz', '888-123-7048', 6558.2, 2, 19),
+    ('bvlasyukj@auda.org.au', 'Bil', 'Vlasyuk', 'depqxyxo', '943-803-4230', 6869.99, 2, 20),
+    ('admin@admin.com', 'Mr.', 'Admin', 'password', '123-456-7687', NULL, 1, 21);
 
-
-INSERT INTO users_addresses (user_id, address_id)
-VALUES  (1, 1),
-        (2, 2),
-        (3, 3),
-        (4, 4),
-        (5, 5),
-        (6, 6),
-        (7, 7),
-        (8, 8),
-        (9, 9),
-        (10, 10),
-        (11, 11),
-        (12, 12),
-        (13, 13),
-        (14, 14),
-        (15, 15),
-        (16, 16),
-        (17, 17),
-        (18, 18),
-        (19, 19),
-        (20, 20);
-
-INSERT INTO users_addresses (user_id, address_id)
-VALUES(1, 21);
+UPDATE users SET "password" = '$2a$12$xOMv4nukmMExAh3aAr1pLOJdhGY1z/7MNLnlyMHdU0DLr9ErbEbK.';
 
 INSERT INTO loan_types (type) VALUES
     ('Personal'),
@@ -280,6 +255,3 @@ INSERT INTO transactions (amount, transaction_date, type_type_id, sender_account
     (2800.00, CURRENT_DATE - INTERVAL '6 months', 3, 6, 1),
     (1300.00, CURRENT_DATE - INTERVAL '4 months', 1, 20, 4),
     (400.00, CURRENT_DATE - INTERVAL '2 months', 2, 17, 13);
-
-
-SELECT * FROM users, addresses, users_addresses WHERE users.user_id = users_addresses.user_id AND addresses.address_id = users_addresses.address_id ORDER BY users.user_id;
