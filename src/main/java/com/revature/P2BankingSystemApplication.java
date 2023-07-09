@@ -13,5 +13,5 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class P2BankingSystemApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(P2BankingSystemApplication.class, args);
-	}
+  }
 }

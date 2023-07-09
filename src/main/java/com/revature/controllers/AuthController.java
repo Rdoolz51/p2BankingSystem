@@ -18,7 +18,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -49,10 +51,6 @@ public class AuthController {
       return new ResponseEntity<>("Email is already in use", HttpStatus.BAD_REQUEST);
     }
 
-    Set<Address> addresses = new HashSet<>();
-
-    addresses.add(registerDTO.getAddress());
-
     User user = new User(
       registerDTO.getFirstName(),
       registerDTO.getLastName(),
@@ -60,7 +58,8 @@ public class AuthController {
       passEncoder.encode(registerDTO.getPassword()),
       registerDTO.getPhoneNumber(),
       roleDAO.findByTitle("Customer"),
-      addresses
+      registerDTO.getAddress(),
+      registerDTO.getIncome()
     );
 
     return new ResponseEntity<>(userDAO.save(user), HttpStatus.CREATED);
