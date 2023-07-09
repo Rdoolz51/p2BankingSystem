@@ -6,7 +6,6 @@ import {
 } from "@/components/buttons.component";
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/lib/auth";
-import { User } from "@/components/user.component";
 import styles from './page.module.css'
 
 import Image from "next/image";

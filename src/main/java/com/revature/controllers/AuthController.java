@@ -23,7 +23,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("auth")
-@CrossOrigin(origins = "http://127.0.0.1:5500")
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "http://localhost:3000"})
 public class AuthController {
   private final AuthenticationManager authManager;
   private final UserDAO userDAO;

@@ -8,7 +8,8 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 import styles from "./RegisterForm.module.css";
-import handler from '@/app/api/auth/register';
+// import handler from '@/app/api/auth/register';
+import RegisterHandler from '@/lib/register';
 
 export const RegisterForm = () => {
   const router = useRouter();
@@ -18,6 +19,13 @@ export const RegisterForm = () => {
     lastName: "",
     email: "",
     password: "",
+    phoneNumber: "",
+    income: "",
+    street: "",
+    state: "",
+    city: "",
+    zip: "",
+
   });
   const [error, setError] = useState("");
 
@@ -25,9 +33,34 @@ export const RegisterForm = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      setFormValues({ firstName: "", lastName: "", email: "", password: "" });
+      setFormValues({ firstName: "", 
+                      lastName: "", 
+                      email: "", 
+                      password: "", 
+                      phoneNumber: "", 
+                      income: "",
+                      street: "", 
+                      state: "",
+                      city: "",
+                      zip: "",
+                    });
 
-      const response = await handler(formValues)
+      const fakeFormData = {
+          firstName: "james",
+          lastName: "jimmybob",
+          email: "1112@gmail.com",
+          password: "password",
+          phoneNumber: "1231232",
+          income: 11115.00,
+          address: {
+            street: "12343 nutmeg ",
+            state_state_id: 1,
+            city: 'Tucson',
+            zip_zip_id: 1
+          }
+      }
+
+      const response = await RegisterHandler(fakeFormData)
 
       setLoading(false);
 
@@ -37,6 +70,7 @@ export const RegisterForm = () => {
       } else {
         // Handle registration error
         const data = await response.json();
+        console.error(data.error);
         setError(data.error);
       }
     } catch (error: any) {
@@ -74,6 +108,76 @@ export const RegisterForm = () => {
             value={formValues.lastName}
             onChange={handleChange}
             placeholder="Last name"
+            className={styles.input}
+          />
+        </div>
+        <div className={styles.inputDiv}>
+          <input
+            required
+            type="text"
+            name="phoneNumber"
+            value={formValues.phoneNumber}
+            onChange={handleChange}
+            placeholder="Phone Number"
+            className={styles.input}
+          />
+        </div>
+
+            {/* We're gonna make this into something NOT disgusting, but I'm trying to get functionality setup */}
+        <div className={styles.inputDiv}> 
+          <input
+            required
+            type="text"
+            name="street"
+            value={formValues.street}
+            onChange={handleChange}
+            placeholder="Street Address"
+            className={styles.input}
+          />
+        </div>
+        <div className={styles.inputDiv}>
+          <input
+            required
+            type="text"
+            name="state"
+            value={formValues.state}
+            onChange={handleChange}
+            placeholder="State"
+            className={styles.input}
+          />
+        </div>
+        <div className={styles.inputDiv}> {/* we need to make this an object */}
+          <input
+            required
+            type="text"
+            name="city"
+            value={formValues.city}
+            onChange={handleChange}
+            placeholder="City"
+            className={styles.input}
+          />
+        </div>
+        <div className={styles.inputDiv}> {/* we need to make this an object */}
+          <input
+            required
+            type="text"
+            name="zip"
+            value={formValues.zip}
+            onChange={handleChange}
+            placeholder="Zipcode"
+            className={styles.input}
+          />
+        </div>
+
+
+        <div className={styles.inputDiv}>
+          <input
+            required
+            type="text"
+            name="income"
+            value={formValues.income}
+            onChange={handleChange}
+            placeholder="Annual Income"
             className={styles.input}
           />
         </div>
