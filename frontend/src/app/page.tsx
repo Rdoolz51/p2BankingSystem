@@ -4,7 +4,7 @@ import {
   ProfileButton,
   RegisterButton,
 } from "@/components/buttons.component";
-import { getServerSession } from "next-auth";
+import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/lib/auth";
 import { User } from "@/components/user.component";
 import styles from './page.module.css'
@@ -15,7 +15,7 @@ import CardElement from "@/components/homepage/CardElement";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
-  console.log("SESSION HOMEPAGE", session);
+  console.log("SESSION HOMEPAGE >> ", session?.user);
 
   return (
     <main >

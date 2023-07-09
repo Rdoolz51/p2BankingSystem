@@ -1,13 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
-import Link from "next/link";
-import Image from "next/image";
-import Card from 'react-bootstrap/Card';
+import { useSession } from "next-auth/react"
+
 
 import styles from './Card.module.css'
 import { content } from "./content";
 
 const CardElement = () => {
+  const { data: session, status } = useSession();
+  console.log("AAAAAAAAAAAAAAAA", session);
+
   return (
     <div className={styles.cardContainer}>
       {content.map((c) => {
