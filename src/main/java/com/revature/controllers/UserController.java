@@ -2,6 +2,7 @@ package com.revature.controllers;
 
 import com.revature.dtos.AccountDTO;
 import com.revature.dtos.AccountTransactionDTO;
+import com.revature.dtos.AccountTransferDTO;
 import com.revature.models.Account;
 import com.revature.models.AccountType;
 import com.revature.models.User;
@@ -13,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @RestController
 @RequestMapping("mybank")
@@ -167,9 +169,15 @@ public class UserController {
       Account account =
         accountServices.getUserAccountById(user, acctTrans.getAccountId());
 
-      return new ResponseEntity<>(
-        accountServices.deposit(account, acctTrans.getAmount()),
-        HttpStatus.OK);
+      Account complete =
+        accountServices.deposit(account, acctTrans.getAmount(), user);
+
+      if (complete != null) {
+        return new ResponseEntity<>(complete, HttpStatus.OK);
+      } else {
+        return new ResponseEntity<>("Deposit could not be completed",
+                                    HttpStatus.BAD_REQUEST);
+      }
     }
 
     return new ResponseEntity<>(INVALID, HttpStatus.FORBIDDEN);
@@ -190,9 +198,45 @@ public class UserController {
       Account account =
         accountServices.getUserAccountById(user, acctTrans.getAccountId());
 
-      return new ResponseEntity<>(
-        accountServices.withdrawal(account, acctTrans.getAmount()),
-        HttpStatus.OK);
+      Account complete =
+        accountServices.withdrawal(account, acctTrans.getAmount(), user);
+
+      if (complete != null) {
+        return new ResponseEntity<>(complete, HttpStatus.OK);
+      } else {
+        return new ResponseEntity<>("Withdrawal could not be completed",
+                                    HttpStatus.BAD_REQUEST);
+      }
+    }
+
+    return new ResponseEntity<>(INVALID, HttpStatus.FORBIDDEN);
+  }
+
+  @PutMapping("/transfer")
+  public ResponseEntity<?> transferHandler(
+    @RequestHeader("Authorization") String token,
+    @RequestBody AccountTransferDTO atDTO) {
+    User user = userServices.checkUserToken(token);
+
+    if (atDTO == null) {
+      return new ResponseEntity<>("Account transfer information was null",
+                                  HttpStatus.BAD_REQUEST);
+    }
+
+    if (user != null) {
+      Account from =
+        accountServices.getUserAccountById(user, atDTO.getFromAccountId());
+      Account to =
+        accountServices.getUserAccountById(user, atDTO.getToAccountId());
+      List<Account> complete =
+        accountServices.transfer(from, to, atDTO.getAmount(), user);
+
+      if (complete != null) {
+        return new ResponseEntity<>(complete, HttpStatus.OK);
+      } else {
+        return new ResponseEntity<>("Transfer could not be completed",
+                                    HttpStatus.BAD_REQUEST);
+      }
     }
 
     return new ResponseEntity<>(INVALID, HttpStatus.FORBIDDEN);

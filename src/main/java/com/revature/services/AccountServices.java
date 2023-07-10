@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -83,12 +84,13 @@ public class AccountServices {
   }
 
   @Transactional(rollbackOn = SQLException.class)
-  public Account deposit(Account account, String amount) {
-   if (account != null && amount != null) {
-      BigDecimal complete = new BigDecimal(account.getBalance());
+  public Account deposit(Account account, String amount, User user) {
+    if (account != null && amount != null &&
+        user.getId() == account.getUser().getId()) {
+      BigDecimal balance = new BigDecimal(account.getBalance());
       BigDecimal bdAmount = new BigDecimal(amount);
 
-      account.setBalance(complete.add(bdAmount).toString());
+      account.setBalance(balance.add(bdAmount).toString());
 
       accountDAO.save(account);
 
@@ -101,12 +103,13 @@ public class AccountServices {
   }
 
   @Transactional(rollbackOn = SQLException.class)
-  public Account withdrawal(Account account, String amount) {
-    if (account != null && amount != null) {
-      BigDecimal complete = new BigDecimal(account.getBalance());
+  public Account withdrawal(Account account, String amount, User user) {
+    if (account != null && amount != null &&
+        user.getId() == account.getUser().getId()) {
+      BigDecimal balance = new BigDecimal(account.getBalance());
       BigDecimal bdAmount = new BigDecimal(amount);
 
-      account.setBalance(complete.subtract(bdAmount).toString());
+      account.setBalance(balance.subtract(bdAmount).toString());
 
       accountDAO.save(account);
 
@@ -115,6 +118,48 @@ public class AccountServices {
     }
 
     log.warn("Withdrawal failed for account: " + account.getAccountID());
+    return null;
+  }
+
+  /**
+   * Money transfer between a single user's accounts.
+   *
+   * @param from the account the money should be taken from
+   * @param to the account the money should be added to
+   * @param amount the amount of money to be transferred
+   * @param user the user who owns the accounts
+   * @return List containing the two accounts; null on failure
+   */
+  @Transactional(rollbackOn = SQLException.class)
+  public List<Account> transfer(Account from, Account to, String amount,
+                                User user) {
+    if (from != null && to != null && amount != null) {
+      if (from.getUser().getId() == user.getId() &&
+          to.getUser().getId() == user.getId()) {
+        BigDecimal fromBalance = new BigDecimal(from.getBalance());
+        BigDecimal toBalance = new BigDecimal(to.getBalance());
+        BigDecimal bdAmount = new BigDecimal(amount);
+
+        from.setBalance(fromBalance.subtract(bdAmount).toString());
+        to.setBalance(toBalance.add(bdAmount).toString());
+
+        Account fromSaved = accountDAO.save(from);
+        Account toSaved = accountDAO.save(to);
+
+        log.info(
+          "Transfer from account: " + from.getAccountID() + " to account: " +
+          to.getAccountID() + " completed");
+
+        List<Account> toReturn = new ArrayList<>();
+
+        toReturn.add(from);
+        toReturn.add(to);
+
+        return toReturn;
+      }
+    }
+
+    log.warn("Transfer from failed");
     return null;
   }
 }
