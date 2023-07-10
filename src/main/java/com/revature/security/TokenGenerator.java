@@ -13,26 +13,25 @@ import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 @Component
 public class TokenGenerator {
-  private final int expiration;
   private final SecretKey secretKey;
   private final UserDAO userDAO;
 
   @Autowired
-  public TokenGenerator(@Value("${jwt.key}") String key,
-                        @Value("${jwt.expirationDateInMs}") int expiration, UserDAO userDAO) {
-    this.expiration = expiration;
+  public TokenGenerator(@Value("${jwt.key}") String key, UserDAO userDAO) {
     this.secretKey = new SecretKeySpec(key.getBytes(), "HmacSHA512");
     this.userDAO = userDAO;
   }
 
   public String generateToken(Authentication auth) {
     String email = auth.getName();
-    Date now = new Date();
-    Date expire = new Date(now.getTime() + expiration);
+    Instant issued = Instant.now().truncatedTo(ChronoUnit.SECONDS);
+    Instant expiration = issued.plus(10, ChronoUnit.MINUTES);
     User user = userDAO.findByEmail(email);
 
     return Jwts.builder()
@@ -41,8 +40,8 @@ public class TokenGenerator {
       .claim("role", user.getRole().getTitle())
       .claim("first_name", user.getFirstName())
       .claim("last_name", user.getLastName())
-      .setIssuedAt(now)
-      .setExpiration(expire)
+      .setIssuedAt(Date.from(issued))
+      .setExpiration(Date.from(expiration))
       .signWith(secretKey, SignatureAlgorithm.HS512)
       .compact();
   }
@@ -50,9 +49,9 @@ public class TokenGenerator {
   public boolean validateToken(String token) {
     try {
       Jwts.parserBuilder()
-        .setSigningKey(secretKey)
-        .build()
-        .parseClaimsJwt(token);
+          .setSigningKey(secretKey)
+          .build()
+          .parseClaimsJws(token);
 
       return true;
     } catch (Exception e) {

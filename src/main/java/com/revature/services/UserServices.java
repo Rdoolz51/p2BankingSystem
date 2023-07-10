@@ -1,13 +1,18 @@
 package com.revature.services;
 
+import com.revature.daos.AccountDAO;
+import com.revature.daos.AddressDAO;
 import com.revature.daos.UserDAO;
-import com.revature.exceptions.UserRegistrationException;
 import com.revature.exceptions.UserUpdateException;
+import com.revature.models.Address;
 import com.revature.models.User;
+import com.revature.security.TokenGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,10 +21,17 @@ import java.util.Optional;
 public class UserServices {
 
   private final UserDAO userDAO;
+  private final AddressDAO adddressDAO;
+  private final AccountDAO accountDAO;
+  private final TokenGenerator tokenGenerator;
 
   @Autowired
-  public UserServices(UserDAO userDAO) {
+  public UserServices(UserDAO userDAO, AddressDAO adddressDAO, AccountDAO accountDAO,
+                      TokenGenerator tokenGenerator) {
     this.userDAO = userDAO;
+    this.adddressDAO = adddressDAO;
+    this.accountDAO = accountDAO;
+    this.tokenGenerator = tokenGenerator;
   }
 
   public List<User> getAllUsers() {
@@ -28,12 +40,14 @@ public class UserServices {
   }
 
   public User getUserById(int id) {
-    if (id > 0) {
+    if (id > 0 && userDAO.existsById(id)) {
       Optional<User> user = userDAO.findById(id);
 
       if (user.isPresent()) {
+        User retrieved = user.get();
+
         log.info("Retrieved user with ID: " + id);
-        return user.get();
+        return retrieved;
       }
     }
     log.info("No user found with ID: " + id);
@@ -43,43 +57,34 @@ public class UserServices {
   public User getUserByEmail(String email) {
     if (email != null && !email.isEmpty()) {
       log.info("Retrieved user with email: " + email);
-      return userDAO.findByEmail(email);
+      User user = userDAO.findByEmail(email);
+
+      return user;
     }
     log.info("No user found with email: " + email);
     return null;
   }
 
-  public User registerUser(User user) {
-    if (user == null) {
-      log.warn("Null user object was received");
-      throw new NullPointerException("User object was null");
-    }
-
-    User registered = userDAO.save(user);
-
-    if (registered != null && registered.getId() > 0) {
-      log.info("Registered new user with email: " + registered.getEmail());
-      return registered;
-    }
-
-    log.warn("User registration failed");
-    throw new UserRegistrationException(
-      "Registration could not be completed using " + user);
-  }
-
-  public User updateUser(User user) {
-    if (user == null) {
+  public User updateUser(User user, User updated) {
+    if (user == null || updated == null) {
       log.warn("User object received was null");
       throw new NullPointerException("User object was null");
     }
 
+    if (user.getId() != updated.getId()) {
+      log.warn(
+        "User IDs do not match userID: " + user.getId() + " udpatedID: " +
+        updated.getId());
+      return null;
+    }
+
     if (userDAO.existsById(user.getId())) {
 
-      User updated = userDAO.save(user);
+      User complete = userDAO.save(user);
 
-      if (updated != null) {
-        log.info("Updated user with email: " + updated.getEmail());
-        return updated;
+      if (complete != null) {
+        log.info("Updated user with email: " + complete.getEmail());
+        return complete;
       }
     } else {
       log.info("No user found with ID: " + user.getId());
@@ -107,5 +112,16 @@ public class UserServices {
       log.info("Deletion failed: user ID: " + user.getId() + " does not exist");
       return false;
     }
+  }
+
+  public User checkUserToken(String token) {
+    String email = tokenGenerator.getEmailFromToken(token);
+    User user = userDAO.findByEmail(email);
+
+    if (token.isEmpty() || user == null) {
+      return null;
+    }
+
+    return user;
   }
 }

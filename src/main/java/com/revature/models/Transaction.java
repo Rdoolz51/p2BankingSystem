@@ -4,11 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.*;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "transactions")
@@ -20,10 +20,10 @@ public class Transaction {
     private int transactionID;
 
     @Column(name = "amount", nullable = false)
-    private double amount;
+    private String amount;
 
-    @Column(name = "transaction_type", nullable = false, unique = true)
-    private String transactionType;
+    @ManyToOne
+    private TransactionType type;
 
     @Column(name = "transaction_date", nullable = false)
     private Date transactionDate;
@@ -33,9 +33,4 @@ public class Transaction {
 
     @ManyToOne(targetEntity = Account.class)
     private Account receiverAccount;
-
-
-
-
-
 }

@@ -4,12 +4,12 @@ import {
   ProfileButton,
   RegisterButton,
 } from "@/components/buttons.component";
-import { getServerSession } from "next-auth";
-import Link from "next/link";
-
+import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/lib/auth";
 import styles from './page.module.css'
+import Link from "next/link";
 
+import Image from "next/image";
 import CardElement from "@/components/homepage/CardElement";
 import News from "@/components/homepage/news/News";
 import CardStack from "@/components/homepage/creditcards/CardStack";
@@ -17,7 +17,7 @@ import CardStack from "@/components/homepage/creditcards/CardStack";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
-  console.log("SESSION HOMEPAGE", session);
+  console.log("SESSION HOMEPAGE >> ", session?.user);
 
   return (
     <main >
