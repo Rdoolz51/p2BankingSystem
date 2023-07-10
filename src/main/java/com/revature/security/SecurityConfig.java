@@ -2,6 +2,8 @@ package com.revature.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -39,12 +41,15 @@ public class SecurityConfig {
       .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
       .and()
       .authorizeRequests()
-      // We can change these. I just wanted something here.
-      .antMatchers("/admin/**").hasAuthority("Admin")
+      .antMatchers("/").permitAll()
       .antMatchers("/auth/**").permitAll()
-      .antMatchers("/accounts/**").hasAnyAuthority("Admin", "Customer")
-      .antMatchers("/users/**").hasAnyAuthority("Admin", "Customer")
-      .antMatchers("/transactions/**").hasAnyAuthority("Admin", "Customer")
+      .antMatchers(HttpMethod.GET, "/admin/**").hasAuthority("Admin")
+      .antMatchers(HttpMethod.POST, "/admin/**").hasAuthority("Admin")
+      .antMatchers(HttpMethod.PUT, "/admin/**").hasAuthority("Admin")
+      .antMatchers(HttpMethod.DELETE, "/admin/**").hasAuthority("Admin")
+      .antMatchers(HttpMethod.GET, "/mybank/**").hasAnyAuthority("Admin", "Customer")
+      .antMatchers(HttpMethod.POST, "/mybank/**").hasAnyAuthority("Admin", "Customer")
+      .antMatchers(HttpMethod.PUT, "/mybank/**").hasAnyAuthority("Admin", "Customer")
       .antMatchers("**").denyAll()
       .and()
       .httpBasic();

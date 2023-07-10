@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
@@ -19,16 +20,16 @@ public class Loan {
     private int loanID;
 
     @Column(name = "loan_amount")
-    private double loanAmount;
+    private String loanAmount;
 
-    @Column(name = "loan_type")
-    private String loanType;     //Personal, Business, House, Car, etc...
+    @ManyToOne
+    private LoanType type;     //Personal, Business, House, Car, etc...
 
     @Column(name = "loan_balance")
-    private double loanBalance;
+    private String loanBalance;
 
     @Column(name = "interest_rate")
-    private double interestRate;
+    private String interestRate;
 
     @ManyToOne(targetEntity = User.class)  //User Requesting Loan
     private User user;

@@ -8,7 +8,7 @@ import { Card } from "react-bootstrap";
 
 export default async function Login() {
   const session = await getServerSession(authOptions);
-  console.log("register Session >>> ", session);
+  console.log("login Session >>> ", session);
 
   return (
     // <main className={styles.main}>

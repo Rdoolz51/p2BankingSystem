@@ -4,13 +4,11 @@ import {
   ProfileButton,
   RegisterButton,
 } from "@/components/buttons.component";
-import { getServerSession } from "next-auth";
+import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/lib/auth";
-import { User } from "@/components/user.component";
 import styles from './page.module.css'
 
 import Image from "next/image";
-import piggy from '../../public/piggy.jpg'
 import CardElement from "@/components/homepage/CardElement";
 import News from "@/components/homepage/news/News";
 
@@ -23,9 +21,7 @@ async function getData() {
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
-  console.log("SESSION HOMEPAGE", session);
-  const newsData = await getData();
-  // console.log(newsData?.articles);
+  console.log("SESSION HOMEPAGE >> ", session?.user);
 
   return (
     <main >
@@ -38,7 +34,6 @@ export default async function Home() {
 
       <div className={styles.content}>
         <div className={styles.imageContainer}>
-          <Image alt="home-image" src={piggy} className={styles.image} />
         </div>
 
         <div className={styles.headerContainer}>

@@ -1,7 +1,6 @@
 package com.revature.controllers;
 
-import com.revature.daos.RoleDAO;
-import com.revature.daos.UserDAO;
+import com.revature.daos.*;
 import com.revature.dtos.AuthDTO;
 import com.revature.dtos.LoginDTO;
 import com.revature.dtos.RegisterDTO;
@@ -18,15 +17,17 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("auth")
-@CrossOrigin(origins = "http://127.0.0.1:5500")
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "http://localhost:3000"})
 public class AuthController {
   private final AuthenticationManager authManager;
   private final UserDAO userDAO;
+  private final AddressDAO addressDAO;
+  private final StateDAO stateDAO;
+  private final ZipCodeDAO zipCodeDAO;
   private final RoleDAO roleDAO;
   private final PasswordEncoder passEncoder;
   private final TokenGenerator tokenGenerator;
@@ -34,24 +35,29 @@ public class AuthController {
   @Autowired
   public AuthController(AuthenticationManager authManager,
                         UserDAO userDAO,
-                        RoleDAO roleDAO, PasswordEncoder passEncoder,
+                        AddressDAO addressDAO, StateDAO stateDAO,
+                        ZipCodeDAO zipCodeDAO, RoleDAO roleDAO, PasswordEncoder passEncoder,
                         TokenGenerator tokenGenerator) {
     this.authManager = authManager;
     this.userDAO = userDAO;
+    this.addressDAO = addressDAO;
+    this.stateDAO = stateDAO;
+    this.zipCodeDAO = zipCodeDAO;
     this.roleDAO = roleDAO;
     this.passEncoder = passEncoder;
     this.tokenGenerator = tokenGenerator;
   }
 
-  @PostMapping("register")
+  @PostMapping("/register")
   public ResponseEntity<?> register(@RequestBody RegisterDTO registerDTO) {
     if (userDAO.existsByEmail(registerDTO.getEmail())) {
-      throw new RuntimeException("Email is already in use");
+      return new ResponseEntity<>("Email is already in use", HttpStatus.BAD_REQUEST);
     }
 
-    Set<Address> addresses = new HashSet<>();
+    Address address = registerDTO.getAddress();
 
-    addresses.add(registerDTO.getAddress());
+    address.setState(stateDAO.findById(registerDTO.getAddress().getState().getId()).get());
+    address.setZip(zipCodeDAO.findById(registerDTO.getAddress().getZip().getId()).get());
 
     User user = new User(
       registerDTO.getFirstName(),
@@ -60,13 +66,14 @@ public class AuthController {
       passEncoder.encode(registerDTO.getPassword()),
       registerDTO.getPhoneNumber(),
       roleDAO.findByTitle("Customer"),
-      addresses
-    );
+      addressDAO.save(address),
+      registerDTO.getIncome()
+      );
 
     return new ResponseEntity<>(userDAO.save(user), HttpStatus.CREATED);
   }
 
-  @PostMapping("login")
+  @PostMapping("/login")
   public ResponseEntity<AuthDTO> login(@RequestBody LoginDTO loginDTO) {
     Authentication authentication = authManager.authenticate(
       new UsernamePasswordAuthenticationToken(

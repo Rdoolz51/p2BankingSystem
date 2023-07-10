@@ -1,5 +1,8 @@
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+var jwt = require('jsonwebtoken');
+import { Session } from 'next-auth';
+
 
 export const authOptions: NextAuthOptions = {
   pages: {
@@ -16,24 +19,73 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        const user = { id: "1", name: "Admin", email: "admin@admin.com" };
-        return user;
 
+        const res = await fetch(`${process.env.API_URL}/auth/login`, {
+          method: 'POST',
+          body: JSON.stringify(credentials),
+          headers: { "Content-Type": "application/json" }
+        })
+        const userRes = await res.json();
+
+        function parseJwt(token: string) {
+          try {
+            const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+            return decodedToken;
+          } catch (error) {
+            console.error('Error decoding JWT token:', error);
+            return null;
+          }
+        }
+
+        const userData = parseJwt(userRes.token)
+        const user = {
+          id: userData.id,
+          email: userData.sub,
+          firstName: userData.first_name,
+          lastName: userData.last_name,
+          role: userData.role,
+        }
         
-        // const res = await fetch("/your/endpoint", {
-        //   method: 'POST',
-        //   body: JSON.stringify(credentials),
-        //   headers: { "Content-Type": "application/json" }
-        // })
-        // const user = await res.json()
-  
-        // // If no error and we have user data, return it
-        // if (res.ok && user) {
-        //   return user
-        // }
-        // // Return null if user data could not be retrieved
-        // return null
+        // If no error and we have user data, return it
+        if (res.ok && user) {
+          console.log('RETURNED USER >>> ',  user);
+          return user
+        }
+        // Return null if user data could not be retrieved
+        return null
       },
     }),
   ],
+  callbacks: {
+    async jwt({token, user}) {
+      
+      if (user?.id) {
+          token.id = user.id
+      }
+      if (user?.email) {
+          token.email = user.email;
+      }
+      if (user?.firstName) {
+        token.firstName = user.firstName;
+      }
+      if(user?.lastName) {
+        token.lastName = user.lastName;
+      }
+      if (user?.role) {
+        token.role = user.role;
+      }
+      return token
+   },
+   async session({session, token}) {
+      if(session.user) {
+        delete session.user.name // NextAuth includes this automatically, we don't want it
+        session.user.id = token.id;
+        session.user.email = token.email;
+        session.user.firstName = token.firstName;
+        session.user.lastName = token.lastName;
+        session.user.role = token.role;
+      }
+      return session;
+   }
+  }
 };
