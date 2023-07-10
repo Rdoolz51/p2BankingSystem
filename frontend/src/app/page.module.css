@@ -34,3 +34,13 @@
 .headerContainer > h3 {
   padding: 25px;
 }
+
+.newsElement {
+  margin-top: 8rem;
+}
+
+.newsElement h1 {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+}

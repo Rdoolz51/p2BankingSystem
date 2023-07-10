@@ -23,7 +23,7 @@ const Navbar: React.FC<UserProps> = ({firstName, lastName, email, phoneNumber, y
   return (
     <nav className={styles.nav}>
       <Link legacyBehavior href={"/"}>
-        <a><h1 className={styles.companyName}>Nameless Bank</h1></a>
+        <a><h1 className={styles.companyName}>Pursue</h1></a>
       </Link>
       <ul>
         <li>
