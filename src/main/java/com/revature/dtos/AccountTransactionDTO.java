@@ -10,5 +10,5 @@ import java.math.BigDecimal;
 @Data
 public class AccountTransactionDTO {
   private int accountId;
-  private BigDecimal amount;
+  private String amount;
 }

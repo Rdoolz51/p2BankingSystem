@@ -117,7 +117,7 @@ public class UserController {
     if (user != null) {
       Account newAccount = accountServices.registerAccount(
         new Account(
-          BigDecimal.ZERO,
+          "",
           account.getType(),
           account.getPin(),
           user

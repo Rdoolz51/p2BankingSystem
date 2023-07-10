@@ -83,12 +83,14 @@ public class AccountServices {
   }
 
   @Transactional(rollbackOn = SQLException.class)
-  public Account deposit(Account account, BigDecimal amount) {
-   if (account != null && amount != null &&
-        !(amount.compareTo(BigDecimal.ZERO) < 0)) {
-      BigDecimal complete = account.getBalance().add(amount);
+  public Account deposit(Account account, String amount) {
+   if (account != null && amount != null) {
+      BigDecimal complete = new BigDecimal(account.getBalance());
+      BigDecimal bdAmount = new BigDecimal(amount);
 
-      account.setBalance(complete);
+      account.setBalance(complete.add(bdAmount).toString());
+
+      accountDAO.save(account);
 
       log.info("Deposit completed for account: " + account.getAccountID());
       return account;
@@ -99,12 +101,14 @@ public class AccountServices {
   }
 
   @Transactional(rollbackOn = SQLException.class)
-  public Account withdrawal(Account account, BigDecimal amount) {
-    if (account != null && amount != null &&
-        !(amount.compareTo(BigDecimal.ZERO) < 0)) {
-      BigDecimal complete = account.getBalance().subtract(amount);
+  public Account withdrawal(Account account, String amount) {
+    if (account != null && amount != null) {
+      BigDecimal complete = new BigDecimal(account.getBalance());
+      BigDecimal bdAmount = new BigDecimal(amount);
 
-      account.setBalance(complete);
+      account.setBalance(complete.subtract(bdAmount).toString());
+
+      accountDAO.save(account);
 
       log.info("Withdrawal completed for account: " + account.getAccountID());
       return account;

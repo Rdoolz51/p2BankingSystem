@@ -20,7 +20,7 @@ public class Account {
     private int accountID;
 
     @Column(name = "balance", nullable = false)
-    private BigDecimal balance;
+    private String balance;
 
     @ManyToOne
     private AccountType type;
@@ -30,7 +30,7 @@ public class Account {
     @ManyToOne(targetEntity = User.class)
     private User user;
 
-    public Account(BigDecimal balance, AccountType type, String pin, User user) {
+    public Account(String balance, AccountType type, String pin, User user) {
         this.balance = balance;
         this.type = type;
         this.pin = pin;

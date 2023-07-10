@@ -5,6 +5,7 @@ target/
 !**/src/test/**/target/
 frontend
 application.properties
+.env.local
 
 ### STS ###
 .apt_generated
