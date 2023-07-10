@@ -189,18 +189,21 @@ INSERT INTO loans (interest_rate, loan_amount, loan_balance, type_type_id, user_
 
 
 INSERT INTO credit_cards (annual_fee, balance, card_expiration, card_number, credit_limit, interest_rate, user_user_id) VALUES
-    ('75.00', '500.00', CURRENT_DATE + INTERVAL '1 year', '1234567890123456', '2500.00', '0.15', 3),
-    ('90.00', '1000.00', CURRENT_DATE + INTERVAL '1 year', '2345678901234567', '8000.00', '0.12', 7),
-    ('60.00', '800.00', CURRENT_DATE + INTERVAL '1 year', '3456789012345678', '12000.00', '0.18', 11),
-    ('80.00', '300.00', CURRENT_DATE + INTERVAL '1 year', '4567890123456789', '4000.00', '0.14', 2),
-    ('50.00', '200.00', CURRENT_DATE + INTERVAL '1 year', '5678901234567890', '2500.00', '0.16', 15),
-    ('95.00', '1000.00', CURRENT_DATE + INTERVAL '1 year', '6789012345678901', '7000.00', '0.13', 10),
-    ('70.00', '700.00', CURRENT_DATE + INTERVAL '1 year', '7890123456789012', '8000.00', '0.17', 4),
-    ('85.00', '400.00', CURRENT_DATE + INTERVAL '1 year', '8901234567890123', '5000.00', '0.19', 18),
-    ('55.00', '200.00', CURRENT_DATE + INTERVAL '1 year', '9012345678901234', '10000.00', '0.15', 13),
-    ('65.00', '900.00', CURRENT_DATE + INTERVAL '1 year', '0123456789012345', '7000.00', '0.16', 9);
+    ('75.00', '500.00', '12/23', '1234567890123456', '2500.00', '0.15', 3),
+    ('90.00', '1000.00', '10/25', '2345678901234567', '8000.00', '0.12', 7),
+    ('60.00', '800.00', '07/25', '3456789012345678', '12000.00', '0.18', 11),
+    ('80.00', '300.00', '06/25', '4567890123456789', '4000.00', '0.14', 2),
+    ('50.00', '200.00', '06/29', '5678901234567890', '2500.00', '0.16', 15),
+    ('95.00', '1000.00', '01/28', '6789012345678901', '7000.00', '0.13', 10),
+    ('70.00', '700.00', '10/23', '7890123456789012', '8000.00', '0.17', 4),
+    ('85.00', '400.00', '10/23', '8901234567890123', '5000.00', '0.19', 18),
+    ('55.00', '200.00', '09/28', '9012345678901234', '10000.00', '0.15', 13),
+    ('65.00', '900.00', '09/28', '0123456789012345', '7000.00', '0.16', 9);
 
+INSERT INTO statuses (status) VALUES ('Pending'), ('Approved'), ('Denied');
 
+UPDATE loans SET status_status_id = 2;
+UPDATE credit_cards SET status_status_id = 2;
 
 INSERT INTO account_types ("type")
 VALUES ('Savings'),
@@ -256,3 +259,6 @@ INSERT INTO transactions (amount, transaction_date, type_type_id, sender_account
     ('2800.00', CURRENT_DATE - INTERVAL '6 months', 3, 6, 1),
     ('1300.00', CURRENT_DATE - INTERVAL '4 months', 1, 20, 4),
     ('400.00', CURRENT_DATE - INTERVAL '2 months', 2, 17, 13);
+
+INSERT INTO accounts (type_type_id, balance, pin, user_user_id)
+VALUES (2, '4500.00', '1234', 1);
