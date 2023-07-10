@@ -33,4 +33,6 @@ public class Loan {
 
     @ManyToOne(targetEntity = User.class)  //User Requesting Loan
     private User user;
+
+    private Status status;
 }
