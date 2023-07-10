@@ -3,7 +3,8 @@ package com.revature.util;
 import java.util.Random;
 
 public class GenerateCC {
-  private static Random random = new Random(System.currentTimeMillis());
+  private final static Random random = new Random(System.currentTimeMillis());
+
   /**
    * Generates a random valid credit card number.
    *

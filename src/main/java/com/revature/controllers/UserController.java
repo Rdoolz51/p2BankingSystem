@@ -1,19 +1,16 @@
 package com.revature.controllers;
 
-import com.revature.dtos.AccountDTO;
-import com.revature.dtos.AccountTransactionDTO;
-import com.revature.dtos.AccountTransferDTO;
-import com.revature.models.Account;
-import com.revature.models.AccountType;
-import com.revature.models.User;
+import com.revature.daos.StatusDAO;
+import com.revature.dtos.*;
+import com.revature.models.*;
 import com.revature.services.AccountServices;
 import com.revature.services.UserServices;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -24,12 +21,14 @@ public class UserController {
   private final String INVALID_ID = "Provided ID or TYPE was not valid";
   private final UserServices userServices;
   private final AccountServices accountServices;
+  private final StatusDAO statusDAO;
 
   @Autowired
   public UserController(UserServices userServices,
-                        AccountServices accountServices) {
+                        AccountServices accountServices, StatusDAO statusDAO) {
     this.userServices = userServices;
     this.accountServices = accountServices;
+    this.statusDAO = statusDAO;
   }
 
   /*@GetMapping("/{cid}")
@@ -240,5 +239,87 @@ public class UserController {
     }
 
     return new ResponseEntity<>(INVALID, HttpStatus.FORBIDDEN);
+  }
+
+  /**
+   *
+   * @param token
+   * @param app
+   * @return
+   */
+  @PostMapping("/loan-app")
+  public ResponseEntity<?> loanApplicationHandler(
+    @RequestHeader("Authorization") String token,
+    @RequestBody LoanDTO app) {
+    User user = userServices.checkUserToken(token);
+
+    if (app == null) {
+      return new ResponseEntity("Loan application was null",
+                                HttpStatus.BAD_REQUEST);
+    }
+
+    if (user != null) {
+
+      Loan loan = new Loan();
+
+      loan.setUser(user);
+      loan.setLoanAmount(app.getAmount());
+      loan.setLoanBalance("0");
+      loan.setType(app.getType());
+      loan.setInterestRate(app.getInterestRate());
+      loan.setStatus(statusDAO.findByStatus("Pending"));
+
+      try {
+        Loan complete = accountServices.loanApplication(loan, user);
+
+        return new ResponseEntity(complete, HttpStatus.CREATED);
+      } catch (ConstraintViolationException cve) {
+        return new ResponseEntity("Application data was incomplete",
+                                  HttpStatus.BAD_REQUEST);
+      }
+    }
+
+    return new ResponseEntity(INVALID, HttpStatus.FORBIDDEN);
+  }
+
+  /**
+   *
+   * @param token
+   * @param app
+   * @return
+   */
+  @PostMapping("/cc-app")
+  public ResponseEntity<?> creditCardApplicationHandler(
+    @RequestHeader("Authorization") String token,
+    @RequestBody CreditDTO app) {
+    User user = userServices.checkUserToken(token);
+
+    if (app == null) {
+      return new ResponseEntity("Credit card application was null",
+                                HttpStatus.BAD_REQUEST);
+    }
+
+    if (user != null) {
+
+      CreditCard creditCard = new CreditCard();
+
+      creditCard.setUser(user);
+      creditCard.setCreditLimit(app.getCreditLimit());
+      creditCard.setBalance("0");
+      creditCard.setInterestRate(app.getInterestRate());
+      creditCard.setAnnualFee(app.getAnnualFee());
+      creditCard.setStatus(statusDAO.findByStatus("Pending"));
+
+      try {
+        CreditCard complete = accountServices.creditCardApplication(creditCard, user);
+
+        return new ResponseEntity(complete, HttpStatus.CREATED);
+      } catch (ConstraintViolationException cve) {
+        return new ResponseEntity("Application data was incomplete",
+                                  HttpStatus.BAD_REQUEST);
+      }
+    }
+
+    return new ResponseEntity(INVALID, HttpStatus.FORBIDDEN);
   }
 }

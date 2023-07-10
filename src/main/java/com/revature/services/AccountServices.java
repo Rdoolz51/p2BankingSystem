@@ -2,9 +2,9 @@ package com.revature.services;
 
 import com.revature.daos.AccountDAO;
 import com.revature.daos.AccountTypeDAO;
-import com.revature.models.Account;
-import com.revature.models.AccountType;
-import com.revature.models.User;
+import com.revature.daos.CreditCardDAO;
+import com.revature.daos.LoanDAO;
+import com.revature.models.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,13 +21,23 @@ import java.util.Optional;
 public class AccountServices {
   private final AccountDAO accountDAO;
   private final AccountTypeDAO accountTypeDAO;
+  private final LoanDAO loanDAO;
+  private final CreditCardDAO creditCardDAO;
 
   @Autowired
-  public AccountServices(AccountDAO accountDAO, AccountTypeDAO accountTypeDAO) {
+  public AccountServices(AccountDAO accountDAO, AccountTypeDAO accountTypeDAO,
+                         LoanDAO loanDAO, CreditCardDAO creditCardDAO) {
     this.accountDAO = accountDAO;
     this.accountTypeDAO = accountTypeDAO;
+    this.loanDAO = loanDAO;
+    this.creditCardDAO = creditCardDAO;
   }
 
+  /**
+   *
+   * @param account
+   * @return
+   */
   public Account registerAccount(Account account) {
     if (account == null) {
       log.warn("Null user object was received");
@@ -45,11 +55,22 @@ public class AccountServices {
     return null;
   }
 
+  /**
+   *
+   * @param user
+   * @return
+   */
   public List<Account> getUserAccounts(User user) {
     log.info("Retrieved all accounts associated with user ID: " + user.getId());
     return accountDAO.findByUser(user);
   }
 
+  /**
+   *
+   * @param user
+   * @param aid
+   * @return
+   */
   public Account getUserAccountById(User user, int aid) {
     if (user != null && accountDAO.existsById(aid)) {
       Optional<Account> retrieved = accountDAO.findById(aid);
@@ -64,6 +85,12 @@ public class AccountServices {
     return null;
   }
 
+  /**
+   *
+   * @param user
+   * @param type
+   * @return
+   */
   public List<Account> getUserAccountsByType(User user, AccountType type) {
     if (user != null && type != null) {
       log.info("Retrieved all user accounts by type: " + type.getType());
@@ -73,6 +100,11 @@ public class AccountServices {
     return null;
   }
 
+  /**
+   *
+   * @param type
+   * @return
+   */
   public AccountType getAccountTypeByName(String type) {
     if (type != null && accountTypeDAO.existsByType(type)) {
       log.info("Account type retrieved successfully");
@@ -83,6 +115,13 @@ public class AccountServices {
     return null;
   }
 
+  /**
+   *
+   * @param account
+   * @param amount
+   * @param user
+   * @return
+   */
   @Transactional(rollbackOn = SQLException.class)
   public Account deposit(Account account, String amount, User user) {
     if (account != null && amount != null &&
@@ -102,6 +141,13 @@ public class AccountServices {
     return null;
   }
 
+  /**
+   *
+   * @param account
+   * @param amount
+   * @param user
+   * @return
+   */
   @Transactional(rollbackOn = SQLException.class)
   public Account withdrawal(Account account, String amount, User user) {
     if (account != null && amount != null &&
@@ -160,6 +206,30 @@ public class AccountServices {
     }
 
     log.warn("Transfer from failed");
+    return null;
+  }
+
+  public Loan loanApplication(Loan loan, User user) {
+    if (user != null && loan != null && loan.getUser().getId() == user.getId()) {
+      Loan complete = loanDAO.save(loan);
+
+      log.info("Loan application submitted");
+      return complete;
+    }
+
+    log.warn("Loan application could not be completed");
+    return null;
+  }
+
+  public CreditCard creditCardApplication(CreditCard creditCard, User user) {
+    if (user != null && creditCard != null && creditCard.getUser().getId() == user.getId()) {
+      CreditCard complete = creditCardDAO.save(creditCard);
+
+      log.info("Credit card application submitted");
+      return complete;
+    }
+
+    log.warn("Credit card application could not be completed");
     return null;
   }
 }
