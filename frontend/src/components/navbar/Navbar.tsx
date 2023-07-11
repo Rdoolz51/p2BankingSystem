@@ -17,8 +17,6 @@ interface UserProps {
 }
 
 
-
-
 const Navbar: React.FC<UserProps> = ({firstName, lastName, email, phoneNumber, income}) => {
 
   const [isOpen, setIsOpen] = useState(false)
@@ -41,14 +39,14 @@ const Navbar: React.FC<UserProps> = ({firstName, lastName, email, phoneNumber, i
           </Link>
         </li>
         <div className={styles.profile}>
-        <li>
-        <div> <a onClick={toggleModal}><FaUser></FaUser> </a> </div>
-        <Modal
-          isOpen={isOpen} 
-          contentLabel="User Information"
-          className={styles.modalContent}
-          overlayClassName={styles.modalOverlay}
-        >
+          <li>
+            <div> <a onClick={toggleModal}><FaUser></FaUser> </a> </div>
+            <Modal
+              isOpen={isOpen}
+              contentLabel="User Information"
+              className={styles.modalContent}
+              overlayClassName={styles.modalOverlay}
+            >
               <h2>User Information</h2>
               <p>First Name: {firstName}</p>
               <p>Last Name: {lastName}</p>
@@ -57,7 +55,7 @@ const Navbar: React.FC<UserProps> = ({firstName, lastName, email, phoneNumber, i
               <p>Yearly Income: ${income}</p>
               <div><a className={styles.signOut} href="/auth/login">Sign Out</a></div>
             </Modal>
-        </li>
+          </li>
         </div>
       </ul>
     </nav>

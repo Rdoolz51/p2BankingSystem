@@ -44,3 +44,16 @@
   display: flex;
   justify-content: center;
 }
+
+.cardStackElement {
+  display: flex;
+  justify-content: center;
+  max-height: 30rem;
+  max-width: 30rem;
+}
+
+@media only screen and (max-width: 950px) {
+  .cardStackElement {
+    display: none;
+  }
+}

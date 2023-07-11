@@ -7,10 +7,12 @@ import {
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/lib/auth";
 import styles from './page.module.css'
+import Link from "next/link";
 
 import Image from "next/image";
 import CardElement from "@/components/homepage/CardElement";
 import News from "@/components/homepage/news/News";
+import CardStack from "@/components/homepage/creditcards/CardStack";
 
 
 export default async function Home() {
@@ -24,10 +26,13 @@ export default async function Home() {
         <RegisterButton />
         <LogoutButton />
         <ProfileButton />
+        <Link href={'/admin'} style={{ marginLeft: '2rem', color: 'red' }}>ADMIN STUFF</Link>
       </div>
 
       <div className={styles.content}>
-        <div className={styles.imageContainer}>
+
+        <div className={styles.cardStackElement}>
+          <CardStack />
         </div>
 
         <div className={styles.headerContainer}>
