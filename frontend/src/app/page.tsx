@@ -12,12 +12,6 @@ import Image from "next/image";
 import CardElement from "@/components/homepage/CardElement";
 import News from "@/components/homepage/news/News";
 
-async function getData() {
-  const pageSize = 5
-  const res = await fetch(`https://newsapi.org/v2/everything?domains=wsj.com&apiKey=${process.env.NEWS_API}&pageSize=${pageSize}`);
-  const data = await res.json();
-  return data;
-}
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
