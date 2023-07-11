@@ -1,4 +1,4 @@
-  INSERT INTO roles (title) VALUES ('Admin'), ('Customer');
+  INSERT INTO roles (title) VALUES ('Admin'), ('Customer'), ('Merchant');
 
   INSERT INTO states (name) VALUES
       ('Alabama'),
@@ -153,8 +153,8 @@
       ('bsalth@weebly.com', 'Bette-ann', 'Salt', 'nclsqfhxG"@4"bZ', '9009785150', '420.1', 2, 18),
       ('chavesidesi@a8.net', 'Cassy', 'Havesides', 'rqsvjzatEz', '8881237048', '6558.2', 2, 19),
       ('bvlasyukj@auda.org.au', 'Bil', 'Vlasyuk', 'depqxyxo', '9438034230', '6869.99', 2, 20),
-      ('admin@admin.com', 'Mr.', 'Admin', 'password', '1234567687', NULL, 1, 21);
-
+      ('admin@admin.com', 'Mr.', 'Admin', 'password', '1234567687', NULL, 1, 21),
+      ('fake@merchant.com', 'A', 'Merchant', 'password', '1235556666', NULL, 3, NULL);
 
   UPDATE users SET "password" = '$2a$12$xOMv4nukmMExAh3aAr1pLOJdhGY1z/7MNLnlyMHdU0DLr9ErbEbK.';
 
@@ -240,7 +240,7 @@
          ('Debit'),
          ('Credit');
 
-  INSERT INTO transactions (amount, transaction_date, type_type_id, sender_account_account_id, receiver_account_id) VALUES
+  INSERT INTO transactions (amount, transaction_date, type_type_id, user_account_account_id, transaction_acct_id) VALUES
       ('1000.00', CURRENT_DATE - INTERVAL '2 months', 1, 3, 7),
       ('500.00', CURRENT_DATE - INTERVAL '4 months', 2, 7, 10),
       ('2000.00', CURRENT_DATE - INTERVAL '3 months', 3, 5, 12),

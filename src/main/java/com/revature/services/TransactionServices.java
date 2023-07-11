@@ -8,6 +8,7 @@ import com.revature.models.Account;
 import com.revature.models.CreditCard;
 import com.revature.models.Transaction;
 import com.revature.models.User;
+import com.revature.util.ValidateCC;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,51 +32,12 @@ public class TransactionServices {
   @Autowired
   public TransactionServices(TransactionDAO transactionDAO,
                              TransactionTypeDAO transactionTypeDAO,
-                             CreditCardDAO creditCardDAO, AccountDAO accountDAO) {
+                             CreditCardDAO creditCardDAO,
+                             AccountDAO accountDAO) {
     this.transactionDAO = transactionDAO;
     this.transactionTypeDAO = transactionTypeDAO;
     this.creditCardDAO = creditCardDAO;
     this.accountDAO = accountDAO;
-  }
-
-  /**
-   * Records a debit to the customer's credit card.
-   *
-   * @param user              the user to be debited
-   * @param receiverAccountId the account id who will be credited
-   * @param amount            the amount of the transaction
-   * @return transaction object if complete; otherwise null
-   */
-  public Transaction debitUserCC(User user, int receiverAccountId,
-                                 String amount) {
-    if (user != null && receiverAccountId > 0 && !amount.isEmpty()) {
-      BigDecimal bdAmount = new BigDecimal(amount);
-      Account customerAcct = accountDAO.findByUser_id(user.getId());
-
-      if (bdAmount != null && customerAcct != null &&
-          bdAmount.compareTo(BigDecimal.ZERO) == 1) {
-        BigDecimal balance = new BigDecimal(customerAcct.getBalance());
-
-        customerAcct.setBalance(balance.subtract(bdAmount).toString());
-
-        Transaction complete = new Transaction();
-
-        complete.setAmount(amount);
-        complete.setType(transactionTypeDAO.findByType("Debit"));
-        complete.setTransactionDate(LocalDateTime.now());
-        complete.setUserAccount(customerAcct);
-        complete.setTransactionAcctId(receiverAccountId);
-
-        transactionDAO.save(complete);
-        log.info("Completed CC debit transaction between customer ID: " +
-                 user.getId() + " and receiver ID: " + receiverAccountId);
-
-        return complete;
-      }
-    }
-
-    log.warn("Could not complete CC debit transaction");
-    return null;
   }
 
   /**
@@ -90,32 +52,99 @@ public class TransactionServices {
                                   int senderAccountId, String amount) {
     if (creditCard != null && senderAccountId > 0 &&
         !amount.isEmpty()) {
-      if (creditCardDAO.existsById(creditCard.getCreditID())) {
+      if (creditCardDAO.existsById(creditCard.getCreditID()) &&
+          ValidateCC.validateCard(creditCard.getCardNumber())) {
         BigDecimal bdAmount = new BigDecimal(amount);
         BigDecimal balance = new BigDecimal(creditCard.getBalance());
 
 
-        if (bdAmount != null && balance != null && bdAmount.compareTo(BigDecimal.ZERO) == 1) {
+        if (bdAmount != null && balance != null &&
+            bdAmount.compareTo(BigDecimal.ZERO) == 1) {
           BigDecimal newBalance = balance.subtract(bdAmount);
+          Transaction complete = new Transaction();
+
+          complete.setAmount(amount);
+          complete.setType(transactionTypeDAO.findByType("Credit"));
+          complete.setTransactionDate(LocalDateTime.now());
+          complete.setUserAccount(
+            accountDAO.findByUser_id(creditCard.getUser().getId()));
+          complete.setTransactionAcctId(senderAccountId);
 
           if (newBalance.compareTo(BigDecimal.ZERO) >= 0) {
-            Transaction complete = new Transaction();
 
-            complete.setAmount(amount);
-            complete.setType(transactionTypeDAO.findByType("Credit"));
-            complete.setTransactionDate(LocalDateTime.now());
-            complete.setUserAccount(accountDAO.findByUser_id(creditCard.getUser().getId()));
-            complete.setTransactionAcctId(senderAccountId);
+            creditCard.setBalance(newBalance.toString());
+            creditCardDAO.save(creditCard);
 
-            transactionDAO.save(complete);
-            log.info("Completed CC credit transaction between customer ID: " +
-                     creditCard.getUser().getId() + " and receiver ID: " + senderAccountId);
-
-            return complete;
+          } else {
+            creditCard.setBalance("0");
+            creditCardDAO.save(creditCard);
           }
+
+          transactionDAO.save(complete);
+          log.info("Completed CC debit transaction between customer ID: " +
+                   creditCard.getUser().getId() + " and receiver ID: " +
+                   senderAccountId);
+
+          return complete;
         }
       } else {
-        log.warn("CC account does not exist");
+        log.warn("CC account does not exist or was not a valid card number");
+      }
+    }
+
+    log.warn("Could not complete CC debit transaction");
+    return null;
+  }
+
+  /**
+   * Records a debit to the customer's CC.
+   *
+   * @param creditCard        the cc to be debited
+   * @param receiverAccountId the account id to be credited
+   * @param amount            the amount of the transaction
+   * @return Transaction object if successful; otherwise null
+   */
+  public Transaction debitUserCC(CreditCard creditCard,
+                                 int receiverAccountId, String amount) {
+    if (creditCard != null && receiverAccountId > 0 &&
+        !amount.isEmpty()) {
+      if (creditCardDAO.existsById(creditCard.getCreditID()) &&
+          ValidateCC.validateCard(creditCard.getCardNumber())) {
+        BigDecimal bdAmount = new BigDecimal(amount);
+        BigDecimal balance = new BigDecimal(creditCard.getBalance());
+
+
+        if (bdAmount != null && balance != null &&
+            bdAmount.compareTo(BigDecimal.ZERO) == 1) {
+          BigDecimal newBalance = balance.add(bdAmount);
+          Transaction complete = new Transaction();
+
+          complete.setAmount(amount);
+          complete.setType(transactionTypeDAO.findByType("Debit"));
+          complete.setTransactionDate(LocalDateTime.now());
+          complete.setUserAccount(
+            accountDAO.findByUser_id(creditCard.getUser().getId()));
+          complete.setTransactionAcctId(receiverAccountId);
+
+          if (newBalance.compareTo(new BigDecimal(creditCard.getCreditLimit())) <= 0) {
+
+            creditCard.setBalance(newBalance.toString());
+            creditCardDAO.save(creditCard);
+
+          } else {
+            creditCard.setBalance(creditCard.getCreditLimit());
+            creditCardDAO.save(creditCard);
+          }
+
+          transactionDAO.save(complete);
+          log.info("Completed CC credit transaction between customer ID: " +
+                   creditCard.getUser().getId() + " and receiver ID: " +
+                   receiverAccountId);
+
+          return complete;
+        }
+      } else {
+        log.warn("CC account does not exist or was not a valid card number");
       }
     }
 

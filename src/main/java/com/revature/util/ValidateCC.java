@@ -17,8 +17,9 @@ public class ValidateCC {
             digitOddSum(cardNumber) % 10 == 0);
   }
 
-  private static int getPrefix(String cardNumber, int prefixLength) {
-    return Integer.parseInt(cardNumber.substring(0, prefixLength));
+  private static int getPrefix(String cardNumber, int prefix) {
+    return Integer.parseInt(
+      cardNumber.substring(0, String.valueOf(prefix).length()));
   }
 
   private static boolean checkPrefix(String cardNumber, int prefix) {
@@ -29,7 +30,8 @@ public class ValidateCC {
     int sum = 0;
 
     for (int i = cardNumber.length() - 2; i >= 0; i -= 2) {
-      sum += processDigit(Integer.parseInt(String.valueOf(cardNumber.charAt(i))) * 2);
+      sum += processDigit(
+        Integer.parseInt(String.valueOf(cardNumber.charAt(i))) * 2);
     }
 
     return sum;
