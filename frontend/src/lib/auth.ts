@@ -26,7 +26,7 @@ export const authOptions: NextAuthOptions = {
           headers: { "Content-Type": "application/json" }
         })
         const userRes = await res.json();
-
+        const tokenTest = await userRes.token
         function parseJwt(token: string) {
           try {
             const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
@@ -36,7 +36,7 @@ export const authOptions: NextAuthOptions = {
             return null;
           }
         }
-
+        
         const userData = parseJwt(userRes.token)
         const user = {
           id: userData.id,
@@ -44,6 +44,7 @@ export const authOptions: NextAuthOptions = {
           firstName: userData.first_name,
           lastName: userData.last_name,
           role: userData.role,
+          token: tokenTest,
         }
         
         // If no error and we have user data, return it
@@ -74,6 +75,9 @@ export const authOptions: NextAuthOptions = {
       if (user?.role) {
         token.role = user.role;
       }
+      if(user?.token) {
+        token.token = user.token;
+      }
       return token
    },
    async session({session, token}) {
@@ -84,6 +88,7 @@ export const authOptions: NextAuthOptions = {
         session.user.firstName = token.firstName;
         session.user.lastName = token.lastName;
         session.user.role = token.role;
+        session.user.token = token.token;
       }
       return session;
    }

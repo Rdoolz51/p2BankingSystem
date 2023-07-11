@@ -5,7 +5,7 @@ import styles from './Navbar.module.css';
 import { FaUser } from "react-icons/fa6";
 import Modal from 'react-modal';
 import Image from 'next/image';
-import pursueLogo from '../../../public/pursueLogo.png';
+import pursueLogo from '../../../public/pursueLogo.png'
 
 
 interface UserProps {
@@ -13,16 +13,17 @@ interface UserProps {
   lastName: string;
   email: string;
   phoneNumber: string;
-  yearlyIncome: number;
+  income: string;
 }
 
 
-const Navbar: React.FC<UserProps> = ({ firstName, lastName, email, phoneNumber, yearlyIncome }) => {
+const Navbar: React.FC<UserProps> = ({firstName, lastName, email, phoneNumber, income}) => {
 
   const [isOpen, setIsOpen] = useState(false)
 
-  const toggleModal = () => setIsOpen(!isOpen);
+  
 
+  const toggleModal = () => setIsOpen(!isOpen);
   return (
     <nav className={styles.nav}>
       <div className={styles.logoContainer}>
@@ -51,7 +52,7 @@ const Navbar: React.FC<UserProps> = ({ firstName, lastName, email, phoneNumber, 
               <p>Last Name: {lastName}</p>
               <p>Email: {email}</p>
               <p>Phone Number: {phoneNumber}</p>
-              <p>Yearly Income: ${yearlyIncome}</p>
+              <p>Yearly Income: ${income}</p>
               <div><a className={styles.signOut} href="/auth/login">Sign Out</a></div>
             </Modal>
           </li>

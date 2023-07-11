@@ -1,27 +1,38 @@
 import YourAccounts from '@/components/yourAccounts/YourAccounts';
+import { authOptions } from '@/lib/auth';
+import { getServerSession } from 'next-auth/next';
 
 
 //This is the new version of getServerSideProps
 // https://nextjs.org/docs/app/building-your-application/data-fetching/fetching#async-and-await-in-server-components
 async function getData() {
-  // const res = await fetch('OUR_API_CALL_URL');
+  try {
+    const session = await getServerSession(authOptions);
+    const userToken = session?.user?.token;
+    console.log("bfgdgd",userToken)
+    const res = await fetch(`${process.env.API_URL}/mybank/accounts`, {
+      headers: {
+        Authorization: 'Bearer ' + userToken,
+        'Content-Type': 'application/json'
+      },
+    });
 
-  //FAKE DATA
-  const data = {
-    accountNumber:'1293912921394', 
-    initialBalance:50, 
-    accountType:'Checking',
+    if(res.ok) {
+      const data = await res.json();
+      return data;
+    }
+  } catch (e) {
+    console.error('no account', e)
+    return null;
   }
-
-  return data;
 }
 
 export default async function Page() {
-  const data = await getData();
-
+const data = await getData();
+console.log("DATAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", data)
   return (
     <main>
-      <YourAccounts {...data} />
+      <YourAccounts {...data}/>
     </main>
   )
 }
