@@ -52,7 +52,7 @@ public class AdminController {
     return new ResponseEntity<>(INVALID, HttpStatus.FORBIDDEN);
   }
 
-  @GetMapping("loan-pending")
+  @GetMapping("loans-pending")
   public ResponseEntity<?> getAllPendingLoanAppsHandler(
     @RequestHeader("Authorization") String token) {
     User user = userServices.checkUserToken(token);
