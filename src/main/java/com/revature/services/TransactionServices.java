@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Service
@@ -54,41 +55,52 @@ public class TransactionServices {
         !amount.isEmpty()) {
       if (creditCardDAO.existsById(creditCard.getCreditID()) &&
           ValidateCC.validateCard(creditCard.getCardNumber())) {
+        int monthNow = LocalDate.now().getMonthValue();
+        int yearNow = LocalDate.now().getYear() - 2000;
+        int month =
+          Integer.parseInt(creditCard.getCardExpiration().substring(0, 2));
+        int year =
+          Integer.parseInt(creditCard.getCardExpiration().substring(3, 5));
         BigDecimal bdAmount = new BigDecimal(amount);
         BigDecimal balance = new BigDecimal(creditCard.getBalance());
 
+        if (((year == yearNow) && (month >= monthNow)) || year > yearNow) {
+          if (bdAmount != null && balance != null &&
+              bdAmount.compareTo(BigDecimal.ZERO) == 1) {
+            BigDecimal newBalance = balance.subtract(bdAmount);
+            Transaction complete = new Transaction();
 
-        if (bdAmount != null && balance != null &&
-            bdAmount.compareTo(BigDecimal.ZERO) == 1) {
-          BigDecimal newBalance = balance.subtract(bdAmount);
-          Transaction complete = new Transaction();
+            complete.setAmount(amount);
+            complete.setType(transactionTypeDAO.findByType("Credit"));
+            complete.setTransactionDate(LocalDateTime.now());
+            complete.setUserAccount(
+              accountDAO.findByUser_id(creditCard.getUser().getId()));
+            complete.setTransactionAcctId(senderAccountId);
 
-          complete.setAmount(amount);
-          complete.setType(transactionTypeDAO.findByType("Credit"));
-          complete.setTransactionDate(LocalDateTime.now());
-          complete.setUserAccount(
-            accountDAO.findByUser_id(creditCard.getUser().getId()));
-          complete.setTransactionAcctId(senderAccountId);
+            if (newBalance.compareTo(BigDecimal.ZERO) >= 0) {
 
-          if (newBalance.compareTo(BigDecimal.ZERO) >= 0) {
+              creditCard.setBalance(newBalance.toString());
+              creditCardDAO.save(creditCard);
 
-            creditCard.setBalance(newBalance.toString());
-            creditCardDAO.save(creditCard);
+            } else {
+              creditCard.setBalance("0");
+              creditCardDAO.save(creditCard);
+            }
 
-          } else {
-            creditCard.setBalance("0");
-            creditCardDAO.save(creditCard);
+            transactionDAO.save(complete);
+            log.info("Completed CC debit transaction between customer ID: " +
+                     creditCard.getUser().getId() + " and receiver ID: " +
+                     senderAccountId);
+
+            return complete;
           }
-
-          transactionDAO.save(complete);
-          log.info("Completed CC debit transaction between customer ID: " +
-                   creditCard.getUser().getId() + " and receiver ID: " +
-                   senderAccountId);
-
-          return complete;
+        } else {
+          log.warn("Card is expired");
+          return null;
         }
       } else {
         log.warn("CC account does not exist or was not a valid card number");
+        return null;
       }
     }
 
@@ -110,45 +122,59 @@ public class TransactionServices {
         !amount.isEmpty()) {
       if (creditCardDAO.existsById(creditCard.getCreditID()) &&
           ValidateCC.validateCard(creditCard.getCardNumber())) {
+        int monthNow = LocalDate.now().getMonthValue();
+        int yearNow = LocalDate.now().getYear() - 2000;
+        int month =
+          Integer.parseInt(creditCard.getCardExpiration().substring(0, 2));
+        int year =
+          Integer.parseInt(creditCard.getCardExpiration().substring(3, 5));
         BigDecimal bdAmount = new BigDecimal(amount);
         BigDecimal balance = new BigDecimal(creditCard.getBalance());
 
+        if (((year == yearNow) && (month >= monthNow)) || year > yearNow) {
+          if (bdAmount != null && balance != null &&
+              bdAmount.compareTo(BigDecimal.ZERO) == 1) {
+            BigDecimal newBalance = balance.add(bdAmount);
+            Transaction complete = new Transaction();
 
-        if (bdAmount != null && balance != null &&
-            bdAmount.compareTo(BigDecimal.ZERO) == 1) {
-          BigDecimal newBalance = balance.add(bdAmount);
-          Transaction complete = new Transaction();
+            complete.setAmount(amount);
+            complete.setType(transactionTypeDAO.findByType("Debit"));
+            complete.setTransactionDate(LocalDateTime.now());
+            complete.setUserAccount(
+              accountDAO.findByUser_id(creditCard.getUser().getId()));
+            complete.setTransactionAcctId(receiverAccountId);
 
-          complete.setAmount(amount);
-          complete.setType(transactionTypeDAO.findByType("Debit"));
-          complete.setTransactionDate(LocalDateTime.now());
-          complete.setUserAccount(
-            accountDAO.findByUser_id(creditCard.getUser().getId()));
-          complete.setTransactionAcctId(receiverAccountId);
+            if (
+              newBalance.compareTo(
+                new BigDecimal(creditCard.getCreditLimit())) <=
+              0) {
 
-          if (newBalance.compareTo(new BigDecimal(creditCard.getCreditLimit())) <= 0) {
+              creditCard.setBalance(newBalance.toString());
+              creditCardDAO.save(creditCard);
 
-            creditCard.setBalance(newBalance.toString());
-            creditCardDAO.save(creditCard);
+            } else {
+              creditCard.setBalance(creditCard.getCreditLimit());
+              creditCardDAO.save(creditCard);
+            }
 
-          } else {
-            creditCard.setBalance(creditCard.getCreditLimit());
-            creditCardDAO.save(creditCard);
+            transactionDAO.save(complete);
+            log.info("Completed CC credit transaction between customer ID: " +
+                     creditCard.getUser().getId() + " and receiver ID: " +
+                     receiverAccountId);
+
+            return complete;
           }
-
-          transactionDAO.save(complete);
-          log.info("Completed CC credit transaction between customer ID: " +
-                   creditCard.getUser().getId() + " and receiver ID: " +
-                   receiverAccountId);
-
-          return complete;
+        } else {
+          log.warn("Card is expired");
+          return null;
         }
       } else {
         log.warn("CC account does not exist or was not a valid card number");
+        return null;
       }
     }
 
-    log.warn("Could not complete CC credit transaction");
+    log.warn("Could not complete CC debit transaction");
     return null;
   }
 }
