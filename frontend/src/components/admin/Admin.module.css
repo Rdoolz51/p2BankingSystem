@@ -2,6 +2,7 @@
   display: flex;
   margin-bottom: 0;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .buttonContainer button {
@@ -39,3 +40,4 @@
   box-shadow: inset 200px 0 0 0 rgba(93, 66, 116, 0.399) !important;
   outline: 1px solid rgb(93, 66, 116);
 }
+

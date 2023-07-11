@@ -41,3 +41,27 @@ export const getPendingCreditCards = async (token:String) => {
     return null;
   }
 }
+
+export const approveOrDenyLoan = async (token:String, data:any) => {
+  try {
+    const res = await fetch(`${process.env.API_URL}/admin/loans`, {
+      method: 'PUT',
+      headers: {
+        Authorization: 'Bearer ' + token,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data),
+    });
+
+    if(res.ok) {
+      const data = await res.json();
+      return data;
+    } else {
+      console.error('Something went wrong (/loans) ')
+      return null;
+    }
+  } catch (e) {
+    console.error('Something went wrong doing loan stuff: ', e)
+    return null;
+  }
+}
