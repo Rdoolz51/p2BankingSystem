@@ -236,4 +236,8 @@ public class AccountServices {
   public List<CreditCard> getAllUserCards(User user) {
     return creditCardDAO.findByUser_Id(user.getId());
   }
+
+  public List<Loan> getAllUserLoans(User user) {
+    return loanDAO.findByUser_Id(user.getId());
+  }
 }
