@@ -4,6 +4,8 @@ import Link from 'next/link';
 import styles from './Navbar.module.css';
 import { FaUser } from "react-icons/fa6";
 import Modal from 'react-modal';
+import Image from 'next/image';
+import pursueLogo from '../../../public/pursueLogo.png'
 
 
 interface UserProps {
@@ -26,9 +28,12 @@ const Navbar: React.FC<UserProps> = ({firstName, lastName, email, phoneNumber, i
   const toggleModal = () => setIsOpen(!isOpen);
   return (
     <nav className={styles.nav}>
-      <Link legacyBehavior href={"/"}>
-        <a><h1 className={styles.companyName}>Pursue</h1></a>
-      </Link>
+      <div className={styles.logoContainer}>
+        <Link legacyBehavior href={"/"}>
+          <a><h1 className={styles.companyName}>Pursue</h1></a>
+        </Link>
+        <Image className={styles.logo} src={pursueLogo} alt="Pursue logo" />
+      </div>
       <ul>
         <li>
           <Link legacyBehavior href="/mybank">
