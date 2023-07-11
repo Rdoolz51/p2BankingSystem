@@ -11,7 +11,6 @@ const names = {
   loans: 'loans',
 }
 
-
 const MyBankHome: React.FC<any> = (props:any) => {
   // const [selector, setSelector] = useState('')
   const [activeButton, setActiveButton] = useState('')
@@ -20,7 +19,6 @@ const MyBankHome: React.FC<any> = (props:any) => {
     setActiveButton(e.target.name)
   }
 
-  console.log(activeButton);
 
   return (
     <main>
@@ -53,19 +51,19 @@ const MyBankHome: React.FC<any> = (props:any) => {
 
       <div>
         {activeButton === names.accounts && 
-          <YourAccounts {...props} />
+          <YourAccounts {...props[0]} />
         }
       </div>
 
       <div>
         {activeButton === names.cards &&
-          <YourCards {...props} />
+          <YourCards {...props[0]} />
         }
       </div>
 
       <div>
         {activeButton === names.loans && 
-          <YourAccounts {...props} />
+          <YourAccounts {...props[0]} />
         }
       </div>
     
