@@ -1,0 +1,295 @@
+2023-07-10 10:39:02.012  INFO 14152 --- [restartedMain] com.revature.P2BankingSystemApplication  : Starting P2BankingSystemApplication using Java 20.0.1 on Temu with PID 14152 (C:\Users\temurich\Desktop\p2BankingSystem\target\classes started by temurich in C:\Users\temurich\Desktop\p2BankingSystem)
+2023-07-10 10:39:02.035  INFO 14152 --- [restartedMain] com.revature.P2BankingSystemApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-07-10 10:39:02.259  INFO 14152 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-10 10:39:02.259  INFO 14152 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-10 10:39:04.698  INFO 14152 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-10 10:39:04.963  INFO 14152 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 246 ms. Found 8 JPA repository interfaces.
+2023-07-10 10:39:07.475  INFO 14152 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-10 10:39:07.492  INFO 14152 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-10 10:39:07.494  INFO 14152 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.76]
+2023-07-10 10:39:07.619  INFO 14152 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-10 10:39:07.620  INFO 14152 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5358 ms
+2023-07-10 10:39:08.319  INFO 14152 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-10 10:39:08.395  INFO 14152 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-07-10 10:39:08.627  INFO 14152 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-07-10 10:39:08.753  INFO 14152 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-07-10 10:39:09.227  INFO 14152 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-07-10 10:39:09.287  INFO 14152 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2023-07-10 10:39:11.025  WARN 14152 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-07-10 10:39:11.027  WARN 14152 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "uk_6dotkott2kjsp8vw4d0m25fb7" of relation "users" does not exist, skipping
+2023-07-10 10:39:11.030  WARN 14152 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2023-07-10 10:39:11.030  WARN 14152 --- [restartedMain] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint "uk_9q63snka3mdh91as4io72espi" of relation "users" does not exist, skipping
+2023-07-10 10:39:11.059  INFO 14152 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-10 10:39:11.070  INFO 14152 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-10 10:39:12.901  WARN 14152 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-10 10:39:13.788  INFO 14152 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@72a6e86b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@22199445, org.springframework.security.web.context.SecurityContextPersistenceFilter@777dc047, org.springframework.security.web.header.HeaderWriterFilter@6a0eef3d, org.springframework.web.filter.CorsFilter@81451f7, org.springframework.security.web.authentication.logout.LogoutFilter@912467f, com.revature.security.JWTFilter@50122813, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@71442567, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1b0f32fb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@128e4b8a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@304cd7c, org.springframework.security.web.session.SessionManagementFilter@55ef8710, org.springframework.security.web.access.ExceptionTranslationFilter@65cc3221, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@58c75136]
+2023-07-10 10:39:14.218  INFO 14152 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-10 10:39:14.289  INFO 14152 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-10 10:39:14.317  INFO 14152 --- [restartedMain] com.revature.P2BankingSystemApplication  : Started P2BankingSystemApplication in 13.64 seconds (JVM running for 14.998)
+2023-07-10 12:29:48.129  INFO 14152 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-10 12:29:48.239  INFO 14152 --- [Thread-5] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-10 12:29:48.320  WARN 14152 --- [Thread-5] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1758)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1623)
+2023-07-10 12:29:48.366  INFO 14152 --- [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-10 12:29:48.410  INFO 14152 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-07-10 12:29:48.424  INFO 14152 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-07-10 12:29:49.078  INFO 14152 --- [restartedMain] com.revature.P2BankingSystemApplication  : Starting P2BankingSystemApplication using Java 20.0.1 on Temu with PID 14152 (C:\Users\temurich\Desktop\p2BankingSystem\target\classes started by temurich in C:\Users\temurich\Desktop\p2BankingSystem)
+2023-07-10 12:29:49.080  INFO 14152 --- [restartedMain] com.revature.P2BankingSystemApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-07-10 12:29:50.283  INFO 14152 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-10 12:29:50.386  INFO 14152 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 95 ms. Found 8 JPA repository interfaces.
+2023-07-10 12:29:51.156  INFO 14152 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-07-10 12:29:51.172  INFO 14152 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-10 12:29:51.173  INFO 14152 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.76]
+2023-07-10 12:29:51.258  INFO 14152 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-10 12:29:51.259  INFO 14152 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2103 ms
+2023-07-10 12:29:51.693  INFO 13124 --- [restartedMain] com.revature.P2BankingSystemApplication  : Starting P2BankingSystemApplication using Java 20.0.1 on Temu with PID 13124 (C:\Users\temurich\Desktop\p2BankingSystem\target\classes started by temurich in C:\Users\temurich\Desktop\p2BankingSystem)
+2023-07-10 12:29:51.698  INFO 13124 --- [restartedMain] com.revature.P2BankingSystemApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-07-10 12:29:51.773  INFO 14152 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-10 12:29:51.821  INFO 14152 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2023-07-10 12:29:51.986  INFO 14152 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2023-07-10 12:29:51.988  INFO 14152 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2023-07-10 12:29:52.011  INFO 13124 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-10 12:29:52.014  INFO 13124 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-10 12:29:53.153  INFO 14152 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-10 12:29:53.157  INFO 14152 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-10 12:29:55.130  INFO 13124 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-10 12:29:55.427  INFO 13124 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 272 ms. Found 8 JPA repository interfaces.
+2023-07-10 12:29:55.521  WARN 14152 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-10 12:29:55.912  INFO 14152 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6d5eaf74, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@d24ebde, org.springframework.security.web.context.SecurityContextPersistenceFilter@544fa86f, org.springframework.security.web.header.HeaderWriterFilter@89bb09a, org.springframework.web.filter.CorsFilter@7d08e475, org.springframework.security.web.authentication.logout.LogoutFilter@c7ec57c, com.revature.security.JWTFilter@f092fb4, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@3c4e6fcf, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3bc37d8a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6e091508, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@32f7cc0c, org.springframework.security.web.session.SessionManagementFilter@74f3f8b9, org.springframework.security.web.access.ExceptionTranslationFilter@46853cd0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@58eba5d]
+2023-07-10 12:29:56.287  INFO 14152 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-10 12:29:56.378  INFO 14152 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-10 12:29:56.415  INFO 14152 --- [restartedMain] com.revature.P2BankingSystemApplication  : Started P2BankingSystemApplication in 7.732 seconds (JVM running for 6657.096)
+2023-07-10 12:29:56.462  INFO 14152 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-10 12:29:57.690  INFO 13124 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-07-10 12:29:57.716  INFO 13124 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-10 12:29:57.717  INFO 13124 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.76]
+2023-07-10 12:29:58.077  INFO 13124 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-10 12:29:58.078  INFO 13124 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6062 ms
+2023-07-10 12:29:58.867  INFO 13124 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-10 12:29:58.939  INFO 13124 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-07-10 12:29:59.206  INFO 13124 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-07-10 12:29:59.471  INFO 13124 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-07-10 12:30:00.169  INFO 13124 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-07-10 12:30:00.242  INFO 13124 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2023-07-10 12:30:02.465  INFO 13124 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-10 12:30:02.479  INFO 13124 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-10 12:30:04.592  WARN 13124 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-10 12:30:05.488  INFO 13124 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3a1e55a5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1aa2cf05, org.springframework.security.web.context.SecurityContextPersistenceFilter@3552815, org.springframework.security.web.header.HeaderWriterFilter@31ec552c, org.springframework.web.filter.CorsFilter@b067184, org.springframework.security.web.authentication.logout.LogoutFilter@41d7412a, com.revature.security.JWTFilter@5996b8f3, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@18170172, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@26005b35, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@59f861fa, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@17355228, org.springframework.security.web.session.SessionManagementFilter@49478d6, org.springframework.security.web.access.ExceptionTranslationFilter@3e379512, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@49ffa970]
+2023-07-10 12:30:05.941  WARN 13124 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2023-07-10 12:30:05.999  WARN 13124 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+2023-07-10 12:30:06.012  INFO 13124 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-10 12:30:06.024  INFO 13124 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-07-10 12:30:06.043  INFO 13124 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-07-10 12:30:06.059  INFO 13124 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-10 12:30:06.097  INFO 13124 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-07-10 12:30:06.125 ERROR 13124 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2023-07-10 12:31:07.978  INFO 14152 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-10 12:31:07.998  INFO 14152 --- [Thread-7] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-10 12:31:08.013  WARN 14152 --- [Thread-7] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-2 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1758)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1623)
+2023-07-10 12:31:08.029  INFO 14152 --- [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-10 12:31:08.035  INFO 14152 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2023-07-10 12:31:08.048  INFO 14152 --- [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2023-07-10 12:31:08.519  INFO 14152 --- [restartedMain] com.revature.P2BankingSystemApplication  : Starting P2BankingSystemApplication using Java 20.0.1 on Temu with PID 14152 (C:\Users\temurich\Desktop\p2BankingSystem\target\classes started by temurich in C:\Users\temurich\Desktop\p2BankingSystem)
+2023-07-10 12:31:08.524  INFO 14152 --- [restartedMain] com.revature.P2BankingSystemApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-07-10 12:31:09.170  INFO 14152 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-10 12:31:09.243  INFO 14152 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 71 ms. Found 8 JPA repository interfaces.
+2023-07-10 12:31:09.518  INFO 13828 --- [restartedMain] com.revature.P2BankingSystemApplication  : Starting P2BankingSystemApplication using Java 20.0.1 on Temu with PID 13828 (C:\Users\temurich\Desktop\p2BankingSystem\target\classes started by temurich in C:\Users\temurich\Desktop\p2BankingSystem)
+2023-07-10 12:31:09.521  INFO 13828 --- [restartedMain] com.revature.P2BankingSystemApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-07-10 12:31:09.602  INFO 14152 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-10 12:31:09.608  INFO 14152 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-10 12:31:09.609  INFO 14152 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.76]
+2023-07-10 12:31:09.753  INFO 14152 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-10 12:31:09.760  INFO 14152 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1209 ms
+2023-07-10 12:31:09.817  INFO 13828 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-10 12:31:09.818  INFO 13828 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-10 12:31:09.965  INFO 14152 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-10 12:31:09.999  INFO 14152 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2023-07-10 12:31:10.102  INFO 14152 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2023-07-10 12:31:10.104  INFO 14152 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2023-07-10 12:31:10.963  INFO 14152 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-10 12:31:10.966  INFO 14152 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-10 12:31:11.497  WARN 14152 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-10 12:31:11.619  INFO 14152 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7ae67fbe, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7fd06aa9, org.springframework.security.web.context.SecurityContextPersistenceFilter@12d8be4, org.springframework.security.web.header.HeaderWriterFilter@40a58be3, org.springframework.web.filter.CorsFilter@3cb8b021, org.springframework.security.web.authentication.logout.LogoutFilter@32d9bfef, com.revature.security.JWTFilter@62e1e91d, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@c41e938, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@94f8505, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6559fd5c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3f3386a7, org.springframework.security.web.session.SessionManagementFilter@56ed9906, org.springframework.security.web.access.ExceptionTranslationFilter@57cbe420, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1b5b1e0c]
+2023-07-10 12:31:11.688  INFO 13828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-10 12:31:11.712  INFO 14152 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-10 12:31:11.772  INFO 14152 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2023-07-10 12:31:11.871  INFO 14152 --- [restartedMain] com.revature.P2BankingSystemApplication  : Started P2BankingSystemApplication in 3.686 seconds (JVM running for 6732.553)
+2023-07-10 12:31:11.877  INFO 14152 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-10 12:31:11.901  INFO 13828 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 199 ms. Found 8 JPA repository interfaces.
+2023-07-10 12:31:13.904  INFO 13828 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2023-07-10 12:31:13.927  INFO 13828 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-10 12:31:13.928  INFO 13828 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.76]
+2023-07-10 12:31:14.069  INFO 13828 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-10 12:31:14.070  INFO 13828 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4252 ms
+2023-07-10 12:31:14.678  INFO 13828 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-10 12:31:14.755  INFO 13828 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-07-10 12:31:14.987  INFO 13828 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-07-10 12:31:15.111  INFO 13828 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-07-10 12:31:15.574  INFO 13828 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-07-10 12:31:15.636  INFO 13828 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2023-07-10 12:31:17.423  INFO 13828 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-10 12:31:17.436  INFO 13828 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-10 12:31:19.148  WARN 13828 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-10 12:31:19.645  INFO 13828 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2a204fea, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3bf3b6c8, org.springframework.security.web.context.SecurityContextPersistenceFilter@3dd06d18, org.springframework.security.web.header.HeaderWriterFilter@16372cd6, org.springframework.web.filter.CorsFilter@a4ce7f, org.springframework.security.web.authentication.logout.LogoutFilter@74581805, com.revature.security.JWTFilter@14dd375d, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@32b47ed8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@793917d9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@e38bf83, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@12a1e57e, org.springframework.security.web.session.SessionManagementFilter@2cb56853, org.springframework.security.web.access.ExceptionTranslationFilter@1d425c85, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@52817a60]
+2023-07-10 12:31:20.083  WARN 13828 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2023-07-10 12:31:20.120  WARN 13828 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 9090 is already in use
+2023-07-10 12:31:20.132  INFO 13828 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-10 12:31:20.142  INFO 13828 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-07-10 12:31:20.156  INFO 13828 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-07-10 12:31:20.166  INFO 13828 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-10 12:31:20.196  INFO 13828 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-07-10 12:31:20.219 ERROR 13828 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 9090 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 9090 or configure this application to listen on another port.
+
+2023-07-10 12:31:41.044  INFO 14152 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-07-10 12:31:41.065  INFO 14152 --- [Thread-11] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-10 12:31:41.083  WARN 14152 --- [Thread-11] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-3 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.base/jdk.internal.misc.Unsafe.park(Native Method)
+ java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
+ java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1758)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
+ java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
+ java.base/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
+ java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+ java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+ java.base/java.lang.Thread.run(Thread.java:1623)
+2023-07-10 12:31:41.109  INFO 14152 --- [Thread-11] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-10 12:31:41.111  INFO 14152 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2023-07-10 12:31:41.126  INFO 14152 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2023-07-10 12:31:41.399  INFO 14152 --- [restartedMain] com.revature.P2BankingSystemApplication  : Starting P2BankingSystemApplication using Java 20.0.1 on Temu with PID 14152 (C:\Users\temurich\Desktop\p2BankingSystem\target\classes started by temurich in C:\Users\temurich\Desktop\p2BankingSystem)
+2023-07-10 12:31:41.401  INFO 14152 --- [restartedMain] com.revature.P2BankingSystemApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-07-10 12:31:41.947  INFO 14152 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-10 12:31:42.034  INFO 14152 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 84 ms. Found 8 JPA repository interfaces.
+2023-07-10 12:31:42.515  INFO 14152 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 6060 (http)
+2023-07-10 12:31:42.541  INFO 14152 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-10 12:31:42.542  INFO 14152 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.76]
+2023-07-10 12:31:42.614  INFO 14152 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-10 12:31:42.615  INFO 14152 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1203 ms
+2023-07-10 12:31:42.619  INFO 12364 --- [restartedMain] com.revature.P2BankingSystemApplication  : Starting P2BankingSystemApplication using Java 20.0.1 on Temu with PID 12364 (C:\Users\temurich\Desktop\p2BankingSystem\target\classes started by temurich in C:\Users\temurich\Desktop\p2BankingSystem)
+2023-07-10 12:31:42.623  INFO 12364 --- [restartedMain] com.revature.P2BankingSystemApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-07-10 12:31:42.854  INFO 14152 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-10 12:31:42.859  INFO 12364 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-10 12:31:42.860  INFO 12364 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-10 12:31:42.879  INFO 14152 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2023-07-10 12:31:42.983  INFO 14152 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2023-07-10 12:31:42.985  INFO 14152 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2023-07-10 12:31:43.774  INFO 14152 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-10 12:31:43.777  INFO 14152 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-10 12:31:44.490  WARN 14152 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-10 12:31:44.622  INFO 14152 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7161cd80, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3f91b81d, org.springframework.security.web.context.SecurityContextPersistenceFilter@2f9c6b94, org.springframework.security.web.header.HeaderWriterFilter@617e8c98, org.springframework.web.filter.CorsFilter@5ae20aa5, org.springframework.security.web.authentication.logout.LogoutFilter@26e0350f, com.revature.security.JWTFilter@2d310e05, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@4c413fb3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3d69bb5c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2866ea25, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1f9b1aed, org.springframework.security.web.session.SessionManagementFilter@e699430, org.springframework.security.web.access.ExceptionTranslationFilter@29377a09, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2a49ebe9]
+2023-07-10 12:31:44.949  INFO 12364 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-10 12:31:44.957  INFO 14152 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-10 12:31:45.024  INFO 14152 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 6060 (http) with context path ''
+2023-07-10 12:31:45.067  INFO 14152 --- [restartedMain] com.revature.P2BankingSystemApplication  : Started P2BankingSystemApplication in 3.784 seconds (JVM running for 6765.726)
+2023-07-10 12:31:45.088  INFO 14152 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-07-10 12:31:45.253  INFO 12364 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 288 ms. Found 8 JPA repository interfaces.
+2023-07-10 12:31:47.299  INFO 12364 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 6060 (http)
+2023-07-10 12:31:47.318  INFO 12364 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-10 12:31:47.319  INFO 12364 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.76]
+2023-07-10 12:31:47.446  INFO 12364 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-10 12:31:47.447  INFO 12364 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4586 ms
+2023-07-10 12:31:48.052  INFO 12364 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-10 12:31:48.137  INFO 12364 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-07-10 12:31:48.410  INFO 12364 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-07-10 12:31:48.522  INFO 12364 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-07-10 12:31:48.907  INFO 12364 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-07-10 12:31:48.960  INFO 12364 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2023-07-10 12:31:50.798  INFO 12364 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-10 12:31:50.812  INFO 12364 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-10 12:31:52.651  WARN 12364 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-10 12:31:53.121  INFO 12364 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3ddb5552, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@a897beb, org.springframework.security.web.context.SecurityContextPersistenceFilter@7ddb030d, org.springframework.security.web.header.HeaderWriterFilter@4dcac575, org.springframework.web.filter.CorsFilter@342e8a58, org.springframework.security.web.authentication.logout.LogoutFilter@636c52fc, com.revature.security.JWTFilter@371281f9, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@2a03bcce, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@303eaefa, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@521b6262, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@16d2932a, org.springframework.security.web.session.SessionManagementFilter@24619fb1, org.springframework.security.web.access.ExceptionTranslationFilter@69d5b12d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@dbe4964]
+2023-07-10 12:31:53.523  WARN 12364 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2023-07-10 12:31:53.565  WARN 12364 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 6060 is already in use
+2023-07-10 12:31:53.582  INFO 12364 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-10 12:31:53.593  INFO 12364 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-07-10 12:31:53.605  INFO 12364 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-07-10 12:31:53.616  INFO 12364 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-07-10 12:31:53.644  INFO 12364 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2023-07-10 12:31:53.673 ERROR 12364 --- [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 6060 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 6060 or configure this application to listen on another port.
+
+2023-07-10 12:35:02.996  INFO 13188 --- [restartedMain] com.revature.P2BankingSystemApplication  : Starting P2BankingSystemApplication using Java 20.0.1 on Temu with PID 13188 (C:\Users\temurich\Desktop\p2BankingSystem\target\classes started by temurich in C:\Users\temurich\Desktop\p2BankingSystem)
+2023-07-10 12:35:03.001  INFO 13188 --- [restartedMain] com.revature.P2BankingSystemApplication  : No active profile set, falling back to 1 default profile: "default"
+2023-07-10 12:35:03.220  INFO 13188 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-07-10 12:35:03.221  INFO 13188 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-07-10 12:35:04.769  INFO 13188 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-10 12:35:04.922  INFO 13188 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 138 ms. Found 8 JPA repository interfaces.
+2023-07-10 12:35:07.947  INFO 13188 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-07-10 12:35:07.966  INFO 13188 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-10 12:35:07.967  INFO 13188 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.76]
+2023-07-10 12:35:08.082  INFO 13188 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-10 12:35:08.083  INFO 13188 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4861 ms
+2023-07-10 12:35:08.712  INFO 13188 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-10 12:35:08.779  INFO 13188 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2023-07-10 12:35:09.003  INFO 13188 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2023-07-10 12:35:09.126  INFO 13188 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-07-10 12:35:09.557  INFO 13188 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-07-10 12:35:09.609  INFO 13188 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2023-07-10 12:35:11.746  INFO 13188 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-10 12:35:11.757  INFO 13188 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-10 12:35:13.449  WARN 13188 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-10 12:35:13.943  INFO 13188 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@240f0fa, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@278ab2e3, org.springframework.security.web.context.SecurityContextPersistenceFilter@d6b6930, org.springframework.security.web.header.HeaderWriterFilter@358a07d0, org.springframework.web.filter.CorsFilter@458af465, org.springframework.security.web.authentication.logout.LogoutFilter@27eb3b33, com.revature.security.JWTFilter@33dfd211, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@304cd7c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7bccdbe6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@491f09c4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6160f5f9, org.springframework.security.web.session.SessionManagementFilter@2f2224fa, org.springframework.security.web.access.ExceptionTranslationFilter@67c40e74, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2fecb942]
+2023-07-10 12:35:14.347  INFO 13188 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-07-10 12:35:14.421  INFO 13188 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-10 12:35:14.450  INFO 13188 --- [restartedMain] com.revature.P2BankingSystemApplication  : Started P2BankingSystemApplication in 12.38 seconds (JVM running for 13.448)
+2023-07-10 12:37:49.553  INFO 13188 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-10 12:37:49.587  INFO 13188 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-07-10 12:37:49.607  INFO 13188 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
