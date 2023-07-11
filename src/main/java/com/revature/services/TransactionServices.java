@@ -1,9 +1,11 @@
 package com.revature.services;
 
 import com.revature.daos.AccountDAO;
+import com.revature.daos.CreditCardDAO;
 import com.revature.daos.TransactionDAO;
 import com.revature.daos.TransactionTypeDAO;
 import com.revature.models.Account;
+import com.revature.models.CreditCard;
 import com.revature.models.Transaction;
 import com.revature.models.User;
 import lombok.extern.slf4j.Slf4j;
@@ -22,15 +24,17 @@ public class TransactionServices {
 
   private final TransactionDAO transactionDAO;
   private final TransactionTypeDAO transactionTypeDAO;
+  private final CreditCardDAO creditCardDAO;
 
   private final AccountDAO accountDAO;
 
   @Autowired
   public TransactionServices(TransactionDAO transactionDAO,
                              TransactionTypeDAO transactionTypeDAO,
-                             AccountDAO accountDAO) {
+                             CreditCardDAO creditCardDAO, AccountDAO accountDAO) {
     this.transactionDAO = transactionDAO;
     this.transactionTypeDAO = transactionTypeDAO;
+    this.creditCardDAO = creditCardDAO;
     this.accountDAO = accountDAO;
   }
 
@@ -77,36 +81,41 @@ public class TransactionServices {
   /**
    * Records a credit to the customer's CC.
    *
-   * @param user the user to be credited
+   * @param creditCard      the cc to be credited
    * @param senderAccountId the account id to be debited
-   * @param amount the amount of the transaction
+   * @param amount          the amount of the transaction
    * @return Transaction object if successful; otherwise null
    */
-  public Transaction creditUserCC(User user, int senderAccountId,
-                                 String amount) {
-    if (user != null && senderAccountId > 0 && !amount.isEmpty()) {
-      BigDecimal bdAmount = new BigDecimal(amount);
-      Account customerAcct = accountDAO.findByUser_id(user.getId());
+  public Transaction creditUserCC(CreditCard creditCard,
+                                  int senderAccountId, String amount) {
+    if (creditCard != null && senderAccountId > 0 &&
+        !amount.isEmpty()) {
+      if (creditCardDAO.existsById(creditCard.getCreditID())) {
+        BigDecimal bdAmount = new BigDecimal(amount);
+        BigDecimal balance = new BigDecimal(creditCard.getBalance());
 
-      if (bdAmount != null && customerAcct != null &&
-          bdAmount.compareTo(BigDecimal.ZERO) == 1) {
-        BigDecimal balance = new BigDecimal(customerAcct.getBalance());
 
-        customerAcct.setBalance(balance.add(bdAmount).toString());
+        if (bdAmount != null && balance != null && bdAmount.compareTo(BigDecimal.ZERO) == 1) {
+          BigDecimal newBalance = balance.subtract(bdAmount);
 
-        Transaction complete = new Transaction();
+          if (newBalance.compareTo(BigDecimal.ZERO) >= 0) {
+            Transaction complete = new Transaction();
 
-        complete.setAmount(amount);
-        complete.setType(transactionTypeDAO.findByType("Credit"));
-        complete.setTransactionDate(LocalDateTime.now());
-        complete.setUserAccount(customerAcct);
-        complete.setTransactionAcctId(senderAccountId);
+            complete.setAmount(amount);
+            complete.setType(transactionTypeDAO.findByType("Credit"));
+            complete.setTransactionDate(LocalDateTime.now());
+            complete.setUserAccount(accountDAO.findByUser_id(creditCard.getUser().getId()));
+            complete.setTransactionAcctId(senderAccountId);
 
-        transactionDAO.save(complete);
-        log.info("Completed CC credit transaction between customer ID: " +
-                 user.getId() + " and receiver ID: " + senderAccountId);
+            transactionDAO.save(complete);
+            log.info("Completed CC credit transaction between customer ID: " +
+                     creditCard.getUser().getId() + " and receiver ID: " + senderAccountId);
 
-        return complete;
+            return complete;
+          }
+        }
+      } else {
+        log.warn("CC account does not exist");
       }
     }
 
