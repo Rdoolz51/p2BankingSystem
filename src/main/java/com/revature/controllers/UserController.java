@@ -322,4 +322,17 @@ public class UserController {
 
     return new ResponseEntity(INVALID, HttpStatus.FORBIDDEN);
   }
+
+  @GetMapping("cards")
+  public ResponseEntity<?> getUserCardsHandler(
+    @RequestHeader("Authorization") String token) {
+    User user = userServices.checkUserToken(token);
+
+    if (user != null) {
+      return new ResponseEntity<>(accountServices.getAllUserCards(user),
+                                  HttpStatus.OK);
+    }
+
+    return new ResponseEntity(INVALID, HttpStatus.FORBIDDEN);
+  }
 }

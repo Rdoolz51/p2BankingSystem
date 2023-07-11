@@ -232,4 +232,8 @@ public class AccountServices {
     log.warn("Credit card application could not be completed");
     return null;
   }
+
+  public List<CreditCard> getAllUserCards(User user) {
+    return creditCardDAO.findByUser_Id(user.getId());
+  }
 }
