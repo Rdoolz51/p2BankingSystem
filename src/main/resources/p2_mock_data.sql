@@ -236,7 +236,9 @@
   INSERT INTO transaction_types ("type")
   VALUES ('Withdrawal'),
          ('Deposit'),
-         ('Fee');
+         ('Fee'),
+         ('Debit'),
+         ('Credit');
 
   INSERT INTO transactions (amount, transaction_date, type_type_id, sender_account_account_id, receiver_account_id) VALUES
       ('1000.00', CURRENT_DATE - INTERVAL '2 months', 1, 3, 7),

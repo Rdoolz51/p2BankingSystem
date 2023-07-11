@@ -10,6 +10,7 @@ import java.util.List;
 
 @Repository
 public interface AccountDAO extends JpaRepository<Account, Integer> {
+  Account findByUser_id(int cid);
   List<Account> findByUser(User user);
   List<Account> findByType(AccountType type);
 }

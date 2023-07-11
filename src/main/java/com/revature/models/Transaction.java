@@ -1,11 +1,9 @@
 package com.revature.models;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
 import javax.persistence.*;
 
 @Data
@@ -26,10 +24,10 @@ public class Transaction {
     private TransactionType type;
 
     @Column(name = "transaction_date", nullable = false)
-    private Date transactionDate;
+    private LocalDateTime transactionDate;
 
     @ManyToOne(targetEntity = Account.class)
-    private Account senderAccount;
+    private Account userAccount;
 
-    private int receiverAccountId;
+    private int transactionAcctId;
 }
