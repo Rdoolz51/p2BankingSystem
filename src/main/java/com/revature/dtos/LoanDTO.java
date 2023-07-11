@@ -1,14 +1,13 @@
 package com.revature.dtos;
 
-import com.revature.models.Account;
+import com.revature.models.LoanType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.math.BigDecimal;
-
 @AllArgsConstructor
 @Data
-public class AccountTransactionDTO {
-  private int accountId;
+public class LoanDTO {
   private String amount;
+  private LoanType type;
+  private String interestRate;
 }

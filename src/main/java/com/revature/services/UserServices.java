@@ -34,11 +34,20 @@ public class UserServices {
     this.tokenGenerator = tokenGenerator;
   }
 
+  /**
+   *
+   * @return
+   */
   public List<User> getAllUsers() {
     log.info("Retrieved all users");
     return userDAO.findAll();
   }
 
+  /**
+   *
+   * @param id
+   * @return
+   */
   public User getUserById(int id) {
     if (id > 0 && userDAO.existsById(id)) {
       Optional<User> user = userDAO.findById(id);
@@ -54,6 +63,11 @@ public class UserServices {
     return null;
   }
 
+  /**
+   *
+   * @param email
+   * @return
+   */
   public User getUserByEmail(String email) {
     if (email != null && !email.isEmpty()) {
       log.info("Retrieved user with email: " + email);
@@ -65,6 +79,12 @@ public class UserServices {
     return null;
   }
 
+  /**
+   *
+   * @param user
+   * @param updated
+   * @return
+   */
   public User updateUser(User user, User updated) {
     if (user == null || updated == null) {
       log.warn("User object received was null");
@@ -97,6 +117,11 @@ public class UserServices {
       "User update could not be completed using " + user);
   }
 
+  /**
+   *
+   * @param user
+   * @return
+   */
   public boolean deleteUser(User user) {
     if (user == null) {
       log.warn("User object received was null");
@@ -114,6 +139,11 @@ public class UserServices {
     }
   }
 
+  /**
+   *
+   * @param token
+   * @return
+   */
   public User checkUserToken(String token) {
     String email = tokenGenerator.getEmailFromToken(token);
     User user = userDAO.findByEmail(email);
