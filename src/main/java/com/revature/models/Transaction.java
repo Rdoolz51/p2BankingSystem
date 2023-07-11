@@ -31,6 +31,5 @@ public class Transaction {
     @ManyToOne(targetEntity = Account.class)
     private Account senderAccount;
 
-    @ManyToOne(targetEntity = Account.class)
-    private Account receiverAccount;
+    private int receiverAccountId;
 }

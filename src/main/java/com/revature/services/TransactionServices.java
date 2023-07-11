@@ -3,6 +3,8 @@ package com.revature.services;
 import com.revature.daos.AccountDAO;
 import com.revature.daos.TransactionDAO;
 import com.revature.models.Account;
+import com.revature.models.Transaction;
+import com.revature.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -24,5 +26,9 @@ public class TransactionServices {
                              AccountDAO accountDAO) {
     this.transactionDAO = transactionDAO;
     this.accountDAO = accountDAO;
+  }
+
+  public Transaction debitUserCC(User user, int ReceiverAccountId) {
+    return null;
   }
 }

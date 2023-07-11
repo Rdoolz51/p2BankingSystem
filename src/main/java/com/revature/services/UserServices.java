@@ -4,15 +4,12 @@ import com.revature.daos.AccountDAO;
 import com.revature.daos.AddressDAO;
 import com.revature.daos.UserDAO;
 import com.revature.exceptions.UserUpdateException;
-import com.revature.models.Address;
 import com.revature.models.User;
 import com.revature.security.TokenGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,15 +18,15 @@ import java.util.Optional;
 public class UserServices {
 
   private final UserDAO userDAO;
-  private final AddressDAO adddressDAO;
+  private final AddressDAO addressDAO;
   private final AccountDAO accountDAO;
   private final TokenGenerator tokenGenerator;
 
   @Autowired
-  public UserServices(UserDAO userDAO, AddressDAO adddressDAO, AccountDAO accountDAO,
+  public UserServices(UserDAO userDAO, AddressDAO addressDAO, AccountDAO accountDAO,
                       TokenGenerator tokenGenerator) {
     this.userDAO = userDAO;
-    this.adddressDAO = adddressDAO;
+    this.addressDAO = addressDAO;
     this.accountDAO = accountDAO;
     this.tokenGenerator = tokenGenerator;
   }
