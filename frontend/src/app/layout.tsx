@@ -15,7 +15,7 @@ async function getData() {
   try {
     const session = await getServerSession(authOptions);
     const userToken = session?.user.token;
-    if(session == null || session == undefined) {
+    if(!session) {
         return null;
     }
     const res = await fetch(`${process.env.API_URL}/mybank`, {

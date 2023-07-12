@@ -95,7 +95,9 @@
   bottom: auto;
   left: auto;
   width: 300px;
-  height: 30vh;
+  height: fit-content;
+  min-height: 25vh;
+  overflow: hidden;
   padding: 20px;
   background: linear-gradient(to right top, #273969, #21305b, #1c274e, #161f41, #101735, #141737, #181638, #1c1639, #2f1b47, #442053, #5b235e, #732466);
   overflow: auto;
@@ -112,7 +114,32 @@
   background-color: rgba(123, 41, 126, 0.386);
   position: relative;
   right: -30%;
-  bottom: -.75rem;
+  cursor: pointer;
+  margin-right: 1.5rem;
+}
+.signOut:nth-child(1) {
+  outline: 1px solid rgb(91, 35, 94);
+  background-color: rgba(123, 41, 126, 0.386);
+  position: relative;
+  right: -30%;
+  height: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  bottom: -2rem;
+  cursor: pointer;
+  margin-right: 1.5rem;
+}
+
+.signOut:nth-child(2) {
+  outline: 1px solid rgb(91, 35, 94);
+  background-color: rgba(123, 41, 126, 0.386);
+  position: relative;
+  right: 15.7%;
+  bottom: -6.5rem;
+  padding-bottom: 12px;
+  height: 20px;
+  cursor: pointer;
+  margin-right: 1.5rem;
 }
 
 @media only screen and (max-width: 600px) {
