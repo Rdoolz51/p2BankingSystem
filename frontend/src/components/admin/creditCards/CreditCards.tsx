@@ -8,13 +8,14 @@ import { approveOrDenyCC, getPendingCreditCards } from "@/app/api/admin";
 import styles from './CreditCards.module.css'
 
 const CreditCards: React.FC<any> = (props:any) => {
+  const session = useSession()
+  const token = session?.data?.user?.token
+  
   console.log('PPPPPPPPPPP', props);
+
   const [CCData, setCCData] = useState(Object.values(props))
   console.log(CCData);
 
-  const session = useSession()
-  const token = session?.data?.user?.token
-  console.log("WWWWWWWWWWWWWWWWWWWWWW", token);
 
   const handleDeny = async (e:any) => {
     const data = { // yes, I'm hardcoding the values. I'm tired

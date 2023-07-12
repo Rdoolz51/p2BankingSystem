@@ -29,7 +29,6 @@ const Admin: React.FC<any> = (props:any) => {
   const handlerSelector = (e:any) => {
     setActiveButton(e.target.name)
   }
-  console.log(activeButton);
 
   return (
     <main>
