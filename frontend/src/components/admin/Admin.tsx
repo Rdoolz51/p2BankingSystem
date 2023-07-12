@@ -63,7 +63,7 @@ const Admin: React.FC<any> = (props:any) => {
           </div>
         </div>
       ) : (
-        <div>Loading...</div>
+        <div>Loading....</div>
       )}
 
     </main>
