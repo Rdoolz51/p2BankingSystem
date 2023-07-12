@@ -18,7 +18,7 @@ const AddAccount = () => {
         event.preventDefault();
         toggleModal();
 
-        const user = {firstName:session.data?.user.firstName, lastName:session.data?.user.lastName};
+        const user = {id:session.data?.user.id, firstName:session.data?.user.firstName, lastName:session.data?.user.lastName};
 
         const data = {
             user: user,
@@ -74,13 +74,13 @@ const AddAccount = () => {
                 <button onClick={toggleModal} className={styles.closeButton}>X</button>
                 <form onSubmit={handleSubmit} className={styles.modalForm}>
                     <h1 className={styles.formTitle}>Add Account</h1>
-                    <select name="type" id="accType" onChange={handleChange}>
+                    <select name="type" id="accType" required onChange={handleChange}>
                         <option hidden value="">Account Type</option>
                         <option value="Checking">Checking</option>
                         <option value="Savings">Savings</option>
                         <option value="Travel">Travel</option>
                     </select>
-                    <input type="password" placeholder="4-Digit PIN" maxLength={4} minLength={4} onChange={(event) => setPin(event.target.value)}/>
+                    <input type="password" placeholder="4-Digit PIN" required maxLength={4} minLength={4} onChange={(event) => setPin(event.target.value)}/>
                     <button type="submit" className={styles.submitButton}>Submit</button>
                 </form>
                 </div>
