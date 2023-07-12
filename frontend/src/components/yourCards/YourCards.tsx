@@ -3,18 +3,25 @@ import { useState } from 'react';
 import styles from './YourCards.module.css';
 
 interface CardProps {
-  cardType: string;
+  interestRate: string;
   cardNumber: string;
-  initialCardBalance: number;
-  creditLimit: number;
-  expirationDate: string;
+  balance: string;
+  creditLimit: string;
+  cardExpiration: string;
+  annualFee: string;
+  user: {
+    firstName: string;
+    lastName: string;
+  }
 }
 
-const YourCards: React.FC<CardProps> = ({ cardType, cardNumber, initialCardBalance, creditLimit, expirationDate }) => {
+const YourCards: React.FC<CardProps> = (props) => {
+  const initialCardBalance = parseInt(props.balance);
   const [balance, setBalance] = useState(initialCardBalance);
 
+
   const spendMoney = (amount: number) => {
-    if(balance + amount <= creditLimit) {
+    if(balance + amount <= parseInt(props.creditLimit)) {
       setBalance(prevBalance => prevBalance + amount);
     } else {
       alert("Credit limit exceeded");
@@ -23,14 +30,14 @@ const YourCards: React.FC<CardProps> = ({ cardType, cardNumber, initialCardBalan
 
   return (
     <>
-    <h2 className={styles.cardType}>{cardType}</h2>
+    <h2 className={styles.cardType}>Credit Card</h2>
     <div className={styles.card}>
-        <h2 className={styles.bankName}>Nameless Bank</h2>
-        <h2 className={styles.cardNumber}>**** **** **** {cardNumber}</h2>
-        <h2 className={styles.expirationDate}>Exp: {expirationDate}</h2>
+        <h2 className={styles.bankName}>Pursue</h2>
+        <h2 className={styles.cardNumber}>**** **** **** {props.cardNumber.substring(12)}</h2>
+        <h2 className={styles.expirationDate}>Exp: {props.cardExpiration}</h2>
     </div>
         <div className={styles.cardLimit}>
-        <h2 className={styles.creditLimit}>Credit Limit: ${creditLimit.toFixed(2)}</h2>
+        <h2 className={styles.creditLimit}>Credit Limit: ${parseInt(props.creditLimit).toFixed(2)}</h2>
         </div>
         <div className={styles.cardBalance}>
         <h2 className={styles.balance}>Balance: ${balance.toFixed(2)}</h2>

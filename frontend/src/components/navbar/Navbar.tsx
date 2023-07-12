@@ -1,13 +1,14 @@
 'use client'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import styles from './Navbar.module.css';
 import { FaUser } from "react-icons/fa6";
 import Modal from 'react-modal';
 import Image from 'next/image';
 import pursueLogo from '../../../public/pursueLogo.png'
+import { signIn, signOut, useSession } from "next-auth/react";
+import { useRouter } from 'next/navigation';
 
-import { useSession } from "next-auth/react"
 
 interface UserProps {
   firstName: string;
@@ -18,25 +19,22 @@ interface UserProps {
 }
 
 
-const Navbar: React.FC<UserProps> = ({phoneNumber, income}) => {
-
-  console.log( phoneNumber, income);
+const Navbar: React.FC<UserProps> = ({firstName, lastName, email, phoneNumber, income}) => {
 
   const [isOpen, setIsOpen] = useState(false)
+  const session = useSession();
+  const router = useRouter();
 
-  const session = useSession()
-  let firstName, lastName, email;
-  if(session?.data?.user) {
-    firstName = session.data.user.firstName
-    lastName = session.data.user.lastName
-    email = session?.data?.user.email
-
+  const entryHandler = async () => {
+    if(session.data) {
+      await signOut();
+    } else{
+    router.push(`${process.env.NEXTAUTH_URL}/auth/login`)
+    }
   }
-  console.log(session);
-  // const token = session?.data?.user?.token
-  
 
   const toggleModal = () => setIsOpen(!isOpen);
+  
   return (
     <nav className={styles.nav}>
       <div className={styles.logoContainer}>
@@ -54,12 +52,14 @@ const Navbar: React.FC<UserProps> = ({phoneNumber, income}) => {
         <div className={styles.profile}>
           <li>
             <div> <a onClick={toggleModal}><FaUser></FaUser> </a> </div>
-            <Modal
-              ariaHideApp={false}
+            <Modal 
               isOpen={isOpen}
               contentLabel="User Information"
               className={styles.modalContent}
               overlayClassName={styles.modalOverlay}
+              shouldCloseOnOverlayClick={true}
+              onRequestClose={toggleModal}
+              shouldCloseOnEsc={true}
             >
               <h2>User Information</h2>
               <p>First Name: {firstName}</p>
@@ -67,7 +67,8 @@ const Navbar: React.FC<UserProps> = ({phoneNumber, income}) => {
               <p>Email: {email}</p>
               <p>Phone Number: {phoneNumber}</p>
               <p>Yearly Income: ${income}</p>
-              <div><a className={styles.signOut} href="/auth/login">Sign Out</a></div>
+              
+              <div><a onClick={() => entryHandler()} className={styles.signOut}>Sign In/Out</a></div>
             </Modal>
           </li>
         </div>

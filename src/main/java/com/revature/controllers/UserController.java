@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("mybank")
-@CrossOrigin(origins = "http://127.0.0.1:5500")
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "http://localhost:3000"})
 public class UserController {
   private final String INVALID = "User token is either invalid or expired";
   private final String INVALID_ID = "Provided ID or TYPE was not valid";
