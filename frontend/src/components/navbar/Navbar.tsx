@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import styles from './Navbar.module.css';
 import { FaUser } from "react-icons/fa6";
@@ -25,6 +25,9 @@ const Navbar: React.FC<UserProps> = ({firstName, lastName, email, phoneNumber, i
   const session = useSession();
   const router = useRouter();
 
+  const modalRef = useRef<HTMLDivElement>(null);
+
+
   const entryHandler = async () => {
     if(session.data) {
       await signOut();
@@ -32,7 +35,6 @@ const Navbar: React.FC<UserProps> = ({firstName, lastName, email, phoneNumber, i
     router.push(`${process.env.NEXTAUTH_URL}/auth/login`)
     }
   }
-
   const toggleModal = () => setIsOpen(!isOpen);
   
   return (
@@ -59,17 +61,18 @@ const Navbar: React.FC<UserProps> = ({firstName, lastName, email, phoneNumber, i
               overlayClassName={styles.modalOverlay}
               shouldCloseOnOverlayClick={true}
               onRequestClose={toggleModal}
-              shouldCloseOnEsc={true}
             >
-              <h2>User Information</h2>
-              <p>First Name: {firstName}</p>
-              <p>Last Name: {lastName}</p>
-              <p>Email: {email}</p>
-              <p>Phone Number: {phoneNumber}</p>
-              <p>Yearly Income: ${income}</p>
-              
-              <div><a onClick={() => entryHandler()} className={styles.signOut}>Sign In/Out</a></div>
+              <div ref={modalRef}>  {/* <-- apply ref here */}
+                <h2>User Information</h2>
+                <p>First Name: {firstName}</p>
+                <p>Last Name: {lastName}</p>
+                <p>Email: {email}</p>
+                <p>Phone Number: {phoneNumber}</p>
+                <p>Yearly Income: ${income}</p>
+                <div><a onClick={() => entryHandler()} className={styles.signOut}>Sign In/Out</a></div>
+              </div>
             </Modal>
+
           </li>
         </div>
       </ul>
