@@ -8,7 +8,7 @@ import { content } from "./content";
 
 const CardElement = () => {
   const { data: session, status } = useSession();
-  console.log("AAAAAAAAAAAAAAAA", session);
+  // console.log("AAAAAAAAAAAAAAAA", session);
 
   return (
     <div className={styles.cardContainer}>
