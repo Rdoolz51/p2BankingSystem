@@ -2,8 +2,10 @@ package com.revature.services;
 
 import com.revature.daos.AccountDAO;
 import com.revature.daos.AddressDAO;
+import com.revature.daos.TransactionDAO;
 import com.revature.daos.UserDAO;
 import com.revature.exceptions.UserUpdateException;
+import com.revature.models.Transaction;
 import com.revature.models.User;
 import com.revature.security.TokenGenerator;
 import lombok.extern.slf4j.Slf4j;
@@ -20,14 +22,16 @@ public class UserServices {
   private final UserDAO userDAO;
   private final AddressDAO addressDAO;
   private final AccountDAO accountDAO;
+  private final TransactionDAO transactionDAO;
   private final TokenGenerator tokenGenerator;
 
   @Autowired
   public UserServices(UserDAO userDAO, AddressDAO addressDAO, AccountDAO accountDAO,
-                      TokenGenerator tokenGenerator) {
+                      TransactionDAO transactionDAO, TokenGenerator tokenGenerator) {
     this.userDAO = userDAO;
     this.addressDAO = addressDAO;
     this.accountDAO = accountDAO;
+    this.transactionDAO = transactionDAO;
     this.tokenGenerator = tokenGenerator;
   }
 
@@ -38,6 +42,14 @@ public class UserServices {
   public List<User> getAllUsers() {
     log.info("Retrieved all users");
     return userDAO.findAll();
+  }
+
+  public List<Transaction> getUserTransactionHistory(User user) {
+    if (user != null) {
+      return transactionDAO.findByUserAccount_User(user);
+    }
+
+    return null;
   }
 
   /**
