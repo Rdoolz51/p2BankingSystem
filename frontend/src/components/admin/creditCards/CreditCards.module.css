@@ -1,0 +1,82 @@
+
+.pageTitle h1{
+  margin-left: 1.25rem;
+}
+
+.accountContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  margin: 1rem;
+  width: 80vw;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.914);
+  background-color: #98a2a566;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+  
+.buttonContainer {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  filter: drop-shadow(2px 1px 2px rgb(29, 39, 80));
+}
+
+.button {
+  padding:.75rem;
+  margin-top: 20px !important;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+  box-shadow: inset 200px 0 0 0 rgba(27, 39, 91, 0.711);
+  outline: 1px solid rgba(17, 26, 66, 0.856);
+  margin: .2rem;
+  border-radius: 15%;
+  user-select: none;
+  color: #ffffff;
+  background-color: none;
+  font-weight: 600;
+}
+
+.button:hover{
+  box-shadow: inset 200px 0 0 0 rgba(79, 46, 151, 0.708);
+  color: #ffffff;
+  outline: 1px solid rgb(106, 80, 154);
+  border-radius: 15%;
+}
+
+.button:active{
+  background-color: #fff;
+}
+
+.balance {
+  color:rgb(214, 210, 251);
+  font-weight: 600;
+  text-shadow: 2px 2px 6px rgba(84, 101, 186, 0.831);
+}
+
+.balance span {
+  color:rgb(255, 255, 255);
+  text-shadow:3px 3px 3px rgba(29, 12, 58, 0.697);
+}
+
+.accountType {
+  margin-bottom: 20px !important;
+  font-weight: 600;
+  color:rgba(186, 183, 245, 0.849);
+  text-shadow: 2px 2px 6px rgba(84, 101, 186, 0.393);
+  filter: drop-shadow(2px 2px 2px rgb(0, 0, 0));
+}
+.leftContainer {
+  flex: 1;
+  border: 2px solid #f5f5f5;
+  width: -webkit-fill-available;
+  border-radius: 10px;
+  padding-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

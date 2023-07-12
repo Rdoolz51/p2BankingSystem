@@ -53,7 +53,7 @@ const Loans: React.FC<any> = (props:any) => {
       {loanData.map((loan:any) => {
         return (
           <div className={styles.leftContainer} key={loan.loanID}>
-            <h2 className={styles.accountType}>Name: {loan.user.firstName} {loan.user.lastName}</h2>  
+            <h2 className={styles.accountType}>Applicant: {loan.user.firstName} {loan.user.lastName}</h2>  
             <h2 className={styles.accountNumber}>Loan Type: {loan.type.type}</h2>
             <h2 className={styles.accountNumber}>Loan Amount: {loan.loanAmount}</h2>
             <h2 className={styles.accountNumber}>Interest Rate: {loan.interestRate}</h2>

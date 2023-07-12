@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 import styles from './Admin.module.css'
 import Loans from "./loans/Loans";
+import CreditCards from "./creditCards/CreditCards";
 
 const names = {
   loans: 'loans',
@@ -40,7 +41,7 @@ const Admin: React.FC<any> = (props:any) => {
             className={activeButton === names.cards ? styles.activeButton : ''} 
             disabled={activeButton === names.cards}  
           >
-            Your Cards
+            Card Applications
           </button>
 
           <button name={names.loans}
@@ -48,14 +49,14 @@ const Admin: React.FC<any> = (props:any) => {
             className={activeButton === names.loans ? styles.activeButton : ''} 
             disabled={activeButton === names.loans}  
           >
-            Your Loans
+            Loan Applications
           </button>
 
-          {/* <div>
+          <div>
             {activeButton === names.cards &&
-              <YourCards {...props} />
+              <CreditCards {...props.data.CCData} />
             }
-          </div> */}
+          </div>
 
           <div>
             {activeButton === names.loans && 
