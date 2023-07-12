@@ -62,7 +62,9 @@ const YourCards: React.FC<CardProps> = (props) => {
         <div className={styles.cardBalance}>
         <h2 className={styles.balance}>Balance: ${balance.toFixed(2)}</h2>
       </div>
-      <button className={styles.spendButton} onClick={() => spendMoney(50)}>Spend $50</button>
+      <div className={styles.buttonContainer}>
+          <div className={styles.button} onClick={() => spendMoney(10)}>Make Payment</div>
+        </div>
     </>
     )
   }

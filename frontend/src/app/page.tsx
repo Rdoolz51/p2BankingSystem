@@ -8,6 +8,7 @@ import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/lib/auth";
 import styles from './page.module.css'
 import Link from "next/link";
+import handCardPic from '../../public/handCardPic.jpg'
 
 import Image from "next/image";
 import CardElement from "@/components/homepage/CardElement";
@@ -21,14 +22,7 @@ export default async function Home() {
 
   return (
     <main >
-      <div className={styles.main}> {/* just for development */}
-        <LoginButton />
-        <RegisterButton />
-        <LogoutButton />
-        <ProfileButton />
-        <Link href={'/admin'} style={{ marginLeft: '2rem', color: 'red' }}>ADMIN STUFF</Link>
-      </div>
-
+     
       <div className={styles.content}>
 
         <div className={styles.cardStackElement}>
@@ -43,10 +37,6 @@ export default async function Home() {
             Lorem ipsum more ipsum than lorem I do not know what else to do to put here but I need words 
           </h3>
         </div>
-      </div>
-
-      <div>
-        <CardElement />
       </div>
 
       <div className={styles.newsElement}>

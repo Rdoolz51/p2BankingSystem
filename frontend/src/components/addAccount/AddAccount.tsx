@@ -11,7 +11,7 @@ const AddAccount = () => {
     const [pin, setPin] = useState('');
     
     const accountNumberGen = () => {
-        return Math.floor(Math.random() * 1e16).toString().padStart(16, '0');
+        return Math.floor(Math.random() * 1e16).toString().padStart(14, '0');
     }
     
     const handleSubmit = async (event) => {
@@ -25,32 +25,34 @@ const AddAccount = () => {
             balance: '0.00',
             accountNumber:accountNumberGen(),
             pin: pin,
-            type: type,
+            type: {
+                type:type
+            } 
+                
         };
 
         console.log(data);
 
-       // try {
-            // const response = await fetch(url, {
-                //     method: 'POST',
-                //     headers: {
-                    //         Authorization: 'Bearer' + userToken,
-                    //         'Content-Type': 'application/json',
-                    //     },
-                    //     body: JSON.stringify(data),
-                    // console.log(JSON.stringify(data))
-                    // });
+       try {
+            const response = await fetch(`${process.env.API_URL}/mybank/accounts`, {
+                    method: 'POST',
+                    headers: {
+                            Authorization: 'Bearer ' + userToken,
+                            'Content-Type': 'application/json',
+                        },
+
+                        body: JSON.stringify(data)
+                    });
                     
-                    // if (!response.ok) {
-                        //     throw new Error(`HTTP error! status: ${response.status}`);
-                        // }
+                    if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
                         
-                        // Use the returned data as needed
-                        // const responseData = await response.json();
-                        // console.log(responseData);
-                        // } catch (error) {
-                            //     console.error('There was a problem with the fetch operation:', error);
-                            // }
+                        const responseData = await response.json();
+                        console.log(responseData);
+                        } catch (error) {
+                                console.error('There was a problem with the fetch operation:', error);
+                            }
     }
 
     const handleChange = (event) => {            

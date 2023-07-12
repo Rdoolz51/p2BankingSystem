@@ -45,9 +45,17 @@ const Navbar: React.FC<UserProps> = ({phoneNumber, income}) => {
       </div>
       <ul>
         <li>
-          <Link legacyBehavior href="/mybank">
+          {session?.user.role == "Customer" &&
+            <Link legacyBehavior href="/mybank">
             <a>My Bank</a>
           </Link>
+          }
+          {session?.user.role == "Admin" &&
+            <Link legacyBehavior href="/admin">
+            <a>Admin Dashboard</a>
+          </Link>
+          }
+
         </li>
         <div className={styles.profile}>
           <li>
