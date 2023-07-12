@@ -27,7 +27,7 @@ const fetchRoutes = async (active, token) => {
     } catch(e) {
       console.log("ERROR" , e)
     }
-  }
+}
 
 const MyBankHome: React.FC<any> = (props:any) => {
 
@@ -44,6 +44,7 @@ const MyBankHome: React.FC<any> = (props:any) => {
   }
 if(data) {
   console.log(data[0])
+  console.log(data);
 }
 
   return (
