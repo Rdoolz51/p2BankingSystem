@@ -1,10 +1,7 @@
 package com.revature.dtos;
 
-import com.revature.models.Account;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import java.math.BigDecimal;
 
 @AllArgsConstructor
 @Data

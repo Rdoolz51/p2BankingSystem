@@ -6,6 +6,7 @@ target/
 application.properties
 .env.local
 log.txt
+log.txt*
 
 ### STS ###
 .apt_generated
