@@ -212,7 +212,7 @@ public class UserController {
     return new ResponseEntity<>(INVALID, HttpStatus.FORBIDDEN);
   }
 
-  @PutMapping("/transfer")
+  @PutMapping("/transfers")
   public ResponseEntity<?> transferHandler(
     @RequestHeader("Authorization") String token,
     @RequestBody AccountTransferDTO atDTO) {
