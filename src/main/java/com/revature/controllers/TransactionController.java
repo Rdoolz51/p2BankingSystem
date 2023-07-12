@@ -3,6 +3,8 @@ package com.revature.controllers;
 import com.revature.dtos.AccountSummaryDTO;
 import com.revature.dtos.EmailDTO;
 import com.revature.dtos.TransactionDTO;
+import com.revature.dtos.UserToUserDTO;
+import com.revature.models.Account;
 import com.revature.models.Transaction;
 import com.revature.models.User;
 import com.revature.services.AccountServices;
@@ -67,7 +69,8 @@ public class TransactionController {
   }
 
   @GetMapping("/transfers")
-  public ResponseEntity<?> userAccountFetchHandler(@RequestBody EmailDTO email) {
+  public ResponseEntity<?> userAccountFetchHandler(
+    @RequestBody EmailDTO email) {
     if (email == null) {
       return new ResponseEntity<>("Email information was null",
                                   HttpStatus.BAD_REQUEST);
@@ -84,6 +87,34 @@ public class TransactionController {
       return new ResponseEntity<>(accountSummary, HttpStatus.OK);
     }
 
-    return new ResponseEntity<>("Could not complete request", HttpStatus.BAD_REQUEST);
+    return new ResponseEntity<>("Could not complete request",
+                                HttpStatus.BAD_REQUEST);
+  }
+
+  @PostMapping("/transfers")
+  public ResponseEntity<?> userToUserTransferHandler(
+    @RequestBody UserToUserDTO userToUser) {
+    if (userToUser == null) {
+      return new ResponseEntity<>("User information was null",
+                                  HttpStatus.BAD_REQUEST);
+    }
+
+    User from = userServices.getUserByEmail(userToUser.getFromEmail());
+    User to = userServices.getUserByEmail(userToUser.getToEmail());
+    Account fromAcct =
+      accountServices.getUserAccountById(from, userToUser.getFromAcct());
+    Account toAcct =
+      accountServices.getUserAccountById(to, userToUser.getToAcct());
+
+    if (from != null && to != null && fromAcct != null && toAcct != null) {
+      Transaction complete =
+        transactionServices.userTouserTransfer(from, fromAcct, to, toAcct,
+                                               userToUser.getAmount());
+
+      return new ResponseEntity<>(complete, HttpStatus.CREATED);
+    }
+
+    return new ResponseEntity<>("Could not complete user to user transfer",
+                                HttpStatus.BAD_REQUEST);
   }
 }

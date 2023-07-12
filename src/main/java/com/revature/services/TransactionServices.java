@@ -1,11 +1,7 @@
 package com.revature.services;
 
-import com.revature.daos.AccountDAO;
-import com.revature.daos.CreditCardDAO;
-import com.revature.daos.TransactionDAO;
-import com.revature.daos.TransactionTypeDAO;
-import com.revature.models.CreditCard;
-import com.revature.models.Transaction;
+import com.revature.daos.*;
+import com.revature.models.*;
 import com.revature.util.ValidateCC;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,18 +21,19 @@ public class TransactionServices {
   private final TransactionDAO transactionDAO;
   private final TransactionTypeDAO transactionTypeDAO;
   private final CreditCardDAO creditCardDAO;
-
   private final AccountDAO accountDAO;
+  private final UserDAO userDAO;
 
   @Autowired
   public TransactionServices(TransactionDAO transactionDAO,
                              TransactionTypeDAO transactionTypeDAO,
                              CreditCardDAO creditCardDAO,
-                             AccountDAO accountDAO) {
+                             AccountDAO accountDAO, UserDAO userDAO) {
     this.transactionDAO = transactionDAO;
     this.transactionTypeDAO = transactionTypeDAO;
     this.creditCardDAO = creditCardDAO;
     this.accountDAO = accountDAO;
+    this.userDAO = userDAO;
   }
 
   /**
@@ -173,6 +170,55 @@ public class TransactionServices {
     }
 
     log.warn("Could not complete CC debit transaction");
+    return null;
+  }
+
+  public Transaction userTouserTransfer(User from, Account fromAcct, User to,
+                                    Account toAcct, String amount) {
+    if (from != null && to != null && fromAcct != null && toAcct != null &&
+        !amount.isEmpty()) {
+      BigDecimal dbAmount = new BigDecimal(amount);
+
+      if (userDAO.existsByEmail(from.getEmail()) &&
+          userDAO.existsByEmail(to.getEmail()) &&
+          accountDAO.existsById(fromAcct.getAccountID()) &&
+          accountDAO.existsById(toAcct.getAccountID()) &&
+          from.getId() == fromAcct.getUser().getId() &&
+          to.getId() == toAcct.getUser().getId()) {
+        Transaction transaction = new Transaction();
+        BigDecimal fromBalance = new BigDecimal(fromAcct.getBalance());
+        BigDecimal fromAdjusted = fromBalance.subtract(dbAmount);
+        BigDecimal toBalance = new BigDecimal(toAcct.getBalance());
+
+        if (fromAdjusted.compareTo(BigDecimal.ZERO) >= 0) {
+          fromAcct.setBalance(fromBalance.subtract(dbAmount).toString());
+          accountDAO.save(fromAcct);
+        } else {
+          log.warn("Insufficient funds to complete transfer");
+          return null;
+        }
+
+        toAcct.setBalance(toBalance.add(dbAmount).toString());
+        accountDAO.save(toAcct);
+
+        log.info(
+          "Transfer between " + from.getId() + ":" + fromAcct.getAccountID() +
+          " and " + to.getId() + ":" + toAcct.getAccountID() + " completed");
+
+        transaction.setTransactionDate(LocalDateTime.now());
+        transaction.setUserAccount(fromAcct);
+        transaction.setTransactionAcctId(toAcct.getAccountID());
+        transaction.setAmount(amount);
+        transaction.setType(transactionTypeDAO.findByType("Transfer"));
+
+        transactionDAO.save(transaction);
+        log.info("Transaction saved");
+
+        return transaction;
+      }
+    }
+
+    log.warn("Transaction could not be completed");
     return null;
   }
 }

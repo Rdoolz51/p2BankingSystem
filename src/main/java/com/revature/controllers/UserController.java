@@ -122,7 +122,8 @@ public class UserController {
           "",
           account.getType(),
           account.getPin(),
-          user
+          user,
+          account.getFakeAccountId()
         )
       );
 
@@ -251,7 +252,6 @@ public class UserController {
   }
 
   /**
-   *
    * @param token
    * @param app
    * @return
@@ -292,7 +292,6 @@ public class UserController {
   }
 
   /**
-   *
    * @param token
    * @param app
    * @return
@@ -320,7 +319,8 @@ public class UserController {
       creditCard.setStatus(statusDAO.findByStatus("Pending"));
 
       try {
-        CreditCard complete = accountServices.creditCardApplication(creditCard, user);
+        CreditCard complete =
+          accountServices.creditCardApplication(creditCard, user);
 
         return new ResponseEntity(complete, HttpStatus.CREATED);
       } catch (ConstraintViolationException cve) {
@@ -353,6 +353,20 @@ public class UserController {
     if (user != null) {
       return new ResponseEntity<>(accountServices.getAllUserLoans(user),
                                   HttpStatus.OK);
+    }
+
+    return new ResponseEntity(INVALID, HttpStatus.FORBIDDEN);
+  }
+
+  @GetMapping("transactions")
+  public ResponseEntity<?> getTransactionHistory(
+    @RequestHeader("Authorization") String token) {
+    User user = userServices.checkUserToken(token);
+
+    if (user != null) {
+      List<Transaction> transactions = userServices.getUserTransactionHistory(user);
+
+      return new ResponseEntity<>(transactions, HttpStatus.OK);
     }
 
     return new ResponseEntity(INVALID, HttpStatus.FORBIDDEN);
