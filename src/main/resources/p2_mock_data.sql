@@ -238,7 +238,8 @@
          ('Deposit'),
          ('Fee'),
          ('Debit'),
-         ('Credit');
+         ('Credit'),
+         ('Transfer');
 
   INSERT INTO transactions (amount, transaction_date, type_type_id, user_account_account_id, transaction_acct_id) VALUES
       ('1000.00', CURRENT_DATE - INTERVAL '2 months', 1, 3, 7),
