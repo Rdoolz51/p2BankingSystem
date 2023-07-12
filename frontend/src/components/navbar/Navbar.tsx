@@ -1,42 +1,40 @@
 'use client'
-import { useEffect, useState, useRef } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import styles from './Navbar.module.css';
 import { FaUser } from "react-icons/fa6";
 import Modal from 'react-modal';
 import Image from 'next/image';
 import pursueLogo from '../../../public/pursueLogo.png'
-import { signIn, signOut, useSession } from "next-auth/react";
+import {signOut, useSession } from "next-auth/react";
 import { useRouter } from 'next/navigation';
 
-
 interface UserProps {
-  firstName: string;
-  lastName: string;
-  email: string;
   phoneNumber: string;
   income: string;
 }
 
 
-const Navbar: React.FC<UserProps> = ({firstName, lastName, email, phoneNumber, income}) => {
+const Navbar: React.FC<UserProps> = ({phoneNumber, income}) => {
 
   const [isOpen, setIsOpen] = useState(false)
-  const session = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
 
-  const modalRef = useRef<HTMLDivElement>(null);
-
-
-  const entryHandler = async () => {
-    if(session.data) {
+  const entryHandler = async (num) => {
+    if(session && !num) {
       await signOut();
-    } else{
-    router.push(`${process.env.NEXTAUTH_URL}/auth/login`)
+      router.refresh();
+    } else if(num == 1){
+      router.push(`${process.env.NEXTAUTH_URL}/auth/login`)
+      toggleModal();
+    } else {
+      router.push(`${process.env.NEXTAUTH_URL}/auth/register`)
+      toggleModal();
     }
   }
+  console.log('1111111111111111111111111111111111111111111111111111111111111111111111', session)
   const toggleModal = () => setIsOpen(!isOpen);
-  
   return (
     <nav className={styles.nav}>
       <div className={styles.logoContainer}>
@@ -61,18 +59,31 @@ const Navbar: React.FC<UserProps> = ({firstName, lastName, email, phoneNumber, i
               overlayClassName={styles.modalOverlay}
               shouldCloseOnOverlayClick={true}
               onRequestClose={toggleModal}
-            >
-              <div ref={modalRef}>  {/* <-- apply ref here */}
+              >
+              <div>
                 <h2>User Information</h2>
-                <p>First Name: {firstName}</p>
-                <p>Last Name: {lastName}</p>
-                <p>Email: {email}</p>
-                <p>Phone Number: {phoneNumber}</p>
-                <p>Yearly Income: ${income}</p>
-                <div><a onClick={() => entryHandler()} className={styles.signOut}>Sign In/Out</a></div>
+                {session &&
+                  <>
+                    <p>First Name: {session.user.firstName}</p>
+                    <p>Last Name: {session.user.lastName}</p>
+                    <p>Email: {session.user.email}</p>
+                  </>
+                }
+                  {session &&
+                  <div><a onClick={() => entryHandler()} className={styles.signOut}>
+                   Sign Out
+                   </a></div>
+                   }
+                   {!session &&
+                    <div><a onClick={() => entryHandler(1)} className={styles.signOut}>
+                    Sign In
+                    </a>
+                    <a onClick={() => entryHandler(2)} className={styles.signOut}>
+                      Register
+                    </a></div>
+                   }
               </div>
             </Modal>
-
           </li>
         </div>
       </ul>
