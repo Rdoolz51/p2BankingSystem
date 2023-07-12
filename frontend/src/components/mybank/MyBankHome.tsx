@@ -79,7 +79,9 @@ if(data) {
         {activeButton === names.accounts && 
           <YourAccounts {...data[0]} />
         }
+        {activeButton === names.accounts &&
         <AddAccount />
+        } 
       </div>
 
       <div>
