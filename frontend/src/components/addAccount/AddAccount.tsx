@@ -1,46 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from '@/components/addAccount/AddAccount.module.css'
 import { useSession } from "next-auth/react";
 import Modal from "react-modal";
 
 const AddAccount = () => {
-    // Placeholder function that should represent your API call
     const session = useSession();
     const userToken = session.data?.user.token;
     const [isOpen, setIsOpen] = useState(false);
     const [type, setType] = useState('');
-    const [user, setUser] = useState({firstName:'', lastName:''});
     const [pin, setPin] = useState('');
-    const [data, setData] = useState({user:{}, balance:'', accountNumber:'', pin:'', type:''})    
     
-    const createAccount = async () => {
-        
-        const url = `${process.env.API_URL}/mybank/accounts`;
-        
-        setUser({firstName:session.data?.user.firstName, lastName:session.data?.user.lastName});
-        //Generate Account Number
-        const accountNumberGen = () => {
-            const accountNumber = [];
-            
-            for(let i = 0; i < 16; i++) {
-                let num = Math.floor(Math.random() * 10);
-                accountNumber.push(num);
-            }
-            return accountNumber.toString();
-        }
-        
+    const accountNumberGen = () => {
+        return Math.floor(Math.random() * 1e16).toString().padStart(16, '0');
+    }
+    
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        toggleModal();
+
+        const user = {firstName:session.data?.user.firstName, lastName:session.data?.user.lastName};
+
         const data = {
             user: user,
             balance: '0.00',
             accountNumber:accountNumberGen(),
             pin: pin,
             type: type,
-            
         };
 
-        setData(data)
+        console.log(data);
 
-        // try {
+       // try {
             // const response = await fetch(url, {
                 //     method: 'POST',
                 //     headers: {
@@ -52,30 +42,23 @@ const AddAccount = () => {
                     // });
                     
                     // if (!response.ok) {
-            //     throw new Error(`HTTP error! status: ${response.status}`);
-            // }
-            
-            // Use the returned data as needed
-            // const responseData = await response.json();
-            // console.log(responseData);
-            // } catch (error) {
-                //     console.error('There was a problem with the fetch operation:', error);
-                // }
-            }
-            
-            const handleSubmit = async (event) => {
-                event.preventDefault();
-                toggleModal();
-                console.log("1111111111111111111111111111111111111",(data))
-                
-            }
-            const handleChange = async (event) => {            
-                setType(event.target.value)
-              
-            }
-            const toggleModal = () => setIsOpen(!isOpen);
-            
-            console.log(type)
+                        //     throw new Error(`HTTP error! status: ${response.status}`);
+                        // }
+                        
+                        // Use the returned data as needed
+                        // const responseData = await response.json();
+                        // console.log(responseData);
+                        // } catch (error) {
+                            //     console.error('There was a problem with the fetch operation:', error);
+                            // }
+    }
+
+    const handleChange = (event) => {            
+        setType(event.target.value)
+    }
+
+    const toggleModal = () => setIsOpen(!isOpen);
+
     return (
         <div className={styles.container}>
             <Modal 
@@ -98,7 +81,7 @@ const AddAccount = () => {
                         <option value="Travel">Travel</option>
                     </select>
                     <input type="password" placeholder="4-Digit PIN" maxLength={4} minLength={4} onChange={(event) => setPin(event.target.value)}/>
-                    <button type="submit" className={styles.submitButton} onSubmit={handleSubmit}>Submit</button>
+                    <button type="submit" className={styles.submitButton}>Submit</button>
                 </form>
                 </div>
             </Modal>
@@ -106,7 +89,6 @@ const AddAccount = () => {
                 Add Account
             </button>
         </div>
-       
     );
 }
 
