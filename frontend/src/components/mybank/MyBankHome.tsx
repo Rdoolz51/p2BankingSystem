@@ -1,9 +1,11 @@
 'use client'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './MyBankHome.module.css'
 
 import YourAccounts from '../yourAccounts/YourAccounts';
 import YourCards from '../yourCards/YourCards';
+import { useSession } from 'next-auth/react';
+import YourLoans from '../yourLoans/YourLoans';
 
 const names = {
   accounts: 'accounts',
@@ -11,14 +13,37 @@ const names = {
   loans: 'loans',
 }
 
-const MyBankHome: React.FC<any> = (props:any) => {
-  // const [selector, setSelector] = useState('')
-  const [activeButton, setActiveButton] = useState('')
-
-  const handlerSelector = (e:any) => {
-    setActiveButton(e.target.name)
+const fetchRoutes = async (active, token) => {
+  try{
+    const res = await fetch(`${process.env.API_URL}/mybank/${active}`, {
+      headers: {
+        Authorization: 'Bearer ' + token,
+        'Content-Type': 'application/json'
+      }
+    }) 
+      const response = await res.json();
+      return response;
+    } catch(e) {
+      console.log("ERROR" , e)
+    }
   }
 
+const MyBankHome: React.FC<any> = (props:any) => {
+
+  const [activeButton, setActiveButton] = useState('')
+  const [data, setData] = useState(); // State for data
+  
+  const session = useSession();
+  const token = session.data?.user?.token;
+
+  const handlerSelector = async (e:any) => {
+    const a = await fetchRoutes(e.target.name, token);
+    setData(a)
+    setActiveButton(e.target.name)
+  }
+if(data) {
+  console.log(data[0])
+}
 
   return (
     <main>
@@ -51,19 +76,19 @@ const MyBankHome: React.FC<any> = (props:any) => {
 
       <div>
         {activeButton === names.accounts && 
-          <YourAccounts {...props[0]} />
+          <YourAccounts {...data[0]} />
         }
       </div>
 
       <div>
         {activeButton === names.cards &&
-          <YourCards {...props[0]} />
+          <YourCards {...data[0]} />
         }
       </div>
 
       <div>
         {activeButton === names.loans && 
-          <YourAccounts {...props[0]} />
+          <YourLoans {...data[0]} />
         }
       </div>
     

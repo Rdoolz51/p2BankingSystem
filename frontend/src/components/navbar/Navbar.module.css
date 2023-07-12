@@ -81,7 +81,9 @@
 
 .modalOverlay {
   background-color: transparent;
-}
+  width:100vw;
+  height: 500px;
+} 
 
 .modalContent {
   position: fixed;

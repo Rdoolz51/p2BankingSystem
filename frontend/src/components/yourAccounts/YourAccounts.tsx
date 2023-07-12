@@ -20,7 +20,7 @@ const YourAccounts: React.FC<AccountProps> = (props) => {
   if(!props.user || !props.type || !props.balance) {
     return <div></div>
   }
-  console.log(props);
+  // console.log(props);
   
 let accountNumber = '12345312454325'
   const depositMoney = (amount: number) => {
