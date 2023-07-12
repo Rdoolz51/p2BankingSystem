@@ -20,7 +20,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("admin")
-@CrossOrigin(origins = "http://127.0.0.1:5500")
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "http://localhost:3000"})
 public class AdminController {
   private static final String BIN = "5555";
   private static final int CC_DIGITS = 16;

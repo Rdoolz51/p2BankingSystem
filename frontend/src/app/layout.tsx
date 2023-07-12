@@ -26,6 +26,7 @@ async function getData() {
     })
     if(res.ok) {
       const data = await res.json();
+      console.log("layout data >>> ", data);
       return data;
     }
   } catch (e) {
