@@ -20,7 +20,7 @@ import Modal from "react-modal";
 
 const submitTransfer = async (data:Object, token:String) => {
   try{
-    const res = await fetch(`${process.env.API_URL}/mybank/transfer`, {
+    const res = await fetch(`${process.env.API_URL}/mybank/transfers`, {
       method: 'PUT',
       headers: {
         Authorization: 'Bearer ' + token,

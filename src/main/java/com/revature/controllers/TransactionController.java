@@ -19,7 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping
-@CrossOrigin(origins = "http://127.0.0.1:5500")
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "http://localhost:3000"})
 public class TransactionController {
   private final TransactionServices transactionServices;
   private final UserServices userServices;
