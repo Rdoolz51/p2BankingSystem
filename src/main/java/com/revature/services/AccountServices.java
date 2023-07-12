@@ -85,6 +85,25 @@ public class AccountServices {
     return null;
   }
 
+  public List<String> getAccountIdsByEmail(User user) {
+    if (user != null) {
+      List<Account> accounts = accountDAO.findByUser(user);
+      List<String> accountIds = new ArrayList<>();
+
+      if (accounts != null) {
+        for (Account a : accounts) {
+          accountIds.add(String.valueOf(a.getAccountID()));
+        }
+
+        log.info("Retrieved user accounts by email: " + user.getEmail());
+        return accountIds;
+      }
+    }
+
+    log.warn("Could not get user account IDs by email");
+    return null;
+  }
+
   /**
    *
    * @param user
