@@ -31,7 +31,7 @@ public class TokenGenerator {
   public String generateToken(Authentication auth) {
     String email = auth.getName();
     Instant issued = Instant.now().truncatedTo(ChronoUnit.SECONDS);
-    Instant expiration = issued.plus(10, ChronoUnit.MINUTES);
+    Instant expiration = issued.plus(30, ChronoUnit.MINUTES);
     User user = userDAO.findByEmail(email);
 
     return Jwts.builder()
