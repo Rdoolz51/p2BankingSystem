@@ -46,7 +46,7 @@ const MyBankHome: React.FC<any> = (props:any) => {
     setActiveButton(e.target.name)
   }
   if(data) {
-  console.log(data[0])
+  console.log("5555555555555555",data)
 }
 
   return (
@@ -80,7 +80,7 @@ const MyBankHome: React.FC<any> = (props:any) => {
       {data && session &&
       <div>
         {activeButton === names.accounts && 
-          <YourAccounts {...data[0]} />
+          <YourAccounts {...data} />
         }
         {activeButton === names.accounts &&
         <AddAccount />

@@ -73,6 +73,26 @@
     flex: 1;
   }
 
+  .divDiv {
+    outline: 5px solid white;
+    width: 100%;
+    padding:20px;
+    margin: .75rem;
+  }
+  .accountContainer:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    margin: 1rem;
+    width: 80vw;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.914);
+    background-color: #98a2a566;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+  }
+
   /* .transactionContainer{
     border-left: 2px solid white;
     height: 100px;
