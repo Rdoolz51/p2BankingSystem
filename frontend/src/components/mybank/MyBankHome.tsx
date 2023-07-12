@@ -6,6 +6,7 @@ import YourAccounts from '../yourAccounts/YourAccounts';
 import YourCards from '../yourCards/YourCards';
 import { useSession } from 'next-auth/react';
 import YourLoans from '../yourLoans/YourLoans';
+import AddAccount from '../addAccount/AddAccount';
 
 const names = {
   accounts: 'accounts',
@@ -78,6 +79,7 @@ if(data) {
         {activeButton === names.accounts && 
           <YourAccounts {...data[0]} />
         }
+        <AddAccount />
       </div>
 
       <div>
