@@ -28,12 +28,7 @@ async function getData() {
 }
 
 export default async function Page(props:any) {
-  
-
-  console.log("Passed props to admin/page >>> ", props);
   const data = await getData();
-
-  console.log('data for admin >>> ', data);
 
   return (
     <main>

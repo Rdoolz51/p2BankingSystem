@@ -8,14 +8,10 @@ import { approveOrDenyLoan, getPendingLoans } from "@/app/api/admin";
 import styles from './Loans.module.css'
 
 const Loans: React.FC<any> = (props:any) => {
-  console.log('PPPPPPPPPPP', props);
-  // const loanData:any = Object.values(props)
   const [loanData, setLoanData] = useState(Object.values(props))
-  console.log(loanData);
 
   const session = useSession()
   const token = session?.data?.user?.token
-  console.log("WWWWWWWWWWWWWWWWWWWWWW", token);
 
   const handleDeny = async (e:any) => {
     const data = { // yes, I'm hardcoding the values. I'm tired
@@ -55,7 +51,7 @@ const Loans: React.FC<any> = (props:any) => {
           <div className={styles.leftContainer} key={loan.loanID}>
             <h2 className={styles.accountType}>Applicant: {loan.user.firstName} {loan.user.lastName}</h2>  
             <h2 className={styles.accountNumber}>Loan Type: {loan.type.type}</h2>
-            <h2 className={styles.accountNumber}>Loan Amount: {loan.loanAmount}</h2>
+            <h2 className={styles.accountNumber}>Loan Amount: ${loan.loanAmount}</h2>
             <h2 className={styles.accountNumber}>Interest Rate: {loan.interestRate}</h2>
             <div className={styles.buttonContainer}>
               <button className={styles.button} name={loan.user.id} value={loan.loanID} style={{ backgroundColor: '#8b2020' }} onClick={handleDeny}>Deny Loan</button>

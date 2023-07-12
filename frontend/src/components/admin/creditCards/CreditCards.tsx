@@ -11,10 +11,8 @@ const CreditCards: React.FC<any> = (props:any) => {
   const session = useSession()
   const token = session?.data?.user?.token
   
-  console.log('PPPPPPPPPPP', props);
 
   const [CCData, setCCData] = useState(Object.values(props))
-  console.log(CCData);
 
 
   const handleDeny = async (e:any) => {
@@ -57,7 +55,7 @@ const CreditCards: React.FC<any> = (props:any) => {
             <div className={styles.leftContainer} key={c.creditID}>
               <h2 className={styles.accountType}>Applicant: {c.user.firstName} {c.user.lastName}</h2>  
               <h2 className={styles.accountNumber}>Card Limit: {c.creditLimit}</h2>
-              <h2 className={styles.accountNumber}>Annual Fee / Interest Rate: {c.annualFee} / {c.interestRate}</h2>
+              <h2 className={styles.accountNumber}>Annual Fee / Interest Rate: ${c.annualFee} / {c.interestRate}</h2>
               <div className={styles.buttonContainer}>
                 <button className={styles.button} name={c.user.id} value={c.creditID} style={{ backgroundColor: '#8b2020' }} onClick={handleDeny}>Deny Card</button>
                 <button className={styles.button} name={c.user.id} value={c.creditID} style={{ backgroundColor: '#16168f' }} onClick={handleApprove}>Approve Card</button>

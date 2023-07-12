@@ -21,7 +21,6 @@ const Admin: React.FC<any> = (props:any) => {
     },
   })
 
-  console.log("Admin Props >>> ", props.data);
   const data = props?.data;
   
   const [activeButton, setActiveButton] = useState('')

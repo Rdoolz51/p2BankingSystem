@@ -7,6 +7,7 @@ import Modal from 'react-modal';
 import Image from 'next/image';
 import pursueLogo from '../../../public/pursueLogo.png'
 
+import { useSession } from "next-auth/react"
 
 interface UserProps {
   firstName: string;
@@ -17,10 +18,22 @@ interface UserProps {
 }
 
 
-const Navbar: React.FC<UserProps> = ({firstName, lastName, email, phoneNumber, income}) => {
+const Navbar: React.FC<UserProps> = ({phoneNumber, income}) => {
+
+  console.log( phoneNumber, income);
 
   const [isOpen, setIsOpen] = useState(false)
 
+  const session = useSession()
+  let firstName, lastName, email;
+  if(session?.data?.user) {
+    firstName = session.data.user.firstName
+    lastName = session.data.user.lastName
+    email = session?.data?.user.email
+
+  }
+  console.log(session);
+  // const token = session?.data?.user?.token
   
 
   const toggleModal = () => setIsOpen(!isOpen);
@@ -42,6 +55,7 @@ const Navbar: React.FC<UserProps> = ({firstName, lastName, email, phoneNumber, i
           <li>
             <div> <a onClick={toggleModal}><FaUser></FaUser> </a> </div>
             <Modal
+              ariaHideApp={false}
               isOpen={isOpen}
               contentLabel="User Information"
               className={styles.modalContent}
