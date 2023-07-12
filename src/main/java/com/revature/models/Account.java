@@ -28,10 +28,14 @@ public class Account {
     @ManyToOne(targetEntity = User.class)
     private User user;
 
-    public Account(String balance, AccountType type, String pin, User user) {
+    @Column(name = "fake_account_id")
+    private String fakeAccountId;
+
+    public Account(String balance, AccountType type, String pin, User user, String fakeAccountId) {
         this.balance = balance;
         this.type = type;
         this.pin = pin;
         this.user = user;
+        this.fakeAccountId = fakeAccountId;
     }
 }

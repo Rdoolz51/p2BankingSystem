@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -121,7 +122,8 @@ public class UserController {
           "",
           account.getType(),
           account.getPin(),
-          user
+          user,
+          account.getFakeAccountId()
         )
       );
 
@@ -211,7 +213,7 @@ public class UserController {
     return new ResponseEntity<>(INVALID, HttpStatus.FORBIDDEN);
   }
 
-  @PutMapping("/transfer")
+  @PutMapping("/transfers")
   public ResponseEntity<?> transferHandler(
     @RequestHeader("Authorization") String token,
     @RequestBody AccountTransferDTO atDTO) {
@@ -227,8 +229,16 @@ public class UserController {
         accountServices.getUserAccountById(user, atDTO.getFromAccountId());
       Account to =
         accountServices.getUserAccountById(user, atDTO.getToAccountId());
-      List<Account> complete =
-        accountServices.transfer(from, to, atDTO.getAmount(), user);
+      BigDecimal fromBalance = new BigDecimal(from.getBalance());
+      BigDecimal amount = new BigDecimal(atDTO.getAmount());
+      List<Account> complete = null;
+
+      if (fromBalance.compareTo(amount) >= 0) {
+        complete = accountServices.transfer(from, to, amount.toString(), user);
+      } else {
+        return new ResponseEntity<>("Insufficient funds to complete transfer",
+                                    HttpStatus.BAD_REQUEST);
+      }
 
       if (complete != null) {
         return new ResponseEntity<>(complete, HttpStatus.OK);

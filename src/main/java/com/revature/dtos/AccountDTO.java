@@ -9,4 +9,5 @@ import lombok.Data;
 public class AccountDTO {
   private AccountType type;
   private String pin;
+  private String fakeAccountId;
 }

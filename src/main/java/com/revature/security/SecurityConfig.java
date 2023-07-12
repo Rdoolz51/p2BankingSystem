@@ -42,6 +42,7 @@ public class SecurityConfig {
       .authorizeRequests()
       .antMatchers("/").permitAll()
       .antMatchers("/auth/**").permitAll()
+      .antMatchers("/transfers/**").permitAll()
       .antMatchers(HttpMethod.POST, "/transactions/**").hasAuthority("Merchant")
       .antMatchers(HttpMethod.GET, "/admin/**").hasAuthority("Admin")
       .antMatchers(HttpMethod.POST, "/admin/**").hasAuthority("Admin")
