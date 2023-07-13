@@ -9,10 +9,12 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 
 @Service
 @Slf4j
@@ -89,37 +91,22 @@ public class AccountServices {
     return null;
   }
 
-  public List<String> getAccountIdsByEmail(User user) {
+  public Map<Integer, List<String>> getAccountSummary(User user) {
     if (user != null) {
       List<Account> accounts = accountDAO.findByUser(user);
-      List<String> accountIds = new ArrayList<>();
+      Map<Integer, List<String>> summary = new HashMap<>();
 
       if (accounts != null) {
         for (Account a : accounts) {
-          accountIds.add(String.valueOf(a.getAccountID()));
+          List<String> temp = new ArrayList<>();
+          temp.add(a.getType().getType());
+          temp.add(a.getFakeAccountId());
+
+          summary.put(a.getAccountID(), temp);
         }
 
         log.info("Retrieved user accounts by email: " + user.getEmail());
-        return accountIds;
-      }
-    }
-
-    log.warn("Could not get user account IDs by email");
-    return null;
-  }
-
-  public List<String> getFakeIdsByEmail(User user) {
-    if (user != null) {
-      List<Account> accounts = accountDAO.findByUser(user);
-      List<String> fakeIds = new ArrayList<>();
-
-      if (accounts != null) {
-        for (Account a : accounts) {
-          fakeIds.add(String.valueOf(a.getFakeAccountId()));
-        }
-
-        log.info("Retrieved fake user accounts by email: " + user.getEmail());
-        return fakeIds;
+        return summary;
       }
     }
 

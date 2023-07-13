@@ -6,14 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Map;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class AccountSummaryDTO {
-  private List<String> accountIds;
-  private List<String> fakeIds;
-  private List<AccountType> type;
+  private Map<Integer, List<String>> summary;
   private String firstName;
   private String lastName;
 }
