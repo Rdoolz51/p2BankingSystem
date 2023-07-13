@@ -3,12 +3,18 @@
 .pageTitle h2 {
 margin-left: 2rem;
 }
+
+.cardType{
+  margin-left: 12rem !important; 
+}
+
 .cardBox {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   flex-wrap: wrap;
   margin: 1rem;
+  margin-left:11rem !important;
   width: 80vw;
   padding: 20px;
   border-radius: 10px;

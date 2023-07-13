@@ -3,7 +3,7 @@
     margin-left: 1.25rem;
 }
 .cardType{
-  margin-left: 2rem;
+  margin-left: 12rem;
   }
 .accountContainer {
     display: flex;
@@ -11,6 +11,7 @@
     justify-content: space-between;
     flex-wrap: wrap;
     margin: 1rem;
+    margin-left:11rem !important;
     width: 80vw;
     padding: 20px;
     border-radius: 10px;
