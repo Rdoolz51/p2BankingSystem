@@ -120,9 +120,7 @@ const NewTransfer = (props:any) => {
   }
 
   const handleEmailSearch = async (event:any) => {
-
     const res = await searchAccountsByEmail(event.target.value)
-
     setEmail(event.target.value)
     if(res) {
       setAvailableAcc(res.accountIds)
