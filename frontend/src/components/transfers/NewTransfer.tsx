@@ -101,7 +101,7 @@ const NewTransfer = (props:any) => {
       if(res) {
         toggleModal();
         
-      } else {
+      }else {
         setError('Insufficient Funds!')
       }
     } else {
@@ -134,8 +134,11 @@ const NewTransfer = (props:any) => {
   const handleEmailSearch = async (event:any) => {
     const res = await searchAccountsByEmail(event.target.value)
     setEmail(event.target.value)
+
+
+    console.log("ffffffffffffffffffffff",res)
     if(res) {
-      setAvailableAcc(res.accountIds)
+      setAvailableAcc(res)
     } else {
       setAvailableAcc(null)
     }
@@ -174,9 +177,9 @@ const NewTransfer = (props:any) => {
               <input type="text" placeholder="Email" required onChange={handleEmailSearch}/>
               <select value={toAccount} onChange={(event) => setToAccount(event.target.value)} className={styles.option}>
                 {availableAcc ? (
-                  availableAcc.map((acc:any) => (
-                    <option key={acc} value={acc} >
-                      {acc}
+                  availableAcc.fake.map((acc:any) => (
+                    <option key={acc} value={acc.accountID} >
+                      {acc.fakeId + " " + acc.accType}
                     </option>
                   ))
                 ) : (
