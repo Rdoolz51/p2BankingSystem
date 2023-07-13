@@ -2,7 +2,9 @@
 .pageTitle h1{
     margin-left: 1.25rem;
 }
-
+.cardType{
+  margin-left: 2rem;
+  }
 .accountContainer {
     display: flex;
     flex-direction: row;

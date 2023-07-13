@@ -1,9 +1,6 @@
 package com.revature.services;
 
-import com.revature.daos.AccountDAO;
-import com.revature.daos.AccountTypeDAO;
-import com.revature.daos.CreditCardDAO;
-import com.revature.daos.LoanDAO;
+import com.revature.daos.*;
 import com.revature.models.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +10,11 @@ import javax.transaction.Transactional;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 
 @Service
 @Slf4j
@@ -21,14 +23,20 @@ public class AccountServices {
   private final AccountTypeDAO accountTypeDAO;
   private final LoanDAO loanDAO;
   private final CreditCardDAO creditCardDAO;
+  private final TransactionTypeDAO transactionTypeDAO;
+  private final TransactionDAO transactionDAO;
 
   @Autowired
   public AccountServices(AccountDAO accountDAO, AccountTypeDAO accountTypeDAO,
-                         LoanDAO loanDAO, CreditCardDAO creditCardDAO) {
+                         LoanDAO loanDAO, CreditCardDAO creditCardDAO,
+                         TransactionTypeDAO transactionTypeDAO,
+                         TransactionDAO transactionDAO) {
     this.accountDAO = accountDAO;
     this.accountTypeDAO = accountTypeDAO;
     this.loanDAO = loanDAO;
     this.creditCardDAO = creditCardDAO;
+    this.transactionTypeDAO = transactionTypeDAO;
+    this.transactionDAO = transactionDAO;
   }
 
   /**
@@ -173,6 +181,16 @@ public class AccountServices {
 
       accountDAO.save(account);
 
+      Transaction transaction = new Transaction();
+
+      transaction.setType(transactionTypeDAO.findByType("Deposit"));
+      transaction.setAmount(amount);
+      transaction.setUserAccount(account);
+      transaction.setTransactionDate(LocalDateTime.now());
+      transaction.setTransactionAcctId(account.getAccountID());
+
+      transactionDAO.save(transaction);
+
       log.info("Deposit completed for account: " + account.getAccountID());
       return account;
     }
@@ -198,6 +216,16 @@ public class AccountServices {
       account.setBalance(balance.subtract(bdAmount).toString());
 
       accountDAO.save(account);
+
+      Transaction transaction = new Transaction();
+
+      transaction.setType(transactionTypeDAO.findByType("Withdrawal"));
+      transaction.setAmount(amount);
+      transaction.setUserAccount(account);
+      transaction.setTransactionDate(LocalDateTime.now());
+      transaction.setTransactionAcctId(account.getAccountID());
+
+      transactionDAO.save(transaction);
 
       log.info("Withdrawal completed for account: " + account.getAccountID());
       return account;
@@ -231,6 +259,16 @@ public class AccountServices {
 
         Account fromSaved = accountDAO.save(from);
         Account toSaved = accountDAO.save(to);
+
+        Transaction transaction = new Transaction();
+
+        transaction.setType(transactionTypeDAO.findByType("Transfer"));
+        transaction.setAmount(amount);
+        transaction.setUserAccount(from);
+        transaction.setTransactionDate(LocalDateTime.now());
+        transaction.setTransactionAcctId(to.getAccountID());
+
+        transactionDAO.save(transaction);
 
         log.info(
           "Transfer from account: " + from.getAccountID() + " to account: " +

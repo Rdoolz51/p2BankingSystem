@@ -39,6 +39,8 @@ const YourLoans: React.FC<LoanProps> = (props) => {
   const [loanData, setLoanData] = useState(Object.values(props));
 
   return (
+    <div>
+      <h2 className={styles.cardType}>Loans</h2>
     <div className={styles.accountContainer}>
       {loanData.map((loan, index) => (
         <div key={index} className={styles.divDiv}>
@@ -56,6 +58,7 @@ const YourLoans: React.FC<LoanProps> = (props) => {
       </div>
       </div>
     ))}
+    </div>
     </div>
   );
 }
