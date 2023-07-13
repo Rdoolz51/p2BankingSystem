@@ -27,6 +27,9 @@ const YourLoans: React.FC<LoanProps> = (props) => {
         <h2 className={styles.balance}>Current Balance: <span>${(parseInt(props.loanBalance).toFixed(2))}</span></h2>
         <h2 className={styles.balance}>Interest Rate: <span>${(props.interestRate)}%</span></h2>
       </div>
+      <div className={styles.buttonContainer}>
+          <div className={styles.button}>Make Payment</div>
+        </div>
       <div className={styles.transactionContainer}>
         {/* <h2>Recent Transactions</h2> */}
       </div>

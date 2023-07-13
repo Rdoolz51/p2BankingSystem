@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react';
 import styles from './YourCards.module.css';
+import { useSession } from 'next-auth/react';
 
 interface CardProps {
   interestRate: string;
@@ -26,8 +27,13 @@ function formatDate(input: string): string {
 
 
 const YourCards: React.FC<CardProps> = (props) => {
+  if(!props) {
+    return <div><button>Show CardApp</button> </div>
+  }
   const initialCardBalance = parseInt(props.balance);
   const [balance, setBalance] = useState(initialCardBalance);
+  const session = useSession();
+  const userData = session.data?.user;
   
   
   const inputDate = props.cardExpiration;
@@ -56,9 +62,11 @@ const YourCards: React.FC<CardProps> = (props) => {
         <div className={styles.cardBalance}>
         <h2 className={styles.balance}>Balance: ${balance.toFixed(2)}</h2>
       </div>
-      <button className={styles.spendButton} onClick={() => spendMoney(50)}>Spend $50</button>
+      <div className={styles.buttonContainer}>
+          <div className={styles.button} onClick={() => spendMoney(10)}>Make Payment</div>
+        </div>
     </>
-  )
-}
-
+    )
+  }
+  
 export default YourCards;

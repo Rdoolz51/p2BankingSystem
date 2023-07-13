@@ -1,0 +1,53 @@
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: rgba(85, 89, 134, 0.434);
+    outline: 2px solid rgba(66, 31, 82, 0.564);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  .formInput {
+    margin-bottom: 15px;
+    padding: 10px;
+    outline: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+    box-shadow: 4px 5px 15px rgba(255, 255, 255, 0.084);
+  }
+
+  .formInput:focus {
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.62);
+  }
+  
+  .formButton {
+    background-image: linear-gradient(to right top, #273969, #21305b, #1c274e, #161f41, #101735, #141737, #181638, #1c1639, #2f1b47, #442053, #5b235e, #732466);
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 1rem 0;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+  }
+
+  .formButton:hover{
+    outline: 2px solid rgba(132, 118, 118, 0.181);
+    box-shadow: 4px 5px 15px rgba(255, 255, 255, 0.084);
+    filter: drop-shadow(1px 1px rgba(0, 0, 0, 0.309));
+    background-image: linear-gradient(to left bottom, #273969, #21305b, #1c274e, #161f41, #101735, #141737, #181638, #1c1639, #2f1b47, #442053, #5b235e, #732466);
+  }
+
+  .title {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }

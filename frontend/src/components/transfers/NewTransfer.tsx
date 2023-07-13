@@ -29,6 +29,7 @@ const submitTransfer = async (data:Object, token:String) => {
 
 
 const submitTransferOther = async (data:Object, token:String) => {
+  console.log('aaaaaaaaaaaaa ', data);
   try{
     const res = await fetch(`${process.env.API_URL}/transfers`, {
       method: 'POST',
@@ -74,6 +75,7 @@ const NewTransfer = (props:any) => {
   const session = useSession();
   const userToken = session?.data?.user?.token;
   const { accountID } = props;
+  console.log('pppppppppp >> ', props);
 
   const [isOpen, setIsOpen] = useState(false);
   const [type, setType] = useState('')
