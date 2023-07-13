@@ -59,6 +59,7 @@ const searchAccountsByEmail = async (email:String) => {
 
     if(res.ok) {
       const data = await res.json();
+      console.log("lololololol",data)
       return data;
     } else {
       console.error('Something went wrong other (/transfers) ')
@@ -139,6 +140,7 @@ const NewTransfer = (props:any) => {
     console.log("ffffffffffffffffffffff",res)
     if(res) {
       setAvailableAcc(res)
+      setAvailableAcc(Object.values(res.summary))
     } else {
       setAvailableAcc(null)
     }
@@ -177,9 +179,9 @@ const NewTransfer = (props:any) => {
               <input type="text" placeholder="Email" required onChange={handleEmailSearch}/>
               <select value={toAccount} onChange={(event) => setToAccount(event.target.value)} className={styles.option}>
                 {availableAcc ? (
-                  availableAcc.fake.map((acc:any) => (
-                    <option key={acc} value={acc.accountID} >
-                      {acc.fakeId + " " + acc.accType}
+                  availableAcc.map((acc:any) => (
+                    <option key={acc} value={accountID} >
+                      {acc[0] + " " + acc[1]}
                     </option>
                   ))
                 ) : (
