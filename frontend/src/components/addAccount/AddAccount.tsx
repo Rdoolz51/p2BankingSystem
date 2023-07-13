@@ -85,7 +85,7 @@ const AddAccount = () => {
                 </form>
                 </div>
             </Modal>
-            <button className={styles.addButton} onClick={toggleModal}>
+            <button className={styles.button} onClick={toggleModal}>
                 Add Account
             </button>
         </div>

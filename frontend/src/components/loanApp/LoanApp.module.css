@@ -80,3 +80,32 @@
     font-weight: 600;
     margin-bottom: 2rem;
   }
+
+  .button {
+    padding:.75rem;
+    margin-top: 20px !important;
+    font-size: 16px;
+    cursor: pointer;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    box-shadow: inset 200px 0 0 0 rgba(27, 39, 91, 0.711);
+    outline: 2px solid rgba(216, 218, 227, 0.162);
+    filter: drop-shadow( 1px 1px 1px rgba(255, 255, 255, 0.887));
+    margin: .2rem;
+    border-radius: 15%;
+    user-select: none;
+    color: #ffffff;
+    background-color: none;
+    font-weight: 600;
+    margin-left: 2rem;
+  }
+
+  .button:hover{
+    box-shadow: inset 200px 0 0 0 rgba(79, 46, 151, 0.708);
+    color: #ffffff;
+    outline: 1px solid rgb(106, 80, 154);
+    border-radius: 15%;
+  }
+
+  .button:active{
+    background-color: #fff;
+  }

@@ -5,22 +5,31 @@
     height: 100vh;
 }
 
-.addButton {
-    padding: 10px 20px;
-    font-size: 20px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
+.button {
+    padding:.75rem;
+    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-bottom: 50rem;
-}
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    box-shadow: inset 200px 0 0 0 rgba(27, 39, 91, 0.711);
+    outline: 1px solid rgba(17, 26, 66, 0.856);
+    border-radius: 15%;
+    user-select: none;
+    color: #ffffff;
+    background-color: none;
+    font-weight: 600;
+    margin-top: -50rem;
+  }
 
-.addButton:hover {
-    background-color: #45a049;
-}
+  .button:hover{
+    box-shadow: inset 200px 0 0 0 rgba(79, 46, 151, 0.708);
+    color: #ffffff;
+    outline: 1px solid rgb(106, 80, 154);
+    border-radius: 15%;
+  }
 
+  .button:active{
+    background-color: #fff;
+  }
 .modalOverlay {
     background-color: transparent;
     height: 100%;
@@ -80,17 +89,29 @@
 }
 
 .submitButton {
-    margin-top: 20px;
-    padding: 10px;
-    border: none;
-    background-color: #4caf50;
-    color: white;
+
+    padding:.55rem;
+    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    box-shadow: inset 200px 0 0 0 rgba(27, 39, 91, 0.711);
+    outline: 1px solid rgba(17, 26, 66, 0.856);
+    border-radius: 15%;
+    user-select: none;
+    color: #ffffff;
+    background-color: none;
+    font-weight: 600;
+    margin-top: 20px;
+    
 }
 
 .submitButton:hover {
-    background-color: #45a049;
+
+    box-shadow: inset 200px 0 0 0 rgba(79, 46, 151, 0.708);
+    color: #ffffff;
+    outline: 1px solid rgb(106, 80, 154);
+    border-radius: 15%;
+
 }
 
 .modalForm select{

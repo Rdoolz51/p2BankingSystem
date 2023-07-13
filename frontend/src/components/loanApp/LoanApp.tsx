@@ -31,7 +31,7 @@ const LoanApp: React.FC<LoanAppProps> = (props) => {
   
     return (
       <div>
-      <button onClick={() => setModalIsOpen(true)}>Apply for a Card</button>
+      <button className={styles.button} onClick={() => setModalIsOpen(true)}>Apply for a Loan</button>
 
       <Modal 
         isOpen={modalIsOpen} 
@@ -43,13 +43,13 @@ const LoanApp: React.FC<LoanAppProps> = (props) => {
         <h1 className={styles.title}>Loan Application</h1>
         <h4 className={styles.subtitle}>Please verify that all information is correct before submitting application.</h4>
         <form onSubmit={handleSubmit}>
-        <input className={styles.formInput} type="text" id="legalName" value={user?.firstName + user.lastName} required/>
-        <input className={styles.formInput} type="text" id="address" value={props.user.address.street} required/>
-        <input className={styles.formInput} type="text" id="addressCity" value={props.user.address.city} placeholder="City" required/>
-        <input className={styles.formInput} type="text" id="addressState" value={props.user.address.state.name} placeholder="State" required/>
-        <input className={styles.formInput} type="text" id="zipCode" value={props.user.address.zip.zipCode} placeholder="State" required/>
-        <input className={styles.formInput} type="text" id="income" value={"$ " + props.user.income + " / year"} placeholder="Yearly Income" required/>
-        <input className={styles.formButton} type="submit" value="Submit Application" />
+        <input className={styles.formInput} type="text" id="legalName" value={user?.firstName + user?.lastName} required/>
+        <input className={styles.formInput} type="text" id="address" value={props?.user?.address?.street} required/>
+        <input className={styles.formInput} type="text" id="addressCity" value={props?.user?.address?.city} placeholder="City" required/>
+        <input className={styles.formInput} type="text" id="addressState" value={props?.user?.address?.state?.name} placeholder="State" required/>
+        <input className={styles.formInput} type="text" id="zipCode" value={props?.user?.address?.zip?.zipCode} placeholder="State" required/>
+        <input className={styles.formInput} type="text" id="income" value={"$ " + props?.user?.income + " / year"} placeholder="Yearly Income" required/>
+        <input className={styles.formButton} type="submit" value="Submit Application" />  
         </form>
       </Modal>
     </div>
