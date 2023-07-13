@@ -120,6 +120,9 @@ const YourAccounts: React.FC<AccountProps> = (props) => {
   
 
   return (
+    <div>
+
+            <h2 className={styles.cardType}>Accounts</h2>
     <div className={styles.accountContainer}>
       {accountData.map((account, index) => (
         <div key={index} className={styles.divDiv}>
@@ -165,6 +168,7 @@ const YourAccounts: React.FC<AccountProps> = (props) => {
         </div>
       ))}
     </div>
+          </div>
   );
 };
 

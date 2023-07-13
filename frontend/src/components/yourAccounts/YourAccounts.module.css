@@ -2,15 +2,19 @@
 .pageTitle h1{
     margin-left: 1.25rem;
 }
-
+.cardType{
+  margin-left: 12rem;
+  }
 .accountContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
     margin: 1rem;
+    margin-left:11rem !important;
     width: 80vw;
-    padding: 20px;
+    padding:10px;
+    padding-right:30px;
     border-radius: 10px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.914);
     background-color: #98a2a566;
@@ -75,6 +79,7 @@
 
   .divDiv {
     outline: 5px solid white;
+    border-radius: 10px;
     width: 100%;
     padding:20px;
     margin: .75rem;
@@ -85,8 +90,7 @@
     justify-content: space-between;
     align-items: start;
     margin: 1rem;
-    width: 80vw;
-    padding: 20px;
+    width: 75vw;
     border-radius: 10px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.914);
     background-color: #98a2a566;

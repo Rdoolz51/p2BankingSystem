@@ -5,15 +5,47 @@
   height: 100vh;
 }
 
-.addButton {
-  padding: 10px 20px;
-  font-size: 20px;
-  background-color: #400000;
-  color: white;
-  border: none;
-  border-radius: 5px;
+.button {
+  padding:.75rem;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+  box-shadow: inset 200px 0 0 0 rgba(27, 39, 91, 0.711);
+  outline: inset 2px solid rgba(0, 0, 0, 0.462);
+  border-radius: 15%;
+  user-select: none;
+  color: #ffffff;
+  background-color: none;
+  font-weight: 600;
+  margin-left:1rem;
+
+}
+
+.button2 {
+  padding:.35rem;
+  margin-right:1rem;
+  font-size: 16px;
+  cursor: pointer;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+  box-shadow: inset 200px 0 0 0 rgba(27, 39, 91, 0.711);
+  outline: inset 2px solid rgba(0, 0, 0, 0.462);
+  border-radius: 15%;
+  user-select: none;
+  color: #ffffff;
+  background-color: none;
+  font-weight: 600;
+
+}
+
+.button:hover{
+  box-shadow: inset 200px 0 0 0 rgba(79, 46, 151, 0.708);
+  color: #ffffff;
+  outline: 1px solid rgb(106, 80, 154);
+  border-radius: 15%;
+}
+
+.button:active{
+  background-color: #fff;
 }
 
 .errorText{

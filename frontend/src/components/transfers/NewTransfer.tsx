@@ -59,6 +59,7 @@ const searchAccountsByEmail = async (email:String) => {
 
     if(res.ok) {
       const data = await res.json();
+      console.log("lololololol",data)
       return data;
     } else {
       console.error('Something went wrong other (/transfers) ')
@@ -95,13 +96,17 @@ const NewTransfer = (props:any) => {
 
     // const res = await fetchAccountByEmail(email, userToken)
 
-    const res = await submitTransfer(data, userToken);
-    console.log('REEEEEEEEEEEEEs >>> ', res);
 
-    if(res) {
-      toggleModal();
+    if(data.fromAccountId != data.toAccountId) {
+      const res = await submitTransfer(data, userToken);
+      if(res) {
+        toggleModal();
+        
+      }else {
+        setError('Insufficient Funds!')
+      }
     } else {
-      setError('Insufficient Funds!')
+      setError("The account ID entered is the same as the sender account.")
     }
   }
 
@@ -130,8 +135,12 @@ const NewTransfer = (props:any) => {
   const handleEmailSearch = async (event:any) => {
     const res = await searchAccountsByEmail(event.target.value)
     setEmail(event.target.value)
+
+
+    console.log("ffffffffffffffffffffff",res)
     if(res) {
-      setAvailableAcc(res.accountIds)
+      setAvailableAcc(res)
+      setAvailableAcc(Object.values(res.summary))
     } else {
       setAvailableAcc(null)
     }
@@ -153,15 +162,15 @@ const NewTransfer = (props:any) => {
       >
         <div>
           <button onClick={toggleModal} className={styles.closeButton}>X</button>
-          <button onClick={() => setType('myAccount')} >My Accounts</button>
-          <button onClick={() => setType('othAccount')} >Other Accounts</button>
+          <button className={styles.button2} onClick={() => setType('myAccount')} >My Accounts</button>
+          <button className={styles.button2} onClick={() => setType('othAccount')} >Other Accounts</button>
           {type == 'myAccount' ? (
             <form onSubmit={handleSubmit} className={styles.modalForm}>
               <h1 className={styles.formTitle}>Transfer To <strong>My Account</strong></h1>
               <h5 className={styles.errorText}>{error}</h5>
               <input type="text" placeholder="Account Number" required onChange={(event) => setToAccount(event.target.value)}/>
               <input type="number" placeholder="Amount" onChange={(event) => setAmount(event.target.value)}/>
-              <button type="submit" className={styles.submitButton}>Submit</button>
+              <button type="submit" className={styles.button}>Submit</button>
             </form>
           ) : (
             <form onSubmit={handleSubmitOther} className={styles.modalForm}>
@@ -171,8 +180,8 @@ const NewTransfer = (props:any) => {
               <select value={toAccount} onChange={(event) => setToAccount(event.target.value)} className={styles.option}>
                 {availableAcc ? (
                   availableAcc.map((acc:any) => (
-                    <option key={acc} value={acc} >
-                      {acc}
+                    <option key={acc} value={accountID} >
+                      {acc[0] + " " + acc[1]}
                     </option>
                   ))
                 ) : (
@@ -182,12 +191,12 @@ const NewTransfer = (props:any) => {
               <input type="number" placeholder="Amount" onChange={(event) => setAmount(event.target.value)}/>
               
               
-              <button type="submit" className={styles.submitButton}>Submit</button>
+              <button type="submit" className={styles.button}>Submit</button>
             </form>
           )}
         </div>
       </Modal>
-      <button className={styles.addButton} onClick={toggleModal}>
+      <button className={styles.button} onClick={toggleModal}>
         Transfer Funds
       </button>
     </div>
