@@ -107,7 +107,7 @@ public class TransactionController {
 
     if (from != null && to != null && fromAcct != null && toAcct != null) {
       Transaction complete =
-        transactionServices.userTouserTransfer(from, fromAcct, to, toAcct,
+        transactionServices.userToUserTransfer(from, fromAcct, to, toAcct,
                                                userToUser.getAmount());
 
       return new ResponseEntity<>(complete, HttpStatus.CREATED);
