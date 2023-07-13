@@ -98,52 +98,42 @@ const MyBankHome: React.FC<any> = (props:any) => {
         }
       </div>
       }
-
       {!data && 
-      <div>
-      {activeButton === names.accounts &&
-        router.push(`${process.env.NEXTAUTH_URL}/auth/login`)
-      }
-    </div>
+      <div></div>
       }
 
       {data && session &&
         <div>
           {activeButton === names.cards &&
-            <YourCards {...data[0]} />
+            <YourCards {...data} />
           }
         </div>
       }
-      {!data &&
-        <div>
-          {activeButton === names.cards &&
-            router.push(`${process.env.NEXTAUTH_URL}/auth/login`)
-          }
-        </div>
+      {!data && 
+      <div></div>
       }
 
       {data && session &&
         <div>
           {activeButton === names.loans &&
-            <YourLoans {...data[0]} />
+            <YourLoans {...data} />
           }
         </div>
       }
-      {!data &&
-        <div>
-          {activeButton === names.loans &&
-            router.push(`${process.env.NEXTAUTH_URL}/auth/login`)
-          }
-        </div>
-      
+      {!data && 
+      <div></div>
       }
 
-      <div>
-        {activeButton === names.transactions && 
-          <RecentTransactions {...data} />
-        }
-      </div>
-    
+{data && session &&
+        <div>
+          {activeButton === names.transactions &&
+            <RecentTransactions {...data} />
+          }
+        </div>
+      }
+      {!data && 
+      <div></div>
+      }
     </main>
   )
 }

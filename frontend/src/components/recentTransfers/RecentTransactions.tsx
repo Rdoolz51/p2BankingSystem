@@ -14,14 +14,18 @@ const RecentTransactions: React.FC<any> = (props:any) => {
 
 
   console.log('proooooooops >>> ', state);
+
+  if(!state || state.length < 1) {
+    return (<div></div>)
+  }
   
   return (
     <div className={styles.accountContainer}>
-
-      {state.map((t:any) => {
+      {state && 
+      state.map((t:any) => {
         const dateString = t.transactionDate;
         const date = new Date(dateString);
-      
+        
         const day = date.getDate();
         const month = date.getMonth() + 1; // Month is zero-based, so we add 1
         const year = date.getFullYear();
@@ -34,7 +38,11 @@ const RecentTransactions: React.FC<any> = (props:any) => {
             {/* <h2 className={styles.accountNumber}>Balance: ${t.userAccount.balance}</h2> */}
           </div>
         )
-      })}
+      })
+    }
+    {!props &&
+    <div></div>
+    }
 
     </div>
   )

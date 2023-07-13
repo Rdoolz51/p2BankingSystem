@@ -14,6 +14,7 @@ interface AccountProps {
       firstName: string;
     };
     balance: any;
+    fakeAccountId: any;
   }[];
 }
 
@@ -48,7 +49,7 @@ const YourAccounts: React.FC<AccountProps> = (props) => {
       {accountData.map((account, index) => (
         <div key={index} className={styles.divDiv}>
           <div className={styles.leftContainer}>
-            <h2 className={styles.accountType}>{account.user.firstName}'s {account.type.type}</h2>  
+            <h2 className={styles.accountType}>{account.user.firstName}'s {account.type.type} {account.fakeAccountId} </h2>  
             <h2 className={styles.balance}>Current Balance: <span>${parseInt(account.balance).toFixed(2)}</span></h2>
             <div className={styles.buttonContainer}>
               <div className={styles.button} onClick={() => depositMoney(10)}>Deposit $10</div>

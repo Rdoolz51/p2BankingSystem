@@ -19,14 +19,12 @@ const AddAccount = () => {
         toggleModal();
 
         const user = {id:session.data?.user.id, firstName:session.data?.user.firstName, lastName:session.data?.user.lastName};
-
+        let newType = parseInt(type)
         const data = {
-            user: user,
-            balance: '0.00',
-            accountNumber:accountNumberGen(),
+            fakeAccountId:accountNumberGen(),
             pin: pin,
             type: {
-                type:type
+                id: newType
             } 
                 
         };
@@ -78,9 +76,9 @@ const AddAccount = () => {
                     <h1 className={styles.formTitle}>Add Account</h1>
                     <select name="type" id="accType" required onChange={handleChange}>
                         <option hidden value="">Account Type</option>
-                        <option value="Checking">Checking</option>
-                        <option value="Savings">Savings</option>
-                        <option value="Travel">Travel</option>
+                        <option value="1">Checking</option>
+                        <option value="2">Savings</option>
+                        <option value="3">Travel</option>
                     </select>
                     <input type="password" placeholder="4-Digit PIN" required maxLength={4} minLength={4} onChange={(event) => setPin(event.target.value)}/>
                     <button type="submit" className={styles.submitButton}>Submit</button>
