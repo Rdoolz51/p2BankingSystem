@@ -95,13 +95,17 @@ const NewTransfer = (props:any) => {
 
     // const res = await fetchAccountByEmail(email, userToken)
 
-    const res = await submitTransfer(data, userToken);
-    console.log('REEEEEEEEEEEEEs >>> ', res);
 
-    if(res) {
-      toggleModal();
+    if(data.fromAccountId != data.toAccountId) {
+      const res = await submitTransfer(data, userToken);
+      if(res) {
+        toggleModal();
+        
+      } else {
+        setError('Insufficient Funds!')
+      }
     } else {
-      setError('Insufficient Funds!')
+      setError("The account ID entered is the same as the sender account.")
     }
   }
 
