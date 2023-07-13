@@ -68,15 +68,14 @@ public class TransactionController {
                                 HttpStatus.BAD_REQUEST);
   }
 
-  @GetMapping("/transfers")
-  public ResponseEntity<?> userAccountFetchHandler(
-    @RequestBody EmailDTO email) {
-    if (email == null) {
+  @GetMapping("/transfers/{eml}")
+  public ResponseEntity<?> userAccountFetchHandler(@PathVariable("eml") String eml) {
+    if (eml == null) {
       return new ResponseEntity<>("Email information was null",
                                   HttpStatus.BAD_REQUEST);
     }
 
-    User user = userServices.getUserByEmail(email.getEmail());
+    User user = userServices.getUserByEmail(eml);
 
     if (user != null) {
       AccountSummaryDTO accountSummary = new AccountSummaryDTO();

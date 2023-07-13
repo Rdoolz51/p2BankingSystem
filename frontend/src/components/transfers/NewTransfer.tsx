@@ -52,7 +52,24 @@ const submitTransferOther = async (data:Object, token:String) => {
   }
 }
 
+const searchAccountsByEmail = async (email:String) => {
+  try{
+    const res = await fetch(`${process.env.API_URL}/transfers/${email}`)
 
+    if(res.ok) {
+      const data = await res.json();
+      return data;
+    } else {
+      console.error('Something went wrong other (/transfers) ')
+      return null;
+    }
+  } catch (e) {
+    console.error('Something went wrong doing other transfer stuff: ', e)
+    return null;
+  }
+}
+
+//-----------------------------------
 const NewTransfer = (props:any) => {
   const session = useSession();
   const userToken = session?.data?.user?.token;
@@ -63,6 +80,7 @@ const NewTransfer = (props:any) => {
   const [email, setEmail] = useState('');
   const [amount, setAmount] = useState('');
   const [toAccount, setToAccount] = useState('')
+  const [availableAcc, setAvailableAcc] = useState(null)
   
   const handleSubmit = async (event:any) => {
     event.preventDefault();
@@ -94,13 +112,24 @@ const NewTransfer = (props:any) => {
       amount: `${amount}`
     };
 
-    // const res = await fetchAccountByEmail(email, userToken)
-
     const res = await submitTransferOther(data, userToken);
 
     if(res) {
       toggleModal();
     }
+  }
+
+  const handleEmailSearch = async (event:any) => {
+
+    const res = await searchAccountsByEmail(event.target.value)
+
+    setEmail(event.target.value)
+    if(res) {
+      setAvailableAcc(res.accountIds)
+    } else {
+      setAvailableAcc(null)
+    }
+    
   }
 
   const toggleModal = () => setIsOpen(!isOpen);
@@ -130,9 +159,21 @@ const NewTransfer = (props:any) => {
           ) : (
             <form onSubmit={handleSubmitOther} className={styles.modalForm}>
               <h1 className={styles.formTitle}>Transfer To <strong>Other Accounts</strong></h1>
-              <input type="text" placeholder="Email" required onChange={(event) => setEmail(event.target.value)}/>
-              <input type="number" placeholder="Account Number" required onChange={(event) => setToAccount(event.target.value)}/>
+              <input type="text" placeholder="Email" required onChange={handleEmailSearch}/>
+              <select value={toAccount} onChange={(event) => setToAccount(event.target.value)} className={styles.option}>
+                {availableAcc ? (
+                  availableAcc.map((acc:any) => (
+                    <option key={acc} value={acc} >
+                      {acc}
+                    </option>
+                  ))
+                ) : (
+                  <option value="">No available accounts</option>
+                )}
+              </select>
               <input type="number" placeholder="Amount" onChange={(event) => setAmount(event.target.value)}/>
+              
+              
               <button type="submit" className={styles.submitButton}>Submit</button>
             </form>
           )}
