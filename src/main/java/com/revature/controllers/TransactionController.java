@@ -81,6 +81,7 @@ public class TransactionController {
       AccountSummaryDTO accountSummary = new AccountSummaryDTO();
       accountSummary.setAccountIds(accountServices.getAccountIdsByEmail(user));
       accountSummary.setFakeIds(accountServices.getFakeIdsByEmail(user));
+      accountSummary.setType(accountServices.getAccountTypesByEmail(user));
       accountSummary.setFirstName(user.getFirstName());
       accountSummary.setLastName(user.getLastName());
 
