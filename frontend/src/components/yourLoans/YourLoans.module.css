@@ -8,6 +8,7 @@
   flex-direction: row;
   justify-content: space-between;
   margin: 1rem;
+  flex-wrap: wrap;
   width: 80vw;
   padding: 20px;
   border-radius: 10px;

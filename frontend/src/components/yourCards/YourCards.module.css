@@ -1,20 +1,45 @@
 /* fix header and button and adjust card */
 
+.pageTitle h2 {
+margin-left: 2rem;
+}
+.cardBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin: 1rem;
+  width: 80vw;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.914);
+  background-color: #98a2a566;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
 .card {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #3c3c3c;
+    flex-wrap: wrap;
+    background-color: #641da6c6;
     color: #ffffff;
     width: 18vw;
     height: 18vh;
+    outline:1px solid rgba(0, 0, 0, 0.296);
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0px 10px 20px rgba(0,0,0,0.25);
     margin: 20px;
+    margin-top: 2.5rem; 
   }
-
+  .infoWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin:1.5rem;
+    margin-left: -.2rem;
+  }
   .bankName{
     align-self: start !important;
     margin-left: 1rem;
@@ -46,22 +71,25 @@
     padding: 0;
     margin: 0;
     display: flex;
+    margin-right:5rem;
+
   }
 
   .cardNumber {
     display: flex;
-    margin-top: 2rem;
+    margin-top: 2.5rem;
   }
   .buttonContainer {
     display: flex;
     justify-content: flex-start;
     width: 100%;
     filter: drop-shadow(2px 1px 2px rgb(29, 39, 80));
+    margin-left:7rem;
   }
   
   .button {
     padding:.75rem;
-    margin-top: 20px !important;
+    margin-top: -1rem !important;
     font-size: 16px;
     background-color: rgba(106, 80, 154, 0.758);
     cursor: pointer;

@@ -46,7 +46,7 @@ const YourCards: React.FC<CardProps> = (props) => {
 
   const [cardData, setCardData] = useState(Object.values(props));
 
-  console.log("33333333333333333", cardData)
+  // console.log("33333333333333333", cardData)
   const session = useSession();
   const userData = session.data?.user;
   
@@ -64,27 +64,32 @@ const YourCards: React.FC<CardProps> = (props) => {
   // }
 
   return (
-    <div>
+    <div className={styles.pageTitle}>
+      <h2 className={styles.cardType}>Credit Cards</h2>
+    <div className={styles.cardBox}>
       {cardData.map((card, index) => (
         <div key={index} className={styles.divDiv}>
 
-        <h2 className={styles.cardType}>Credit Card</h2>
     <div className={styles.card}>
         <h2 className={styles.bankName}>Pursue</h2>
         <h2 className={styles.cardNumber}>**** **** **** {card.cardNumber.substring(12)}</h2>
         <h2 className={styles.expirationDate}>Exp: {card.cardExpiration}</h2>
     </div>
+    <div className={styles.infoWrapper}>
+
         <div className={styles.cardLimit}>
         <h2 className={styles.creditLimit}>Credit Limit: ${parseInt(card.creditLimit).toFixed(2)}</h2>
         </div>
         <div className={styles.cardBalance}>
         <h2 className={styles.balance}>Balance: ${parseInt(card.balance).toFixed(2)}</h2>
+    </div>
       </div>
       <div className={styles.buttonContainer}>
           <div className={styles.button}>Make Payment</div>
-        </div>
-        </div>
+      </div>
+    </div>
     ))}
+    </div>
     </div>
     )
   }

@@ -12,6 +12,7 @@ import Login from '@/app/auth/login/page';
 import { useRouter } from 'next/navigation';
 
 import RecentTransactions from '../recentTransfers/RecentTransactions';
+import LoanApp from '../loanApp/LoanApp';
 
 const names = {
   accounts: 'accounts',
@@ -107,6 +108,9 @@ const MyBankHome: React.FC<any> = (props:any) => {
           {activeButton === names.cards &&
             <YourCards {...data} />
           }
+          {activeButton === names.cards &&
+          <CardApp {...data[0]} />
+          }
         </div>
       }
       {!data && 
@@ -117,6 +121,9 @@ const MyBankHome: React.FC<any> = (props:any) => {
         <div>
           {activeButton === names.loans &&
             <YourLoans {...data} />
+          }
+          {activeButton === names.loans &&
+          <LoanApp {...data[0]} />
           }
         </div>
       }

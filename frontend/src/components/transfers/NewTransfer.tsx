@@ -83,6 +83,7 @@ const NewTransfer = (props:any) => {
   const [amount, setAmount] = useState('');
   const [toAccount, setToAccount] = useState('')
   const [availableAcc, setAvailableAcc] = useState(null)
+  const [error, setError] = useState('');
   
   const handleSubmit = async (event:any) => {
     event.preventDefault();
@@ -99,6 +100,8 @@ const NewTransfer = (props:any) => {
 
     if(res) {
       toggleModal();
+    } else {
+      setError('Insufficient Funds!')
     }
   }
 
@@ -118,6 +121,9 @@ const NewTransfer = (props:any) => {
 
     if(res) {
       toggleModal();
+      
+    } else {
+      setError('Insufficient Funds!')
     }
   }
 
@@ -152,6 +158,7 @@ const NewTransfer = (props:any) => {
           {type == 'myAccount' ? (
             <form onSubmit={handleSubmit} className={styles.modalForm}>
               <h1 className={styles.formTitle}>Transfer To <strong>My Account</strong></h1>
+              <h5 className={styles.errorText}>{error}</h5>
               <input type="text" placeholder="Account Number" required onChange={(event) => setToAccount(event.target.value)}/>
               <input type="number" placeholder="Amount" onChange={(event) => setAmount(event.target.value)}/>
               <button type="submit" className={styles.submitButton}>Submit</button>
@@ -159,6 +166,7 @@ const NewTransfer = (props:any) => {
           ) : (
             <form onSubmit={handleSubmitOther} className={styles.modalForm}>
               <h1 className={styles.formTitle}>Transfer To <strong>Other Accounts</strong></h1>
+              <h5 className={styles.errorText}>{error}</h5>
               <input type="text" placeholder="Email" required onChange={handleEmailSearch}/>
               <select value={toAccount} onChange={(event) => setToAccount(event.target.value)} className={styles.option}>
                 {availableAcc ? (

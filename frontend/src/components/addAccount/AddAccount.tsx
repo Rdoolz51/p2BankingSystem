@@ -76,8 +76,8 @@ const AddAccount = () => {
                     <h1 className={styles.formTitle}>Add Account</h1>
                     <select name="type" id="accType" required onChange={handleChange}>
                         <option hidden value="">Account Type</option>
-                        <option value="1">Checking</option>
-                        <option value="2">Savings</option>
+                        <option value="1">Savings</option>
+                        <option value="2">Checking</option>
                         <option value="3">Travel</option>
                     </select>
                     <input type="password" placeholder="4-Digit PIN" required maxLength={4} minLength={4} onChange={(event) => setPin(event.target.value)}/>

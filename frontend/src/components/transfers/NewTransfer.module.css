@@ -16,6 +16,10 @@
   transition: background-color 0.3s ease;
 }
 
+.errorText{
+  color: red;
+}
+
 .addButton:hover {
   background-color: #45a049;
 }
