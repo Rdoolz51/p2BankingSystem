@@ -28,10 +28,10 @@ const RecentTransactions: React.FC<any> = (props:any) => {
         const formattedDate = `${day}/${month}/${year}`;
         return (
           <div className={styles.leftContainer} key={t.transactionID}>
-            <h2 className={styles.accountType}>Account Number: {t.userAccount.accountID}</h2>  
-            <h2 className={styles.accountNumber}>Amount: ${t.amount}</h2>
-            <h2 className={styles.accountNumber}>Date: {formattedDate}</h2>
-            <h2 className={styles.accountNumber}>Balance: ${t.userAccount.balance}</h2>
+            <h2 className={styles.accountType}>{t.userAccount.accountID}</h2>  
+            <h2 className={styles.accountNumber}>${t.amount}</h2>
+            <h2 className={styles.accountNumber}>{formattedDate}</h2>
+            {/* <h2 className={styles.accountNumber}>Balance: ${t.userAccount.balance}</h2> */}
           </div>
         )
       })}
