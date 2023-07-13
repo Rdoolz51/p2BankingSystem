@@ -80,6 +80,7 @@ public class TransactionController {
     if (user != null) {
       AccountSummaryDTO accountSummary = new AccountSummaryDTO();
       accountSummary.setAccountIds(accountServices.getAccountIdsByEmail(user));
+      accountSummary.setFakeIds(accountServices.getFakeIdsByEmail(user));
       accountSummary.setFirstName(user.getFirstName());
       accountSummary.setLastName(user.getLastName());
 

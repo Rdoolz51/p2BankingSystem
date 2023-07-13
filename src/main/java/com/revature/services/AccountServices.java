@@ -104,6 +104,25 @@ public class AccountServices {
     return null;
   }
 
+  public List<String> getFakeIdsByEmail(User user) {
+    if (user != null) {
+      List<Account> accounts = accountDAO.findByUser(user);
+      List<String> fakeIds = new ArrayList<>();
+
+      if (accounts != null) {
+        for (Account a : accounts) {
+          fakeIds.add(String.valueOf(a.getFakeAccountId()));
+        }
+
+        log.info("Retrieved fake user accounts by email: " + user.getEmail());
+        return fakeIds;
+      }
+    }
+
+    log.warn("Could not get user account IDs by email");
+    return null;
+  }
+
   /**
    *
    * @param user

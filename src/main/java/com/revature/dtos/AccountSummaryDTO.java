@@ -11,6 +11,7 @@ import java.util.List;
 @Data
 public class AccountSummaryDTO {
   private List<String> accountIds;
+  private List<String> fakeIds;
   private String firstName;
   private String lastName;
 }
