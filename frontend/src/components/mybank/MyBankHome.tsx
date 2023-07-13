@@ -8,10 +8,13 @@ import { useSession } from 'next-auth/react';
 import YourLoans from '../yourLoans/YourLoans';
 import AddAccount from '../addAccount/AddAccount';
 
+import RecentTransactions from '../recentTransfers/RecentTransactions';
+
 const names = {
   accounts: 'accounts',
   cards: 'cards',
   loans: 'loans',
+  transactions: 'transactions'
 }
 
 const fetchRoutes = async (active, token) => {
@@ -74,6 +77,14 @@ if(data) {
         >
           Your Loans
         </button>
+
+        <button name={names.transactions}
+          onClick={handlerSelector} 
+          className={activeButton === names.transactions ? styles.activeButton : ''} 
+          disabled={activeButton === names.transactions}  
+        >
+          Recent Transactions
+        </button>
       </div>
 
       <div>
@@ -94,6 +105,12 @@ if(data) {
       <div>
         {activeButton === names.loans && 
           <YourLoans {...data[0]} />
+        }
+      </div>
+
+      <div>
+        {activeButton === names.transactions && 
+          <RecentTransactions {...data} />
         }
       </div>
     
