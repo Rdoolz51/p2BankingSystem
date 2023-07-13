@@ -1,6 +1,8 @@
 import styles from './YourAccounts.module.css';
-import { useState } from 'react';
-
+import { useSession } from 'next-auth/react';
+import React, { useState } from "react";
+import Modal from "react-modal";
+import NewTransfer from '../transfers/NewTransfer';
 
 
 interface AccountProps {
@@ -15,6 +17,22 @@ interface AccountProps {
   }[];
 }
 
+const fetchRoutes = async (active, token) => {
+  try{
+    const res = await fetch(`${process.env.API_URL}/mybank/${active}`, {
+      headers: {
+        Authorization: 'Bearer ' + token,
+        'Content-Type': 'application/json'
+      }
+    }) 
+      const response = await res.json();
+      return response;
+    } catch(e) {
+      console.log("ERROR" , e)
+    }
+}
+
+
 const YourAccounts: React.FC<AccountProps> = (props) => {
 
   const [accountData, setAccountData] = useState(Object.values(props));
@@ -24,7 +42,6 @@ const YourAccounts: React.FC<AccountProps> = (props) => {
   const withdrawMoney = (amount: number) => {};
   const transferMoney = (amount: number) => {};
   
-
 
   return (
     <div className={styles.accountContainer}>
@@ -42,6 +59,7 @@ const YourAccounts: React.FC<AccountProps> = (props) => {
           <div className={styles.transactionContainer}>
             {/* <h2>Recent Transactions</h2> */}
           </div>
+          <NewTransfer accountID={account.accountID} />
         </div>
       ))}
     </div>

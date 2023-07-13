@@ -5,9 +5,8 @@
 
 .accountContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
-    align-items: start;
     margin: 1rem;
     width: 80vw;
     padding: 20px;

@@ -11,10 +11,13 @@ import CardApp from '../cardApp/CardApp';
 import Login from '@/app/auth/login/page';
 import { useRouter } from 'next/navigation';
 
+import RecentTransactions from '../recentTransfers/RecentTransactions';
+
 const names = {
   accounts: 'accounts',
   cards: 'cards',
   loans: 'loans',
+  transactions: 'transactions'
 }
 const fetchRoutes = async (active, token) => {
   try{
@@ -76,6 +79,14 @@ const MyBankHome: React.FC<any> = (props:any) => {
         >
           Your Loans
         </button>
+
+        <button name={names.transactions}
+          onClick={handlerSelector} 
+          className={activeButton === names.transactions ? styles.activeButton : ''} 
+          disabled={activeButton === names.transactions}  
+        >
+          Recent Transactions
+        </button>
       </div>
       {data && session &&
       <div>
@@ -126,6 +137,12 @@ const MyBankHome: React.FC<any> = (props:any) => {
         </div>
       
       }
+
+      <div>
+        {activeButton === names.transactions && 
+          <RecentTransactions {...data} />
+        }
+      </div>
     
     </main>
   )
