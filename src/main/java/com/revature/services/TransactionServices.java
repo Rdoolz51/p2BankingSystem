@@ -173,7 +173,7 @@ public class TransactionServices {
     return null;
   }
 
-  public Transaction userTouserTransfer(User from, Account fromAcct, User to,
+  public Transaction userToUserTransfer(User from, Account fromAcct, User to,
                                     Account toAcct, String amount) {
     if (from != null && to != null && fromAcct != null && toAcct != null &&
         !amount.isEmpty()) {
