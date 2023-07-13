@@ -8,11 +8,11 @@ import { useSession } from 'next-auth/react';
 import YourLoans from '../yourLoans/YourLoans';
 import AddAccount from '../addAccount/AddAccount';
 import CardApp from '../cardApp/CardApp';
+import LoanApp from '../loanApp/LoanApp';
 import Login from '@/app/auth/login/page';
 import { useRouter } from 'next/navigation';
 
 import RecentTransactions from '../recentTransfers/RecentTransactions';
-import LoanApp from '../loanApp/LoanApp';
 
 const names = {
   accounts: 'accounts',
@@ -35,18 +35,46 @@ const fetchRoutes = async (active, token) => {
   }
 }
 
+const getUserData = async (token:String) => {
+  try{
+    const res = await fetch(`${process.env.API_URL}/mybank`, {
+      headers: {
+        Authorization: 'Bearer ' + token,
+        'Content-Type': 'application/json'
+      }
+    })
+
+    if(res.ok) {
+      const data = await res.json();
+      return data;
+    }
+  } catch (e) {
+    console.error('Something went wrong: ', e)
+    return null;
+  }
+}
+
 const MyBankHome: React.FC<any> = (props:any) => {
   const router = useRouter();
   
   const [activeButton, setActiveButton] = useState('')
   const [data, setData] = useState(); // State for data
+  const [cc, setCc] = useState()
   
   const session = useSession();
   const token = session.data?.user?.token;
   
   const handlerSelector = async (e:any) => {
-    const a = await fetchRoutes(e.target.name, token);
-    setData(a)
+    if(e.target.name === 'cards') {
+      const res = await getUserData(token)
+      console.log('card res', res);
+      setData(res)
+      const a = await fetchRoutes(e.target.name, token);
+      setCc(a)
+    }else {
+      const a = await fetchRoutes(e.target.name, token);
+      setData(a)
+    }
     setActiveButton(e.target.name)
   }
   if(data) {
@@ -99,22 +127,31 @@ const MyBankHome: React.FC<any> = (props:any) => {
         }
       </div>
       }
+
       {!data && 
-      <div></div>
+      <div>
+      {activeButton === names.accounts &&
+        router.push(`${process.env.NEXTAUTH_URL}/auth/login`)
+      }
+    </div>
       }
 
       {data && session &&
         <div>
           {activeButton === names.cards &&
-            <YourCards {...data} />
+            <YourCards {...cc} />
           }
           {activeButton === names.cards &&
-          <CardApp {...data[0]} />
+            <CardApp {...data} />
           }
         </div>
       }
-      {!data && 
-      <div></div>
+      {!data &&
+        <div>
+          {activeButton === names.cards &&
+            router.push(`${process.env.NEXTAUTH_URL}/auth/login`)
+          }
+        </div>
       }
 
       {data && session &&
@@ -123,24 +160,25 @@ const MyBankHome: React.FC<any> = (props:any) => {
             <YourLoans {...data} />
           }
           {activeButton === names.loans &&
-          <LoanApp {...data[0]} />
+            <LoanApp {...data[0]} />
           }
         </div>
       }
-      {!data && 
-      <div></div>
+      {!data &&
+        <div>
+          {activeButton === names.loans &&
+            router.push(`${process.env.NEXTAUTH_URL}/auth/login`)
+          }
+        </div>
+      
       }
 
-{data && session &&
-        <div>
-          {activeButton === names.transactions &&
-            <RecentTransactions {...data} />
-          }
-        </div>
-      }
-      {!data && 
-      <div></div>
-      }
+      <div>
+        {activeButton === names.transactions && 
+          <RecentTransactions {...data} />
+        }
+      </div>
+    
     </main>
   )
 }

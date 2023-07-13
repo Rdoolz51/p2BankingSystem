@@ -42,11 +42,11 @@ const fetchRoutes = async (active, token) => {
 //   return `${month.toString().padStart(2, '0')}/${year.toString().slice(-2)}`;
 // }
 
-const YourCards: React.FC<CardProps> = (props) => {
+const YourCards: React.FC<any> = (props) => {
 
   const [cardData, setCardData] = useState(Object.values(props));
 
-  // console.log("33333333333333333", cardData)
+  console.log("33333333333333333", cardData)
   const session = useSession();
   const userData = session.data?.user;
   
@@ -69,10 +69,10 @@ const YourCards: React.FC<CardProps> = (props) => {
     <div className={styles.cardBox}>
       {cardData.map((card, index) => (
         <div key={index} className={styles.divDiv}>
-
+          
     <div className={styles.card}>
         <h2 className={styles.bankName}>Pursue</h2>
-        <h2 className={styles.cardNumber}>**** **** **** {card.cardNumber.substring(12)}</h2>
+        <h2 className={styles.cardNumber}>**** **** **** {!card.cardNumber ? '0000' : card.cardNumber.substring(12)}</h2>
         <h2 className={styles.expirationDate}>Exp: {card.cardExpiration}</h2>
     </div>
     <div className={styles.infoWrapper}>
