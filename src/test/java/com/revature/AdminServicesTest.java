@@ -1,9 +1,8 @@
 package com.revature;
 
 import com.revature.daos.*;
-import com.revature.models.CreditCard;
-import com.revature.models.Loan;
-import com.revature.models.Status;
+import com.revature.models.*;
+import com.revature.services.AccountServices;
 import com.revature.services.AdminServices;
 import com.revature.services.UserServices;
 import org.junit.jupiter.api.Assertions;
@@ -14,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.test.context.support.WithMockUser;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -119,34 +119,33 @@ public class AdminServicesTest {
     verify(creditCardDAO, times(1)).save(mockCreditCard);
 
   }
-    /*
-    @Test
-    public void testGetAllUserLoanById() {
-        Role mockRole = Mockito.mock(Role.class);
-        Address mockAddress = Mockito.mock(Address.class);
-        User mockUser = new User(1, "John", "Doe", "johndoe@test.com", "password", "1234567890", mockRole, mockAddress, "100000");
 
-        List<Loan> mockLoans = new ArrayList<>();
-        LoanType mockLoanType = Mockito.mock(LoanType.class);
-        Status mockStatus = Mockito.mock(Status.class);
+  /*@Test
+  public void testGetAllUserLoanById() {
+    Role mockRole = Mockito.mock(Role.class);
+    Address mockAddress = Mockito.mock(Address.class);
+    User mockUser = new User(1, "John", "Doe", "johndoe@test.com", "password", "1234567890", mockRole, mockAddress, "100000");
 
-        // Create mock loans
-        Loan mockLoan1 = new Loan(1, "100000", mockLoanType, "20000", "10", mockUser, mockStatus);
-        Loan mockLoan2 = new Loan(2, "100000", mockLoanType, "20000", "10", mockUser, mockStatus);
+    List<Loan> mockLoans = new ArrayList<>();
+    LoanType mockLoanType = Mockito.mock(LoanType.class);
+    Status mockStatus = Mockito.mock(Status.class);
 
-        mockLoans.add(mockLoan1);
-        mockLoans.add(mockLoan2);
+    // Create mock loans
+    Loan mockLoan1 = new Loan(1, "100000", mockLoanType, "20000", "10", mockUser, mockStatus);
+    Loan mockLoan2 = new Loan(2, "100000", mockLoanType, "20000", "10", mockUser, mockStatus);
 
-        when(loanDAO.findByUser_Id(1)).thenReturn(mockLoans);
+    mockLoans.add(mockLoan1);
+    mockLoans.add(mockLoan2);
 
-        List<Loan> result = adminServices.getAllUserLoansById(1);
+    when(loanDAO.findByUser_Id(1)).thenReturn(mockLoans);
 
-        Assertions.assertNotNull(result, "Returned loan list should not be null");
-        Assertions.assertEquals(mockLoans, result, "Returned loan list should match the mock loan list");
-        verify(loanDAO, times(1)).findByUser_Id(1);
-    }
+    List<Loan> result = adminServices.getAllUserLoansById(1);
 
-     */
+    Assertions.assertNotNull(result, "Returned loan list should not be null");
+    Assertions.assertEquals(mockLoans, result, "Returned loan list should match the mock loan list");
+    verify(loanDAO, times(1)).findByUser_Id(1);
+  }*/
+
 
 
 }
