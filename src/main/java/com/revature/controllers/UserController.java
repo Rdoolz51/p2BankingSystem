@@ -119,7 +119,7 @@ public class UserController {
     if (user != null) {
       Account newAccount = accountServices.registerAccount(
         new Account(
-          "",
+          "0.00",
           account.getType(),
           account.getPin(),
           user,
