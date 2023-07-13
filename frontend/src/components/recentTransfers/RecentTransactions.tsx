@@ -21,6 +21,7 @@ const RecentTransactions: React.FC<any> = (props: any) => {
 
   return (
     <div className={styles.accountContainer}>
+      <h1 className={styles.title}>Recent Transactions</h1>
       {state &&
         state.map((t: any) => {
           const dateString = t.transactionDate;
@@ -32,7 +33,7 @@ const RecentTransactions: React.FC<any> = (props: any) => {
           const formattedDate = `${day}/${month}/${year}`;
           return (
             <>
-            <h1 className={styles.title}>Recent Transactions</h1>
+            
             <div className={styles.leftContainer}>
               <table className={styles.table}>
                 <thead className={styles.thead}>
